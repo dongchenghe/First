@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<package name="Customer" namespace="/" extends="json-default">
+		<action name="to*" class="customerAction">
+			<result name="success" type="dispatcher">WEB-INF/jsp/customer/{1}.jsp</result>
+		</action>
+		<action name="login" class="customerAction" method="login">
+			<result name="success" type="redirectAction">index</result>
+			<result name="error" type="dispatcher">WEB-INF/jsp/customer/login.jsp</result>
+		</action>
+		<action name="index" class="itemAction" method="index">
+			<result name="success" type="dispatcher">WEB-INF/jsp/index.jsp</result>
+		</action>
+		<action name="isPhoneExitAjax" class="customerAction" method="isPhoneExit">
+			<result type="json">
+				<param name="root">tip</param>
+			</result>
+		</action>
+		<action name="register" class="customerAction" method="register">
+			<result name="success" type="redirectAction">index</result>
+			<result name="error" type="dispatcher">WEB-INF/jsp/customer/register.jsp</result>
+		</action>
+		<action name="logout" class="customerAction" method="logout">
+			<result name="success" type="redirectAction">index</result>
+		</action>
+	</package>
+</struts>

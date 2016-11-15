@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.IFilmDao">
+
+	<resultMap type="FilmStorySort" id="filmStorySortMap">
+		<result column="S_ID" property="sId" />
+		<result column="SORTS" property="sorts" />
+	</resultMap>
+
+	<resultMap type="Film" id="filmMap">
+		<result column="FILM_ID" property="filmId" />
+		<result column="FILM_NAME" property="filmName" />
+		<result column="TOTAL_TIME" property="totalTime" />
+		<result column="FILMSORT" property="filmSort" />
+		<result column="RELEASE_TIME" property="releaseTime" />
+		<result column="DIRECTOR" property="director" />
+		<result column="SCRIPTWRITER" property="scriptWriter" />
+		<result column="ACTOR" property="actor" />
+		<result column="COUNTRY" property="country" />
+		<result column="FILMCOMPANY" property="filmCompany" />
+		<result column="STORY" property="story" />
+		<result column="IMG_SRC" property="imgSrc" />
+		<result column="FILM_SCORE" property="filmScore" />
+		<association property="filmStorySort" javaType="FilmStorySort"
+			resultMap="filmStorySortMap"></association>
+	</resultMap>
+	<resultMap type="Cinema" id="cinemaMap">
+		<result column="CINEMA_ID" property="cinemaId" />
+		<result column="CINEMA_NAME" property="cinemaName" />
+		<result column="CINEMA_LOCATION" property="cinemaLocation" />
+		<result column="CINEMA_TEL" property="cinemaTel" />
+		<result column="IMG_SRC" property="imgSrc" />
+	</resultMap>
+	<select id="getFilms" parameterType="Film" resultMap="filmMap">
+		select film.*,filmstorysort.sorts from film ,filmstorysort
+		<where>
+			film.s_id=filmstorysort.s_id
+			<if test="filmId!=null and filmId!=''">
+				and FILM_ID=#{filmId}
+			</if>
+			<if test="filmName!=null and filmName!=''">
+				and FILM_NAME=#{filmName}
+			</if>
+
+			<if test="totalTime!=null and totalTime!=''">
+				and TOTAL_TIME=#{totalTime}
+			</if>
+			<if test="filmSort!=null and filmSort!=''">
+				and FILMSORT=#{filmSort}
+			</if>
+			<if test="releaseTime!=null and releaseTime!=''">
+				and RELEASE_TIME=#{releaseTime}
+			</if>
+			<if test="director!=null and director!=''">
+				and DIRECTOR=#{director}
+			</if>
+			<if test="scriptWriter!=null and scriptWriter!=''">
+				and SCRIPTWRITER=#{scriptWriter}
+			</if>
+
+			<if test="actor!=null and actor!=''">
+				and ACTOR=#{actor}
+			</if>
+			<if test="country!=null and country!=''">
+				and COUNTRY=#{country}
+			</if>
+			<if test="filmCompany!=null and filmCompany!=''">
+				and FILMCOMPANY=#{filmCompany}
+			</if>
+			<if test="story!=null and story!=''">
+				and STORY=#{story}
+			</if>
+			<if test="imgSrc!=null and imgSrc!=''">
+				and IMG_SRC=#{imgSrc}
+			</if>
+			<if test="filmScore!=null and filmScore!=''">
+				and FILM_SCORE=#{filmScore}
+			</if>
+			<if test="filmStorySort.sId!=null and filmStorySort.sId!=''">
+				and S_ID=#{filmStorySort.sId}
+			</if>
+			<if test="filmStorySort.sorts!=null and filmStorySort.sorts!=''">
+				and SORTS=#{filmStorySort.sorts}
+			</if>
+		</where>
+	</select>
+
+	<select id="getFilm" parameterType="Film" resultMap="filmMap">
+		select film.*,filmstorysort.sorts from film ,filmstorysort
+		<where>
+			film.s_id=filmstorysort.s_id
+			<if test="filmId!=null and filmId!=''">
+				and FILM_ID=#{filmId}
+			</if>
+			<if test="filmName!=null and filmName!=''">
+				and FILM_NAME=#{filmName}
+			</if>
+
+			<if test="totalTime!=null and totalTime!=''">
+				and TOTAL_TIME=#{totalTime}
+			</if>
+			<if test="filmSort!=null and filmSort!=''">
+				and FILMSORT=#{filmSort}
+			</if>
+			<if test="releaseTime!=null and releaseTime!=''">
+				and RELEASE_TIME=#{releaseTime}
+			</if>
+			<if test="director!=null and director!=''">
+				and DIRECTOR=#{director}
+			</if>
+			<if test="scriptWriter!=null and scriptWriter!=''">
+				and SCRIPTWRITER=#{scriptWriter}
+			</if>
+
+			<if test="actor!=null and actor!=''">
+				and ACTOR=#{actor}
+			</if>
+			<if test="country!=null and country!=''">
+				and COUNTRY=#{country}
+			</if>
+			<if test="filmCompany!=null and filmCompany!=''">
+				and FILMCOMPANY=#{filmCompany}
+			</if>
+			<if test="story!=null and story!=''">
+				and STORY=#{story}
+			</if>
+			<if test="imgSrc!=null and imgSrc!=''">
+				and IMG_SRC=#{imgSrc}
+			</if>
+			<if test="filmScore!=null and filmScore!=''">
+				and FILM_SCORE=#{filmScore}
+			</if>
+			<if test="filmStorySort.sId!=null and filmStorySort.sId!=''">
+				and S_ID=#{filmStorySort.sId}
+			</if>
+			<if test="filmStorySort.sorts!=null and filmStorySort.sorts!=''">
+				and SORTS=#{filmStorySort.sorts}
+			</if>
+		</where>
+	</select>
+
+	<insert id="addFilm" parameterType="Film">
+		insert into
+		film
+		(FILM_NAME,TOTAL_TIME,S_ID,FILMSORT,RELEASE_TIME,DIRECTOR,SCRIPTWRITER,ACTOR,COUNTRY,FILMCOMPANY,STORY,IMG_SRC,FILM_SCORE)
+		values(#{filmName},#{totalTime},#{filmStorySort.sId},#{filmSort},#{releaseTime},#{director},#{scriptWriter},#{actor},#{country},#{filmCompany},#{story},#{imgSrc},#{filmScore})
+	</insert>
+
+	<delete id="deleteFilm" parameterType="Film">
+		delete from film
+		<where>
+			film.s_id=filmstorysort.s_id
+			<if test="filmId!=null and filmId!=''">
+				and FILM_ID=#{filmId}
+			</if>
+			<if test="filmName!=null and filmName!=''">
+				and FILM_NAME=#{filmName}
+			</if>
+
+			<if test="totalTime!=null and totalTime!=''">
+				and TOTAL_TIME=#{totalTime}
+			</if>
+			<if test="filmSort!=null and filmSort!=''">
+				and FILMSORT=#{filmSort}
+			</if>
+			<if test="releaseTime!=null and releaseTime!=''">
+				and RELEASE_TIME=#{releaseTime}
+			</if>
+			<if test="director!=null and director!=''">
+				and DIRECTOR=#{director}
+			</if>
+			<if test="scriptWriter!=null and scriptWriter!=''">
+				and SCRIPTWRITER=#{scriptWriter}
+			</if>
+
+			<if test="actor!=null and actor!=''">
+				and ACTOR=#{actor}
+			</if>
+			<if test="country!=null and country!=''">
+				and COUNTRY=#{country}
+			</if>
+			<if test="filmCompany!=null and filmCompany!=''">
+				and FILMCOMPANY=#{filmCompany}
+			</if>
+			<if test="story!=null and story!=''">
+				and STORY=#{story}
+			</if>
+			<if test="imgSrc!=null and imgSrc!=''">
+				and IMG_SRC=#{imgSrc}
+			</if>
+			<if test="filmScore!=null and filmScore!=''">
+				and FILM_SCORE=#{filmScore}
+			</if>
+			<if test="filmStorySort.sId!=null and filmStorySort.sId!=''">
+				and S_ID=#{filmStorySort.sId}
+			</if>
+		</where>
+	</delete>
+
+	<update id="updateFilm" parameterType="Film">
+		update film
+		<set>
+			<if test="filmName!=null and filmName!=''">
+				FILM_NAME=#{filmName},
+			</if>
+
+			<if test="totalTime!=null and totalTime!=''">
+				TOTAL_TIME=#{totalTime},
+			</if>
+			<if test="filmSort!=null and filmSort!=''">
+				FILMSORT=#{filmSort},
+			</if>
+			<if test="releaseTime!=null and releaseTime!=''">
+				RELEASE_TIME=#{releaseTime},
+			</if>
+			<if test="director!=null and director!=''">
+				DIRECTOR=#{director},
+			</if>
+			<if test="scriptWriter!=null and scriptWriter!=''">
+				SCRIPTWRITER=#{scriptWriter},
+			</if>
+
+			<if test="actor!=null and actor!=''">
+				ACTOR=#{actor},
+			</if>
+			<if test="country!=null and country!=''">
+				COUNTRY=#{country},
+			</if>
+			<if test="filmCompany!=null and filmCompany!=''">
+				FILMCOMPANY=#{filmCompany},
+			</if>
+			<if test="story!=null and story!=''">
+				STORY=#{story},
+			</if>
+			<if test="imgSrc!=null and imgSrc!=''">
+				IMG_SRC=#{imgSrc},
+			</if>
+			<if test="filmScore!=null and filmScore!=''">
+				FILM_SCORE=#{filmScore},
+			</if>
+			<if test="filmStorySort.sId!=null and filmStorySort.sId!=''">
+				S_ID=#{filmStorySort.sId},
+			</if>
+			<if test="filmStorySort.sorts!=null and filmStorySort.sorts!=''">
+				SORTS=#{filmStorySort.sorts}
+			</if>
+
+		</set>
+		<where>
+			<if test="filmId!=null and filmId!=''">
+				FILM_ID=#{filmId}
+			</if>
+		</where>
+	</update>
+	<select id="getFilmAll" resultMap="filmMap">
+		select * from film where
+		film_id in
+		( select distinct film_id from schedule where
+		(schedule_time-sysdate)&lt;0)
+	</select>
+
+	<select id="getFilmSoon" resultMap="filmMap">
+		select * from
+		(select * from
+		film
+		order by release_time desc) where rownum&lt;5
+	</select>
+	<select id="getCinema" resultMap="cinemaMap">
+		select * from cinema
+	</select>
+
+	<select id="detailsFilm" parameterType="String" resultMap="filmMap">
+		select * from film where film_id=#{filmId}
+	</select>
+	<!-- <select id="cinemaSchedule" parameterType="String" resultMap="cinemaMap" 
+		> select * from cinema where cinema_id in( select distinct cinema_id from 
+		schedule where film_id =9 and (schedule_time-sysdate)&lt;0) </select> <select 
+		id="schedule" parameterType="String" resultMap="scheduleMap"> select * from 
+		schedule where CINEMA_ID=#{cinemaId} </select> -->
+</mapper>

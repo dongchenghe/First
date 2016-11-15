@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.IStaffDao">
+	
+	<resultMap type="Job" id="jobMap">
+		<result column="JOB_ID" property="jobId" />
+		<result column="JOB_NAME" property="jobName" />
+	</resultMap>
+
+	<resultMap type="Staff" id="staffMap">
+		<result column="STAFF_ID" property="staffId" />
+		<result column="USERNAME" property="userName" />
+		<result column="PWD" property="pwd" />
+		<result column="PHONE" property="phone" />
+		<association property="job" javaType="Job" resultMap="jobMap"></association>
+
+	</resultMap>
+	
+	<select id="getJobs"  resultMap="jobMap">
+		select * from job
+	</select>
+	
+	
+	
+	<select id="getStaffs" parameterType="Staff" resultMap="staffMap">
+		select staff.*,job.job_name from staff left join job on staff.job_id=job.job_id where 1=1
+		<if test="staffId!=null and staffId!=''">
+				and STAFF_ID=#{staffId}
+			</if>
+			<if test="userName!=null and userName!=''">
+				and USERNAME=#{userName}
+			</if>
+
+			<if test="pwd!=null and pwd!=''">
+				and PWD=#{pwd}
+			</if>
+			<if test="phone!=null and phone!=''">
+				and PHONE=#{phone}
+			</if>
+			<if test="job.jobId!=null and job.jobId!=''">
+					and STAFF.JOB_ID=#{job.jobId}
+				</if>
+				<if test="job.jobName!=null and job.jobName!=''">
+						and JOB.JOB_NAME=#{job.jobName}
+				</if>
+			
+			
+			
+		
+	</select>
+
+	<select id="getStaff" parameterType="Staff" resultMap="staffMap">
+		select staff.*,job.job_name from job,staff
+		<where>
+			job.job_id=staff.job_id
+
+			<if test="staffId!=null and staffId!=''">
+				and STAFF_ID=#{staffId}
+			</if>
+			<if test="userName!=null and userName!=''">
+				and USERNAME=#{userName}
+			</if>
+			<if test="pwd!=null and pwd!=''">
+				and PWD=#{pwd}
+			</if>
+			<if test="phone!=null and phone!=''">
+				and PHONE=#{phone}
+			</if>
+			<if test="job.jobId!=null and job.jobId!=''">
+				and JOB_ID=#{job.jobId}
+			</if>
+			<if test="job.jobName!=null and job.jobName!=''">
+				and JOB_NAME=#{job.jobName}
+			</if>
+		</where>
+	</select>
+
+	<insert id="addStaff" parameterType="Staff">
+		insert into
+		staff
+		(USERNAME,PWD,PHONE,JOB_ID)
+		values(#{userName},#{pwd},#{phone},#{job.jobId})
+	</insert>
+
+	<delete id="deleteStaff" parameterType="Staff">
+		delete from staff
+		<where>
+			<if test="staffId!=null and staffId!=''">
+				STAFF_ID=#{staffId}
+			</if>
+			<if test="userName!=null and userName!=''">
+				and USERNAME=#{userName}
+			</if>
+			<if test="pwd!=null and pwd!=''">
+				and PWD=#{pwd}
+			</if>
+			<if test="phone!=null and phone!=''">
+				and PHONE=#{phone}
+			</if>
+			<if test="job.jobId!=null and job.jobId!=''">
+				and JOB_ID=#{job.jobId}
+			</if>
+		</where>
+	</delete>
+
+	<update id="updateStaff" parameterType="Staff">
+		update staff
+		<set>
+		<trim suffix=" " suffixOverrides=",">
+			<if test="userName!=null and userName!=''">
+				USERNAME=#{userName},
+			</if>
+			<if test="pwd!=null and pwd!=''">
+				PWD=#{pwd},
+			</if>
+			<if test="phone!=null and phone!=''">
+				PHONE=#{phone},
+			</if>
+			<if test="job.jobId!=null and job.jobId!=''">
+				JOB_ID=#{job.jobId}
+			</if>
+		</trim>
+		</set>
+		
+		<where>
+			<if test="staffId!=null and staffId!=''">
+				STAFF_ID=#{staffId}
+			</if>
+		</where>
+	</update>
+	
+</mapper>

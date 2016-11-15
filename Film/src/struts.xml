@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<constant name="struts.action.extension" value="action,,go,do"></constant>
+	<constant name="struts.configuration.xml.reload" value="true"></constant>
+	<constant name="struts.devMode" value="true"></constant>
+	<constant name="struts.enable.DynamicMethodInvocation" value="true"></constant>
+	<constant name="struts.objectFactory" value="spring"></constant>
+	<constant name="struts.objectFactory.spring.autoWire.alwaysRespect" value="true" />		
+	<include file="com/action/staffLoginAction.xml"></include>
+	<include file="com/action/customerManagerAction.xml"></include>
+	<include file="com/action/jobManagerAction.xml"></include>
+	<include file="com/action/filmManagerAction.xml"></include>
+	<include file="com/action/FilmStorySortManagerAction.xml"></include>
+	<include file="com\action\staffAction.xml"></include>
+	<include file="com/action/Customer.xml"></include>
+	<include file="com/action/Film.xml"></include>
+</struts>

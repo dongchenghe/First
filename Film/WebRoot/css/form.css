@@ -1,0 +1,49 @@
+@CHARSET "UTF-8";
+      
+img {
+    border:0;
+    margin-top:.5em;
+    }   
+table {
+    width:45%;
+    border-top:1px solid #e3f1fe;
+    border-right:1px solid #e3f1fe;
+    margin:1em auto;
+    border-collapse:collapse;
+    }
+caption {
+    color: #9ba9b4;
+    font-size:.94em;
+    letter-spacing:.1em;
+    padding:0;
+    margin:1em 0 0 0;
+    margin-bottom:0;
+    caption-side:top;
+    text-align:center;
+    }   
+
+td {
+    color:#678197;
+    border-bottom: 1px solid #e3f1fe;
+    border-left:1px solid #e5eff8;
+    padding:.3em 1em;
+    text-align:left;
+    }               
+th {
+    font-weight:normal;
+    color: #678197;
+    text-align:left;
+    border-bottom: 1px solid #e3f1fe;
+    border-left:1px solid #e5eff8;
+    padding:.3em 1em;
+    width: 20%;
+    }   
+   
+.formbg{
+    font:bold 1.2em/2em "Century Gothic","Trebuchet MS",Arial,Helvetica,sans-serif;
+    background:#f4f9fe url(../images/background.gif) no-repeat;
+    width: 105px;
+} 
+input[type=text]{width: 100%; height: 85%}
+
+input[type=button]{border:1px solid #C5C1AA ; background-color:#EAEAEA; color: #5C5C5C; height: 28px}

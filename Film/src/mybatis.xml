@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<typeAliases>
+		<typeAlias type="com.bean.Cinema" alias="Cinema" />
+		<typeAlias type="com.bean.Customer" alias="Customer" />
+		<typeAlias type="com.bean.Film" alias="Film" />
+		<typeAlias type="com.bean.FilmComment" alias="FilmComment" />
+		<typeAlias type="com.bean.FilmHall" alias="FilmHall" />
+		<typeAlias type="com.bean.FilmStorySort" alias="FilmStorySort" />
+		<typeAlias type="com.bean.Job" alias="Job" />
+		<typeAlias type="com.bean.RealSeat" alias="RealSeat" />
+		<typeAlias type="com.bean.Schedule" alias="Schedule" />
+		<typeAlias type="com.bean.Seat_State" alias="Seat_State" />
+		<typeAlias type="com.bean.Staff" alias="Staff" />
+		<typeAlias type="com.bean.TicketDetail" alias="TicketDetail" />
+		<typeAlias type="com.bean.TicketOrder" alias="TicketOrder" />
+	</typeAliases>
+	<mappers>
+		<mapper resource="com/mapper/ICustomerDaoMapper.xml" />
+		<mapper resource="com/mapper/IStaffDaoMapper.xml" />
+		<mapper resource="com/mapper/IFilmDaoMapper.xml" />
+		<mapper resource="com/mapper/IFilmCommentDaoMapper.xml" />
+		<mapper resource="com/mapper/IJobDaoMapper.xml" />
+		<mapper resource="com/mapper/IFilmStorySortDaoMapper.xml" />
+		   <mapper resource="com/mapper/ICinemaDaoMapper.xml"/>
+	       	<mapper resource="com/mapper/IFilmHallDaoMapper.xml"/>
+	   
+	</mappers>
+</configuration>

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.dao.IFilmHallDao">
+	<!-- 不能引用ICinemaDaoMapper的 cinemaMap 要写出来，否则不报错也没结果-->
+	<resultMap type="Cinema" id="cinemaMap">
+		<result column="CINEMA_ID" property="cinemaId" />
+		<result column="CINEMA_NAME" property="cinemaName" />
+		<result column="CINEMA_LOCATION" property="cinemaLocation" />
+		<result column="CINEMA_TEL" property="cinemaTel" />
+		<result column="IMG_SRC" property="imgSrc" />
+	</resultMap>
+	
+	<resultMap type="FilmHall" id="filmHallMap">
+		<result column="FILMHALL_ID" property="filmHallId" />
+		<result column="FILMHALL_NAME" property="filmHallName" />
+		<association property="cinema" javaType="Cinema" resultMap="cinemaMap"></association>
+	</resultMap>
+		
+	<select id="getFilmHalls" parameterType="FilmHall" resultMap="filmHallMap">
+		select filmHall.*,cinema.cinema_name from filmHall left join cinema on filmHall.cinema_id = cinema.cinema_id where 1=1
+		<if test="filmHallId!=null and filmHallId!=''">
+				and FILMHALL_ID=#{filmHallId}
+			</if>
+			<if test="filmHallName!=null and filmHallName!=''">
+				and FILMHALL_NAME=#{filmHallName}
+			</if>
+
+			<if test="cinema.cinemaId!=null and cinema.cinemaId!=''">
+				and cinema.cinema_id=#{cinema.cinemaId}
+			</if>			
+	</select>
+
+	
+
+	<insert id="addFilmHall" parameterType="Cinema">
+		insert into
+		FilmHall
+		(filmHall_id,filmHall_name,cinema_ID)
+		values(#{filmHallId},#{filmHallName},#{cinema.cinemaId})
+	</insert>
+
+	<delete id="deleteFilmHall" parameterType="FilmHall">
+		delete from filmHall
+		<where>
+			<if test="filmHallId!=null and filmHallId!=''">
+				 FILMHALL_ID=#{filmHallId}
+			</if>
+			<if test="filmHallName!=null and filmHallName!=''">
+				and FILMHALL_NAME=#{filmHallName}
+			</if>
+		</where>
+	</delete>
+
+	<update id="updateFilmHall" parameterType="FilmHall">
+		update filmHall
+		<set>
+		<trim suffix=" " suffixOverrides=",">
+			<if test="filmHallName!=null and filmHallName!=''">
+				FILMHALL_NAME=#{filmHallName},
+			</if>
+			<if test="cinema.cinemaId!=null and cinema.cinemaId!=''">
+				cinema_id=#{cinema.cinemaId}
+			</if>
+		</trim>
+		</set>
+		
+		<where>
+			<if test="filmHallId!=null and filmHallId!=''">
+				 FILMHALL_ID=#{filmHallId}
+			</if>
+		</where>
+	</update>
+	
+</mapper>

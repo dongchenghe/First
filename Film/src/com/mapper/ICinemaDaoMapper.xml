@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.ICinemaDao">
+
+	<resultMap type="Cinema" id="cinemaMap">
+		<result column="CINEMA_ID" property="cinemaId" />
+		<result column="CINEMA_NAME" property="cinemaName" />
+		<result column="CINEMA_LOCATION" property="cinemaLocation" />
+		<result column="CINEMA_TEL" property="cinemaTel" />
+		<result column="IMG_SRC" property="imgSrc" />
+	</resultMap>
+
+		
+	 
+	<select id="getCinemas" parameterType="Cinema" resultMap="cinemaMap">
+		select * from cinema where 1=1
+		<if test="cinemaId!=null and cinemaId!=''">
+				and cinema_Id=#{cinemaId}
+			</if>
+			<if test="cinemaName!=null and cinemaName!=''">
+				and cinema_Name like '%${cinemaName}%'
+			</if>
+
+			<if test="cinemaLocation!=null and cinemaLocation!=''">
+				and cinema_Location like '%${cinemaLocation}%'
+			</if>
+			<if test="cinemaTel!=null and cinemaTel!=''">
+				and cinema_Tel like '%${cinemaTel}%'
+			</if>
+			<if test="imgSrc!=null and imgSrc!=''">
+					and img_Src like '%${imgSrc}%'
+			</if>	
+	</select>
+	
+	
+	
+	<update id="updateCinema" parameterType="Cinema">
+		update cinema	
+		<set>
+		
+			<if test="cinemaName!=null and cinemaName!=''">
+				cinema_NAME=#{cinemaName},
+			</if>
+			<if test="cinemaLocation!=null and cinemaLocation!=''">
+				cinema_Location=#{cinemaLocation},
+			</if>
+			<if test="cinemaTel!=null and cinemaTel!=''">
+				cinema_Tel=#{cinemaTel},
+			</if>
+			<if test="imgSrc!=null and imgSrc!=''">
+				img_Src=#{imgSrc}
+			</if>
+		
+		</set>
+		<where>
+			<if test="cinemaId!=null and cinemaId!=''">
+				cinema_Id=#{cinemaId}
+			</if>
+		</where>
+	</update>
+	
+	
+	<insert id="addCinema" parameterType="Cinema">
+		insert into
+		cinema
+		(cinema_id,cinema_name,cinema_location,cinema_tel,img_src)
+		values(#{cinemaId},#{cinemaName},#{cinemaLocation},#{cinemaTel},#{imgSrc})
+	</insert>
+
+	<delete id="deleteCinema" parameterType="Cinema">
+		delete from Cinema where 1=1
+		
+			<if test="cinemaId!=null and cinemaId!=''">
+				and cinema_Id=#{cinemaId}
+			</if>
+			<if test="cinemaName!=null and cinemaName!=''">
+				and cinema_Name=#{cinemaName}
+			</if>
+			<if test="cinemaLocation!=null and cinemaLocation!=''">
+				and cinema_Location=#{cinemaLocation}
+			</if>
+			<if test="cinemaTel!=null and cinemaTel!=''">
+				and cinema_Tel=#{cinemaTel}
+			</if>
+			<if test="imgSrc!=null and imgSrc!=''">
+				and img_Src=#{imgSrc}
+			</if>
+		
+	</delete>
+	
+	
+</mapper>

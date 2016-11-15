@@ -1,0 +1,363 @@
+@charset "utf-8";
+/* CSS Document */
+body {
+font:12px/150% helvetica, 微软雅黑, "microsoft yahei", verdana, lucida, arial, sans-serif, 黑体;
+color:#333;
+}
+body {
+    background: -webkit-linear-gradient(left top, Gainsboro, #1FA67A);
+	font-family:"Microsoft YaHei",微软雅黑,"Microsoft JhengHei",华文细黑,STHeiti,MingLiu;
+    text-align: center;
+   /* color: #fff;*/
+}
+h1 {
+    font-size: 30px;
+    font-weight: 700;
+    text-shadow: 0 1px 4px rgba(0,0,0,.2);
+}
+form {
+    position: relative;
+    width: 305px;
+    margin: 15px auto 0 auto;
+    text-align: center;
+}
+
+input {
+    width: 270px;
+    height: 42px;
+	line-height:42px;
+    margin-top: 25px;
+    padding: 0 15px;
+    background: #6D3353;
+    -moz-border-radius: 6px;
+    -webkit-border-radius: 6px;
+    border-radius: 6px;
+    border: 1px solid #3d3d3d; /* browsers that don't support rgba */
+    border: 1px solid rgba(255,255,255,.15);
+    -moz-box-shadow: 0 2px 3px 0 rgba(0,0,0,.1) inset;
+    -webkit-box-shadow: 0 2px 3px 0 rgba(0,0,0,.1) inset;
+    box-shadow: 0 2px 3px 0 rgba(0,0,0,.1) inset;
+    font-family: 'PT Sans', Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    color: #fff;
+    -o-transition: all .2s;
+    -moz-transition: all .2s;
+    -webkit-transition: all .2s;
+    -ms-transition: all .2s;
+}
+
+#topbar {
+    font: 12px/150% helvetica,"微软雅黑","microsoft yahei",verdana,lucida,arial,sans-serif,"黑体";
+    color: #333;
+}
+.fixed {
+    position: fixed!important;
+    width: 100%;
+    z-index: 10;
+    top: 0;
+    left: 0;
+}
+#headbar {
+    font-size: 14px;
+}
+
+.headbar {
+    background: #192332;
+    min-width: 1092px;
+    height: 60px;
+    padding: 0 88px 0 20px;
+    position: relative;
+    z-index: 5;
+}
+
+.headbar h1 {
+    width: 117px;
+    height: 36px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left: -58px;
+    margin-top: -18px;
+}
+
+#headbar h1 a {
+    background: url(../images/head.png) no-repeat 0 -315px;
+    width: 117px;
+    height: 36px;
+    display: block;
+    font-size: 0;
+    line-height: 0;
+}
+.headbarnav {
+    float: left;
+    font-size: 14px;
+}
+dl {
+    display: block;
+    -webkit-margin-before: 1em;
+    -webkit-margin-after: 1em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+}
+.headbarnav dd a {
+    color: #c8c8c8;
+    margin-right: 30px;
+    position: relative;
+}
+
+.headbarnav dd {
+    float: left;
+}
+#headbar .headbarnav dd a, #headbar .headqr, #headbar .headunlogin a, #headbar .headlogin a em {
+    color: #c8c8c8;
+    background-color: transparent;
+    text-decoration: none;
+}
+#headbar .headbarnav dd.cur a, #headbar .headbarnav dd a:hover {
+    color: #fff;
+    font-weight: 700;
+}
+.headbarnav dd a i, .headlogin a i, .headmessage i, .headqr i, .headunlogin a i {
+    width: 0;
+    height: 0;
+    overflow: hidden;
+    border-bottom: 5px solid #fff;
+    border-left: 7px solid transparent;
+    border-right: 7px solid transparent;
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    margin-left: -7px;
+    display: none;
+}
+
+.headtool {
+    float: right;
+    position: relative;
+    padding: 0 18px;
+}
+
+#headbar {
+    font-size: 14px;
+}
+
+.headtool .line {
+    height: 60px;
+    width: 0;
+    position: absolute;
+    left: 0;
+    top: 0;
+    border-left: 1px solid #141c28;
+    border-right: 1px solid #303947;
+    overflow: hidden;
+}
+.headunlogin {
+    position: relative;
+    padding: 0 17px;
+}
+.headbarnav dd a i, .headlogin a i, .headmessage i, .headqr i, .headunlogin a i {
+    width: 0;
+    height: 0;
+    overflow: hidden;
+    border-bottom: 5px solid #fff;
+    border-left: 7px solid transparent;
+    border-right: 7px solid transparent;
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    margin-left: -7px;
+    display: none;
+}
+.headunlogin a {
+    color: #c9c9c9;
+    line-height: 60px;
+}
+.headunlogin em {
+    width: 0;
+    height: 16px;
+    border-left: 1px solid #303947;
+    margin: 0 23px;
+}
+
+/*底部*/
+a {
+	text-decoration: none;
+	color: #000000;
+}
+
+.footout {
+	/*background: #f7f7f7;*/
+	font-family: helvetica, "微软雅黑", "microsoft yahei", verdana, lucida, arial, sans-serif, "黑体";
+	margin-top: 9%;
+}
+.footout .topline {
+    background: url(../images/foot.png) no-repeat center 0 #337fab;
+    height: 4px;
+    width: 100%;
+    margin-top: 0;
+    overflow: hidden;
+    
+}
+.foot {
+	width: 1000px;
+	margin: 0 auto;
+	padding-top: 40px;
+	font-size: 13px;
+	min-height: 220PX;
+}
+
+.fotlogo {
+	width: 200px;
+	float: left;
+	display: inline;
+	position: relative;
+	min-height: 157px;
+}
+
+.fotmap {
+	width: 401px;
+	float: left;
+	display: inline;
+	position: relative;
+	min-height: 157px;
+}
+
+.fotmap dd {
+	font-size: 16px;
+	line-height: 2em;
+}
+
+.fotweek {
+	width: 230px;
+	float: left;
+	display: inline;
+	min-height: 157px;
+}
+
+.fothr {
+	width: 155px;
+	float: right;
+	display: inline;
+	min-height: 157px;
+	text-align: center;
+}
+
+.fotlogo dd {
+	line-height: 1.8em;
+}
+
+.foota {
+	background: url(../images/head.png) no-repeat 0 0;
+	width: 136px;
+	height: 44px;
+	display: block;
+	line-height: 0;
+	font-size: 0;
+	overflow: hidden;
+}
+
+.m130 {
+	margin-left: 30px;
+}
+
+.fotmap dl {
+	float: left;
+	display: inline;
+	margin-left: 33px;
+	line-height: 2em;
+}
+
+.sina {
+	background: url(../images/foot.png) no-repeat -140px -9px;
+	width: 30px;
+	height: 30px;
+	display: block;
+	line-height: 0;
+	font-size: 0;
+	overflow: hidden;
+	margin-top: 8px;
+}
+.fotweek dl {
+    width: 172px;
+    margin: 0 auto;
+}
+
+
+.fotweek dt span {
+    color: #7d7d7d;
+    padding-top: 3px;
+        float: right;
+}
+.fotweek dt strong {
+    font-size: 18px;
+    font-weight: normal;
+}
+.fotweek dd {
+    margin-top: 10px;
+}
+.fotweek .input {
+    background: url(../images/foot.png) no-repeat -330px -35px;
+    width: 163px;
+    height: 25px;
+    position: relative;
+    zoom: 1;
+    padding-top: 1px;
+}
+.fotweek .input input {
+    background: transparent;
+    width: 100px;
+    text-align: center;
+    margin-left: 12px;
+    border: 0;
+    height: 22px;
+    font-family: "微软雅黑","microsoft yahei";
+    font-size: 12px;
+    padding: 2px;
+    vertical-align: middle;
+    outline: 0;
+}
+.c_a5, a.c_a5:hover {
+    color: #a5a5a5;
+}
+.fotweek .input a {
+    background: url(../images/foot.png) no-repeat -330px -9px;
+    width: 54px;
+    height: 25px;
+    position: absolute;
+    right: -10px;
+    top: 1px;
+    text-align: center;
+    text-decoration: none;
+    color: #fff;
+    font-family: 14px;
+    line-height: 25px;
+}
+.fothr dt strong {
+    font-size: 18px;
+    font-weight: normal;
+    color: #333;
+    line-height: 1em;
+}
+.fothr dd {
+    margin-top: 12px;
+}
+.fothr i {
+    background: url(../images/foot.png) no-repeat -795px -9px;
+    width: 99px;
+    height: 99px;
+    margin: 0 auto;
+    display: block;
+}
+.fotlogo .line, .fotmap .line {
+    background: url(../images/foot.png) no-repeat -495px -9px;
+    width: 1px;
+    height: 157px;
+    overflow: hidden;
+    display: block;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+.clearfix{
+    display: block; 
+}

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.IJobDao">
+
+	<resultMap type="Job" id="jobMap">
+		<result column="JOB_ID" property="jobId" />
+		<result column="JOB_NAME" property="jobName" />
+	</resultMap>
+
+	<select id="getJobs" parameterType="Job" resultMap="jobMap">
+		select * from job
+		<where>
+			<if test="jobId!=null and jobId!=''">
+				JOB_ID=#{jobId}
+			</if>
+			<if test="jobName!=null and jobName!=''">
+				and JOB_NAME=#{jobName}
+			</if>
+		</where>
+	</select>
+
+	<insert id="addJob" parameterType="Job">
+		insert into
+		job(JOB_NAME) values(#{jobName})
+	</insert>
+
+	<delete id="deleteJob" parameterType="Customer">
+		delete from job
+		<where>
+			<if test="jobId!=null and jobId!=''">
+				JOB_ID=#{jobId}
+			</if>
+			<if test="jobName!=null and jobName!=''">
+				and JOB_NAME=#{jobName}
+			</if>
+		</where>
+	</delete>
+
+	<update id="updateJob" parameterType="Job">
+		update job
+		<set>
+			<if test="jobName!=null and jobName!=''">
+				 JOB_NAME=#{jobName}
+			</if>
+		</set>
+		<where>
+			<if test="jobId!=null and jobId!=''">
+				JOB_ID=#{jobId}
+			</if>
+		</where>
+	</update>
+</mapper>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.IFilmStorySortDao">
+
+	<resultMap type="FilmStorySort" id="filmStorySortMap">
+		<result column="S_ID" property="sId" />
+		<result column="SORTS" property="sorts" />
+	</resultMap>
+
+	<select id="getFilmStorySorts" parameterType="FilmStorySort" resultMap="filmStorySortMap">
+		select * from FilmStorySort
+		<where>
+			<if test="sId!=null and sId!=''">
+				S_ID=#{sId}
+			</if>
+			<if test="sorts!=null and sorts!=''">
+				and SORTS=#{sorts}
+			</if>
+		</where>
+	</select>
+
+	<insert id="addFilmStorySort" parameterType="FilmStorySort">
+		insert into
+		FilmStorySort(SORTS) values(#{sorts})
+	</insert>
+
+	<delete id="deleteFilmStorySort" parameterType="FilmStorySort">
+		delete from FilmStorySort
+		<where>
+			<if test="sId!=null and sId!=''">
+				S_ID=#{sId}
+			</if>
+			<if test="sorts!=null and sorts!=''">
+				and SORTS=#{sorts}
+			</if>
+		</where>
+	</delete>
+
+	<update id="updateFilmStorySort" parameterType="FilmStorySort">
+		update FilmStorySort
+		<set>
+			<if test="sorts!=null and sorts!=''">
+				SORTS=#{sorts}
+			</if>
+		</set>
+		<where>
+			<if test="sId!=null and sId!=''">
+				S_ID=#{sId}
+			</if>
+		</where>
+	</update>
+</mapper>

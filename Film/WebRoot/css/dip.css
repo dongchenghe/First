@@ -1,0 +1,304 @@
+@charset "utf-8";
+* {
+	margin: 0;
+	padding: 0;
+	font-family: '微软雅黑';
+}
+
+a {
+	text-decoration: none;
+	color: #000000;
+}
+
+.footout {
+	background: #f7f7f7;
+	font-family: helvetica, "微软雅黑", "microsoft yahei", verdana, lucida, arial, sans-serif, "黑体";
+}
+.footout .topline {
+    background: url(../images/foot.png) no-repeat center 0 #337fab;
+    height: 4px;
+    width: 100%;
+    margin-top: 0;
+    overflow: hidden;
+    
+}
+.foot {
+	width: 1000px;
+	margin: 0 auto;
+	padding-top: 40px;
+	font-size: 13px;
+	min-height: 160PX;
+}
+
+.fotlogo {
+	width: 200px;
+	float: left;
+	display: inline;
+	position: relative;
+	min-height: 157px;
+}
+
+.fotmap {
+	width: 401px;
+	float: left;
+	display: inline;
+	position: relative;
+	min-height: 157px;
+}
+
+.fotmap dd {
+	font-size: 16px;
+	line-height: 2em;
+}
+
+.fotweek {
+	width: 230px;
+	float: left;
+	display: inline;
+	min-height: 157px;
+}
+
+.fothr {
+	width: 155px;
+	float: right;
+	display: inline;
+	min-height: 157px;
+	text-align: center;
+}
+
+.fotlogo dd {
+	line-height: 1.8em;
+}
+
+.foota {
+	background: url(../images/head.png) no-repeat 0 0;
+	width: 136px;
+	height: 44px;
+	display: block;
+	line-height: 0;
+	font-size: 0;
+	overflow: hidden;
+}
+
+.m130 {
+	margin-left: 30px;
+}
+
+.fotmap dl {
+	float: left;
+	display: inline;
+	margin-left: 33px;
+	line-height: 2em;
+}
+
+.sina {
+	background: url(../images/foot.png) no-repeat -140px -9px;
+	width: 30px;
+	height: 30px;
+	display: block;
+	line-height: 0;
+	font-size: 0;
+	overflow: hidden;
+	margin-top: 8px;
+}
+.fotweek dl {
+    width: 172px;
+    margin: 0 auto;
+}
+
+
+.fotweek dt span {
+    color: #7d7d7d;
+    padding-top: 3px;
+        float: right;
+}
+.fotweek dt strong {
+    font-size: 18px;
+    font-weight: normal;
+}
+.fotweek dd {
+    margin-top: 10px;
+}
+.fotweek .input {
+    background: url(../images/foot.png) no-repeat -330px -35px;
+    width: 163px;
+    height: 25px;
+    position: relative;
+    zoom: 1;
+    padding-top: 1px;
+}
+.fotweek .input input {
+    background: transparent;
+    width: 100px;
+    text-align: center;
+    margin-left: 12px;
+    border: 0;
+    height: 22px;
+    font-family: "微软雅黑","microsoft yahei";
+    font-size: 12px;
+    padding: 2px;
+    vertical-align: middle;
+    outline: 0;
+}
+.c_a5, a.c_a5:hover {
+    color: #a5a5a5;
+}
+.fotweek .input a {
+    background: url(../images/foot.png) no-repeat -330px -9px;
+    width: 54px;
+    height: 25px;
+    position: absolute;
+    right: -10px;
+    top: 1px;
+    text-align: center;
+    text-decoration: none;
+    color: #fff;
+    font-family: 14px;
+    line-height: 25px;
+}
+.fothr dt strong {
+    font-size: 18px;
+    font-weight: normal;
+    color: #333;
+    line-height: 1em;
+}
+.fothr dd {
+    margin-top: 12px;
+}
+.fothr i {
+    background: url(../images/foot.png) no-repeat -795px -9px;
+    width: 99px;
+    height: 99px;
+    margin: 0 auto;
+    display: block;
+}
+.fotlogo .line, .fotmap .line {
+    background: url(../images/foot.png) no-repeat -495px -9px;
+    width: 1px;
+    height: 157px;
+    overflow: hidden;
+    display: block;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+.clearfix{
+    display: block; 
+}
+.filmtip {
+    background: #0081bc;
+    padding: 30px 0;
+    position: relative;
+    zoom: 1;
+}
+.filmtipbox {
+    width: 1000px;
+    margin: auto;
+    overflow: hidden;
+}
+.filmtipbox li {
+    background: #e1eef4;
+    padding: 15px 20px;
+    width: 490px;
+    border-radius: 5px;
+    float: left;
+    display: inline;
+    margin: 0 0 10px 10px;
+}
+.filmtipbox li.first {
+    width: 420px;
+    margin-left: 0;
+}
+.c_333, a.c_333:hover {
+    color: #333;
+}
+.ticketoline h2 {
+    font-size: 18px;
+    line-height: 26px;
+    color: #033333;
+}
+.ticketoline p {
+    width: 450px;
+    height: 104px;
+    margin: 10px auto 0;
+    background: url(../images/filmmovie.jpg) no-repeat;
+}
+.filmtipbox li.last {
+    width: auto;
+    width: 960px;
+    margin: 0;
+}
+.telbox .tel {
+    font-size: 20px;
+        float: right;
+}
+.telbox b {
+    font-weight: bold;
+    font-size: 18px;
+    color: #033333;
+}
+.telbox a {
+    color: #333;
+}
+.telbox .mline {
+    padding: 0 10px;
+    color: #333;
+}
+.telbox a.link_green {
+    font-size: 14px;
+    line-height: 28px;
+    width: auto;
+    height: auto;
+    padding: 0 20px;
+    color: #fff;
+}
+.telbox a.link_green:hover {
+    color: #fff;
+}
+.link_green:hover {
+    background: #508805;
+    text-decoration: none;
+}
+.link_green {
+    color: #fff;
+    text-align: center;
+    font-size: 16px;
+    background: #679c21;
+    width: 116px;
+    height: 32px;
+    line-height: 32px;
+    display: inline-block;
+    vertical-align: middle;
+    overflow: hidden;
+    border-radius: 40px;
+}
+.moviecard .cardbg {
+    background: url(../images/filmmovie.jpg) no-repeat 0 -104px;
+    width: 182px;
+    height: 146px;
+    left: -20px;
+    top: -20px;
+}
+.moviecard .cardbg1 {
+    background: url(../images/cinema_png.png) no-repeat 0 -228px;
+    width: 110px;
+    height: 90px;
+    bottom: -20px;
+    left: -20px;
+}
+.moviecard .cardbg, .moviecard .cardbg1 {
+    position: absolute;
+}
+.moviecard {
+    height: 140px;
+    position: relative;
+    zoom: 1;
+    padding-left: 180px;
+}
+.moviecard dt {
+    color: #033333;
+    font-size: 18px;
+    line-height: 26px;
+    font-weight: bold;
+    padding-bottom: 10px;
+}
