@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.IFilmCommentDao">
+
+	<resultMap type="Customer" id="customerMap">
+		<result column="CUSTOMER_ID" property="customerId" />
+		<result column="PHONE" property="phone" />
+		<result column="PWD" property="pwd" />
+	</resultMap>
+	<resultMap type="FilmStorySort" id="filmStorySortMap">
+		<result column="S_ID" property="sId" />
+		<result column="SORTS" property="sorts" />
+	</resultMap>
+
+	<resultMap type="Film" id="filmMap">
+		<result column="FILM_ID" property="filmId" />
+		<result column="FILM_NAME" property="filmName" />
+		<result column="TOTAL_TIME" property="totalTime" />
+		<result column="FILMSORT" property="filmSort" />
+		<result column="RELEASE_TIME" property="releaseTime" />
+		<result column="DIRECTOR" property="director" />
+		<result column="SCRIPTWRITER" property="scriptWriter" />
+		<result column="ACTOR" property="actor" />
+		<result column="COUNTRY" property="country" />
+		<result column="FILMCOMPANY" property="filmCompany" />
+		<result column="STORY" property="story" />
+		<result column="IMG_SRC" property="imgSrc" />
+		<result column="FILM_SCORE" property="filmScore" />
+		<association property="filmStorySort" javaType="FilmStorySort"
+			resultMap="filmStorySortMap"></association>
+	</resultMap>
+
+	<resultMap type="FilmComment" id="filmCommentMap">
+		<result column="C_ID" property="cId" />
+		<result column="CUSTOMER_SCORE" property="customerScore" />
+		<result column="C_DETAILS" property="cDetails" />
+		<result column="C_DATE" property="cDate" />
+		<association property="film" javaType="Film"
+			resultMap="filmMap"></association>
+		<association property="customer" javaType="Customer"
+			resultMap="customerMap"></association>
+	</resultMap>
+
+	<select id="getComments" parameterType="FilmComment" resultMap="filmCommentMap">
+		select * from customer
+		<where>
+			<if test="customerId!=null and customerId!=''">
+				CUSTOMER_ID=#{customerId}
+			</if>
+			<if test="phone!=null and phone!=''">
+				and PHONE=#{phone}
+			</if>
+			<if test="pwd!=null and pwd!=''">
+				and PWD=#{pwd}
+			</if>
+		</where>
+	</select>
+
+	<select id="getComment" parameterType="FilmComment" resultMap="filmCommentMap">
+		select * from filmcomment
+		<where>
+			<if test="cId!=null and cId!=''">
+				C_ID=#{cId}
+			</if>
+			<if test="phone!=null and phone!=''">
+				and FILM_ID=#{film.filmId}
+			</if>
+			<if test="pwd!=null and pwd!=''">
+				and CUSTOMER_ID=#{customer.customerId}
+			</if>
+			<if test="customerScore!=null and customerScore!=''">
+				and CUSTOMER_SCORE=#{customerScore}
+			</if>
+			<if test="cDetails!=null and cDetails!=''">
+				and C_DETAILS=#{cDetails}
+			</if>
+			<if test="cDate!=null and cDate!=''">
+				and C_DATE=#{cDate}
+			</if>
+		</where>
+	</select>
+
+	<insert id="addFilmComment" parameterType="FilmComment">
+		insert into
+		customer(PHONE,PWD) values(#{phone},#{pwd})
+	</insert>
+
+	<delete id="deleteFilmComment" parameterType="FilmComment">
+		delete from customer
+		<where>
+			<if test="customerId!=null and customerId!=''">
+				CUSTOMER_ID=#{customerId}
+			</if>
+			<if test="phone!=null and phone!=''">
+				and PHONE=#{phone}
+			</if>
+			<if test="pwd!=null and pwd!=''">
+				and PWD=#{pwd}
+			</if>
+		</where>
+	</delete>
+
+	<update id="updateFilmComment" parameterType="FilmComment">
+		update customer
+		<set>
+			<if test="phone!=null and phone!=''">PHONE=#{phone},</if>
+			<if test="pwd!=null and pwd!=''">PWD=#{pwd}</if>
+		</set>
+		<where>
+			<if test="customerId!=null and customerId!=''">
+				CUSTOMER_ID=#{customerId}
+			</if>
+		</where>
+	</update>
+
+</mapper>

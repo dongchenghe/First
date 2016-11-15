@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.ICustomerDao">
+
+	<resultMap type="Customer" id="customerMap">
+		<result column="CUSTOMER_ID" property="customerId" />
+		<result column="PHONE" property="phone" />
+		<result column="PWD" property="pwd" />
+	</resultMap>
+
+	<select id="getCustomers" parameterType="Customer" resultMap="customerMap">
+		select * from customer
+		<where>
+			<if test="customerId!=null and customerId!=''">
+				CUSTOMER_ID=#{customerId}
+			</if>
+			<if test="phone!=null and phone!=''">
+				and PHONE=#{phone}
+			</if>
+			<if test="pwd!=null and pwd!=''">
+				and PWD=#{pwd}
+			</if>
+		</where>
+	</select>
+	<select id="getCustomerByPhone" parameterType="string" resultMap="customerMap">
+		select * from customer where PHONE= ${_parameter}
+	</select>
+	<select id="getCustomer" parameterType="Customer" resultMap="customerMap">
+		select * from customer
+		<where>
+			<if test="customerId!=null and customerId!=''">
+				CUSTOMER_ID=#{customerId}
+			</if>
+			<if test="phone!=null and phone!=''">
+				and PHONE=#{phone}
+			</if>
+			<if test="pwd!=null and pwd!=''">
+				and PWD=#{pwd}
+			</if>
+		</where>
+	</select>
+
+	<insert id="addCustomer" parameterType="Customer">
+		insert into
+		customer(PHONE,PWD) values(#{phone},#{pwd})
+	</insert>
+
+	<delete id="deleteCustomer" parameterType="Customer">
+		delete from customer
+		<where>
+			<if test="customerId!=null and customerId!=''">
+				CUSTOMER_ID=#{customerId}
+			</if>
+			<if test="phone!=null and phone!=''">
+				and PHONE=#{phone}
+			</if>
+			<if test="pwd!=null and pwd!=''">
+				and PWD=#{pwd}
+			</if>
+		</where>
+	</delete>
+
+	<update id="updateCustomer" parameterType="Customer">
+		update customer
+		<set>
+			<if test="phone!=null and phone!=''">PHONE=#{phone},</if>
+			<if test="pwd!=null and pwd!=''">PWD=#{pwd}</if>
+		</set>
+		<where>
+			<if test="customerId!=null and customerId!=''">
+				CUSTOMER_ID=#{customerId}
+			</if>
+		</where>
+	</update>
+
+
+
+</mapper>

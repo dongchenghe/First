@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+        http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context-2.5.xsd
+        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
+	<aop:aspectj-autoproxy proxy-target-class="true" />
+	<!-- Customer前端相关 -->
+	<bean class="com.action.CustomerAction" id="customerAction" scope="prototype">
+		<property name="service" ref="customerService"></property>
+	</bean>
+	<bean class="com.service.CustomerService" id="customerService">
+		<property name="dao" ref="customerDao"></property>
+	</bean>
+	<bean id="customerDao" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="com.dao.ICustomerDao"></property>
+		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
+	</bean>
+	<!--CustomerManager相关-->
+	<bean id="customerManagerAction" class="com.action.CustomerManagerAction"  scope="prototype">
+		<property name="service" ref="customerService"></property>
+	</bean>	
+	<!-- filmHall相关 -->
+	
+	<bean id="filmHallAction" class="com.action.FilmHallAction" scope="prototype">
+		<property name="service" ref="filmHallService"></property>
+		<property name="cinemaService" ref="cinemaService"></property>
+	</bean>
+	<bean id="filmHallService" class="com.service.FilmHallService" >
+		<property name="dao" ref="filmHallDao"></property>
+	</bean>
+	<bean id="filmHallDao" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="com.dao.IFilmHallDao"></property>
+		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
+	</bean>
+	<!-- cinema相关 -->
+	<bean id="cinemaAction" class="com.action.CinemaAction" scope="prototype">
+		<property name="service" ref="cinemaService"></property>
+	</bean>
+	<bean id="cinemaService" class="com.service.CinemaService">
+		<property name="dao" ref="cinemaDao"></property>
+	</bean>
+	<bean id="cinemaDao" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="com.dao.ICinemaDao"></property>
+		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
+	</bean>
+	<!--schedule相关  -->
+	<!-- <bean id="scheduleAction" class="com.action.ScheduleAction" scope="prototype">
+		<property name="service" ref="scheduleService"></property>
+		<property name="filmHallService" ref="filmHallService"></property>
+	</bean>
+	<bean id="scheduleService" class="com.service.ScheduleService" >
+		<property name="dao" ref="scheduleDao"></property>
+	</bean>
+	<bean id="scheduleDao" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="com.dao.IScheduleDao"></property>
+		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
+	</bean> -->
+	<!-- 主页相关 -->
+	<bean id="itemAction" class="com.action.ItemAction" scope="prototype">
+		<property name="service" ref="itemService"></property>
+	</bean>
+	<bean id="itemService" class="com.service.ItemService">
+			<property name="dao" ref="iFilmDao"></property>
+	</bean>
+	<bean id="iFilmDao" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="com.dao.IFilmDao"></property>
+		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
+	</bean>	
+	<!--  -->
+	<!-- FilmStorySort相关 -->
+	<bean id="filmStorySortManagerAction" class="com.action.FilmStorySortManagerAction" scope="prototype">
+		<property name="service" ref="filmStorySortService"></property>
+	</bean>
+
+	<bean id="filmStorySortService" class="com.service.FilmStorySortService">
+		<property name="dao" ref="filmStorySortDao"></property>
+	</bean>
+	
+	<bean id="filmStorySortDao" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="com.dao.IFilmStorySortDao"></property>
+		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
+	</bean>
+	
+	<!-- Film相关 -->
+	<bean id="filmManagerAction" class="com.action.FilmManagerAction" scope="prototype">
+		<property name="service" ref="filmService"></property>
+	</bean>
+
+	<bean id="filmService" class="com.service.FilmService">
+		<property name="dao" ref="filmDao"></property>
+	</bean>
+	
+	<bean id="filmDao" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="com.dao.IFilmDao"></property>
+		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
+	</bean>
+	<!-- Job相关 -->
+	<bean id="jobManagerAction" class="com.action.JobManagerAction" scope="prototype">
+		<property name="service" ref="jobService"></property>
+	</bean>
+
+	<bean id="jobService" class="com.service.JobService">
+		<property name="dao" ref="jobDao"></property>
+	</bean>
+	
+	<bean id="jobDao" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="com.dao.IJobDao"></property>
+		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
+	</bean>
+	
+	<!-- Staff相关 -->
+	
+	<bean id="staffLoginAction" class="com.action.StaffLoginAction"  scope="prototype">
+		<property name="service" ref="staffService"></property>
+	</bean>
+	<bean id="staffAction" class="com.action.StaffAction" scope="prototype">
+		<property name="service" ref="staffService"></property>
+	</bean>
+	<bean id="staffService" class="com.service.StaffService">
+		<property name="dao" ref="staffDao"></property>
+	</bean>
+	<bean id="staffDao" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="com.dao.IStaffDao"></property>
+		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
+	</bean>
+	<!-- 数据库相关 -->
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource"></property>
+		<property name="configLocation" value="classpath:mybatis.xml"></property>
+	</bean>
+
+	<context:property-placeholder location="classpath:spring.properties" />
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName" value="${driverClassName}"></property>
+		<property name="url" value="${url}"></property>
+		<property name="username" value="${username}"></property>
+		<property name="password" value="${password}"></property>
+		<property name="initialSize" value="3"></property>
+		<property name="maxActive" value="5"></property>
+	</bean>
+
+</beans>
