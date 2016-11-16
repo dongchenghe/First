@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -12,7 +11,6 @@ import org.apache.struts2.ServletActionContext;
 
 import com.bean.Job;
 import com.bean.Staff;
-import com.opensymphony.xwork2.ActionSupport;
 import com.service.IStaffService;
 
 import net.sf.json.JSONArray;
@@ -51,7 +49,9 @@ public class StaffAction {
 		PrintWriter out =ServletActionContext.getResponse().getWriter();
 		map.put("rows", list);
 		map.put("total", staffs.size());
+		System.out.println(map);
 		JSONObject jsonObject =JSONObject.fromObject(map);
+		System.out.println(jsonObject);
 		out.println(jsonObject);
 		out.flush();
 		
