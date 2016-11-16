@@ -9,7 +9,7 @@
 		<result column="CINEMA_NAME" property="cinemaName" />
 		<result column="CINEMA_LOCATION" property="cinemaLocation" />
 		<result column="CINEMA_TEL" property="cinemaTel" />
-		<result column="IMG_SRC" property="imgSrc" />
+		<result column="C_IMG" property="imgSrc" />
 	</resultMap>
 	
 	<resultMap type="FilmHall" id="filmHallMap">
@@ -17,60 +17,42 @@
 		<result column="FILMHALL_NAME" property="filmHallName" />
 		<association property="cinema" javaType="Cinema" resultMap="cinemaMap"></association>
 	</resultMap>
-		
-	<select id="getFilmHalls" parameterType="FilmHall" resultMap="filmHallMap">
-		select filmHall.*,cinema.cinema_name from filmHall left join cinema on filmHall.cinema_id = cinema.cinema_id where 1=1
-		<if test="filmHallId!=null and filmHallId!=''">
-				and FILMHALL_ID=#{filmHallId}
-			</if>
-			<if test="filmHallName!=null and filmHallName!=''">
-				and FILMHALL_NAME=#{filmHallName}
-			</if>
-
-			<if test="cinema.cinemaId!=null and cinema.cinemaId!=''">
-				and cinema.cinema_id=#{cinema.cinemaId}
-			</if>			
-	</select>
-
+	<resultMap type="Film" id="filmMap">
+		<result column="FILM_ID" property="filmId" />
+		<result column="FILM_NAME" property="filmName" />
+		<result column="TOTAL_TIME" property="totalTime" />
+		<result column="FILMSORT" property="filmSort" />
+		<result column="RELEASE_TIME" property="releaseTime" />
+		<result column="DIRECTOR" property="director" />
+		<result column="SCRIPTWRITER" property="scriptWriter" />
+		<result column="ACTOR" property="actor" />
+		<result column="COUNTRY" property="country" />
+		<result column="FILMCOMPANY" property="filmCompany" />
+		<result column="STORY" property="story" />
+		<result column="IMG_SRC" property="imgSrc" />
+		<result column="FILM_SCORE" property="filmScore" />
+		<association property="filmStorySort" javaType="FilmStorySort"
+			resultMap="filmStorySortMap"></association>
+	</resultMap>
+	<resultMap type="FilmStorySort" id="filmStorySortMap">
+		<result column="S_ID" property="sId" />
+		<result column="SORTS" property="sorts" />
+	</resultMap>
+	<resultMap type="Schedule" id="scheduleMap">
+		<result column="SCHEDULE_ID" property="scheduleId"/>
+		<result column="SCHEDULE_TIME" property="scheduleTime"/>
+		<result column="TICKET_PRICE" property="ticketPrice"/>
+		<result column="OVERDUE" property="overDue"/>
+		<association property="film" javaType="Film" resultMap="filmMap"></association>
+		<association property="filmHall" javaType="FilmHall" resultMap="filmHallMap"></association>
+	</resultMap>
 	
-
-	<insert id="addFilmHall" parameterType="Cinema">
-		insert into
-		FilmHall
-		(filmHall_id,filmHall_name,cinema_ID)
-		values(#{filmHallId},#{filmHallName},#{cinema.cinemaId})
-	</insert>
-
-	<delete id="deleteFilmHall" parameterType="FilmHall">
-		delete from filmHall
-		<where>
-			<if test="filmHallId!=null and filmHallId!=''">
-				 FILMHALL_ID=#{filmHallId}
-			</if>
-			<if test="filmHallName!=null and filmHallName!=''">
-				and FILMHALL_NAME=#{filmHallName}
-			</if>
-		</where>
-	</delete>
-
-	<update id="updateFilmHall" parameterType="FilmHall">
-		update filmHall
-		<set>
-		<trim suffix=" " suffixOverrides=",">
-			<if test="filmHallName!=null and filmHallName!=''">
-				FILMHALL_NAME=#{filmHallName},
-			</if>
-			<if test="cinema.cinemaId!=null and cinema.cinemaId!=''">
-				cinema_id=#{cinema.cinemaId}
-			</if>
-		</trim>
-		</set>
-		
-		<where>
-			<if test="filmHallId!=null and filmHallId!=''">
-				 FILMHALL_ID=#{filmHallId}
-			</if>
-		</where>
-	</update>
+	<select id="getCurrentSchedule" parameterType="String" resultMap="scheduleMap">
+		select * from film_sch_view where film_id=#{filmId} and schedule_time-sysdate&lt;0
+	</select>
+	
+	
+	
+	
 	
 </mapper>

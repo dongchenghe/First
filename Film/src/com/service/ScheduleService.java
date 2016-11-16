@@ -2,42 +2,26 @@ package com.service;
 
 import java.util.List;
 import com.bean.FilmHall;
+import com.bean.Schedule;
 import com.dao.IFilmHallDao;
+import com.dao.IScheduleDao;
 
 
-public class ScheduleService implements IFilmHallService{
-	private IFilmHallDao dao;
-
-	@Override
-	public List<FilmHall> getFilmHalls(FilmHall filmHall) {
-		
-		return dao.getFilmHalls(filmHall);
-	}
-
-	@Override
-	public void updateFilmHall(FilmHall filmHall) {
-	dao.updateFilmHall(filmHall);
-		
-	}
-
-	@Override
-	public void deleteFilmHall(FilmHall filmHall) {
-		dao.deleteFilmHall(filmHall);
-		
-	}
-
-	@Override
-	public void addFilmHall(FilmHall filmHall) {
-		dao.addFilmHall(filmHall);
-		
-	}
-
-	public IFilmHallDao getDao() {
+public class ScheduleService implements IScheduleService {
+	private IScheduleDao dao;
+	
+	public IScheduleDao getDao() {
 		return dao;
 	}
 
-	public void setDao(IFilmHallDao dao) {
+	public void setDao(IScheduleDao dao) {
 		this.dao = dao;
+	}
+
+	@Override
+	public List<Schedule> getCurrentSchedule(String filmId) {
+		List<Schedule> list=dao.getCurrentSchedule(filmId);
+		return list;
 	}
 	
 	
