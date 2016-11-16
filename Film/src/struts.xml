@@ -17,4 +17,5 @@
 	<include file="com\action\staffAction.xml"></include>
 	<include file="com/action/Customer.xml"></include>
 	<include file="com/action/Film.xml"></include>
+	<include file="com/action/Schedule.xml"></include>
 </struts>

@@ -50,9 +50,9 @@
 		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
 	</bean>
 	<!--schedule相关  -->
-	<!-- <bean id="scheduleAction" class="com.action.ScheduleAction" scope="prototype">
+	 <bean id="scheduleAction" class="com.action.ScheduleAction" scope="prototype">
 		<property name="service" ref="scheduleService"></property>
-		<property name="filmHallService" ref="filmHallService"></property>
+		
 	</bean>
 	<bean id="scheduleService" class="com.service.ScheduleService" >
 		<property name="dao" ref="scheduleDao"></property>
@@ -60,7 +60,7 @@
 	<bean id="scheduleDao" class="org.mybatis.spring.mapper.MapperFactoryBean">
 		<property name="mapperInterface" value="com.dao.IScheduleDao"></property>
 		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
-	</bean> -->
+	</bean>
 	<!-- 主页相关 -->
 	<bean id="itemAction" class="com.action.ItemAction" scope="prototype">
 		<property name="service" ref="itemService"></property>

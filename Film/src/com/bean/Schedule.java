@@ -17,6 +17,7 @@ public class Schedule implements Serializable{
 	private double ticketPrice;
 	private Film film;
 	private FilmHall filmHall;
+	private String overDue;
 	public String getScheduleId() {
 		return scheduleId;
 	}
@@ -48,6 +49,17 @@ public class Schedule implements Serializable{
 	}
 	public void setFilmHall(FilmHall filmHall) {
 		this.filmHall = filmHall;
+	}
+	public String getOverDue() {
+		return overDue;
+	}
+	public void setOverDue(String overDue) {
+		this.overDue = overDue;
+	}
+	@Override
+	public String toString() {
+		return "Schedule [scheduleId=" + scheduleId + ", scheduleTime=" + scheduleTime + ", ticketPrice=" + ticketPrice
+				+ ", film=" + film + ", filmHall=" + filmHall + ", overDue=" + overDue + "]";
 	}
 	
 
