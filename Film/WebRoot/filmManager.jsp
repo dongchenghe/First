@@ -37,17 +37,16 @@
 				}
 				$("#film_filmStorySort_sorts").combobox("loadData", blankoption);
 				$("#add_film_filmStorySort_sorts").combobox({
-			
-					        valueField: 'sId',
-					        textField: 'sorts',
-					        url: 'filmStorySortManagerAction!getAllFilmStorySorts',
-					        onLoadSuccess:function(){
-							//$('#update_film_filmStorySort_sorts').combobox('select','3');
-							 var datas=$("#add_film_filmStorySort_sorts").combobox('getData');
-							$('#add_film_filmStorySort_sorts').combobox('select',o[0].sId);
-							}	
-			}); 
-				
+					valueField : 'sId',
+					textField : 'sorts',
+					url : 'filmStorySortManagerAction!getAllFilmStorySorts',
+					onLoadSuccess : function() {
+						//$('#update_film_filmStorySort_sorts').combobox('select','3');
+						var datas = $("#add_film_filmStorySort_sorts").combobox('getData');
+						$('#add_film_filmStorySort_sorts').combobox('select', o[0].sId);
+					}
+				});
+
 			}
 		});
 	});
@@ -143,10 +142,8 @@
 		style="width:300px;height:400px;"
 		data-options="resizable:true,modal:true,buttons:'#add_button'"
 		iconCls="icon-add">
-		<form id="add_form" method="post">
-
-			<div>
-				<label for="film_filmId">电影编号:</label> <input
+		<form id="add_form" method="post"  enctype="multipart/form-data">
+			<div> <label for="film_filmId">电影编号:</label> <input
 					class="easyui-validatebox" type="text" name="film.filmId" disabled="disabled"/>
 			</div>
 			<div>
@@ -159,15 +156,13 @@
 			</div>
 			<div>
 				<label for="add_film_filmStorySort_sorts">剧情分类:</label> <input
-					id="add_film_filmStorySort_sorts" class="easyui-combobox" name="film.filmStorySort.sorts"
-					data-options="eidtable:false,
-					        valueField:'sId',  
-            				textField:'sorts'
+					id="add_film_filmStorySort_sorts" class="easyui-combobox" name="film.filmStorySort.sid"
+					
 		" />
 			</div>
 			<div>
-				<label for="film_releaseTime">上映时间:</label> <input
-					name="film.releaseTime" type="text" class="easyui-datebox">
+				<label for="update_datebox">上映时间:</label> <input
+					id="update_datebox" type="text" class="easyui-datebox" name="film.releaseTime">
 			</div>
 			<div>
 				<label for="film_filmCompany">制片公司:</label> <input
@@ -177,9 +172,7 @@
 				<label for="film_totalTime">时长:</label> <input
 					class="easyui-validatebox" type="text" name="film.totalTime" />
 			</div>
-
-
-
+			
 			<div>
 				<label for="film_director">导演:</label> <input
 					class="easyui-validatebox" type="text" name="film.director" />
@@ -202,7 +195,7 @@
 					class="easyui-validatebox" type="text" name="film.story" />
 			</div>
 			<div>
-				<label for="add_uploadimg">封面:</label><input class="easyui-filebox" style="width:300px" name="add_uploadimg">
+				<label for="film_imgSrc">封面:</label><input class="easyui-filebox" style="width:300px" name="picture">
 			</div>
 		</form>
 		
@@ -394,10 +387,10 @@
 		}
 		$('#add_buttonData').bind("click", function() {
 			$("#add_dialog").dialog("close");
-			$("#add_form input[name='film_filmId']").prop("disabled", false);
+			$("#add_form input[name='film.filmId']").prop("disabled", false);
 			$.messager.progress();
 			$("#add_form").form("submit", {
-				url : "jobManagerAction!addJob",
+				url : "customerManagerAction!addFilm",
 				onSubmit : function() {
 					var isValid = $(this).form("validate");
 					if (!isValid) {
@@ -413,16 +406,18 @@
 		});
 		function addData() {
 			formClear();
+			$("#add_form input[name='film.filmId']").prop("disabled", true);
 			$("#add_dialog").dialog('open');
 			$("#add_dialog").dialog({
 				iconCls : 'icon-add'
-			});		
+			});
 		}
 		function updateData() {
 			if (SelectRow) {
 				formClear();
 				$("#update_dialog").dialog('open');
 				formLoad_update();
+				$("#update_form input[name='film.filmId']").prop("disabled", true);
 				$("#update_dialog").dialog({
 					iconCls : 'icon-save'
 				});
@@ -450,22 +445,21 @@
 				},
 			});
 		});
-
+	
 	
 		function formLoad_update() {
 			$("#update_form input[name='film.filmId']").val(SelectRow.filmId);
 			$("#update_form input[name='film.filmName']").val(SelectRow.filmName);
-			$("#update_form input[name='film.filmSort']").val(SelectRow.filmSort);		
+			$("#update_form input[name='film.filmSort']").val(SelectRow.filmSort);
 			$("#update_film_filmStorySort_sorts").combobox({
-			
-					        valueField: 'sid',
-					        textField: 'sorts',
-					        url: 'filmStorySortManagerAction!getAllFilmStorySorts',
-					        onLoadSuccess:function(){
-							$('#update_film_filmStorySort_sorts').combobox('select',SelectRow.filmStorySort.sid);
-							}	
-			}); 							
-			$("#update_datebox").datebox('setValue',SelectRow.releaseTime);		
+				valueField : 'sid',
+				textField : 'sorts',
+				url : 'filmStorySortManagerAction!getAllFilmStorySorts',
+				onLoadSuccess : function() {
+					$('#update_film_filmStorySort_sorts').combobox('select', SelectRow.filmStorySort.sid);
+				}
+			});
+			$("#update_datebox").datebox('setValue', SelectRow.releaseTime);
 			$("#update_form input[name='film.filmCompany']").val(SelectRow.filmCompany);
 			$("#update_form input[name='film.totalTime']").val(SelectRow.totalTime);
 			$("#update_form input[name='film.director']").val(SelectRow.director);
@@ -473,7 +467,7 @@
 			$("#update_form input[name='film.actor']").val(SelectRow.actor);
 			$("#update_form input[name='film.country']").val(SelectRow.country);
 			$("#update_form input[name='film.story']").val(SelectRow.story);
-
+	
 			$("#update_form input[name='film.filmScore']").val(SelectRow.filmScore);
 		}
 		function formClear() {

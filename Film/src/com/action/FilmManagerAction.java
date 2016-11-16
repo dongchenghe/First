@@ -102,7 +102,6 @@ public class FilmManagerAction extends ActionSupport {
 	}
 
 	public String updateFilm() throws IOException {
-		System.out.println(film + ":update");
 		File saved = new File(ServletActionContext.getServletContext().getRealPath("images/film"), pictureFileName);
 		InputStream ins = null;
 		OutputStream ous = null;
@@ -139,7 +138,34 @@ public class FilmManagerAction extends ActionSupport {
 
 	}
 
-	public String addFilm() {
+	public String addFilm() throws IOException {
+		File saved = new File(ServletActionContext.getServletContext().getRealPath("images/film"), pictureFileName);
+		InputStream ins = null;
+		OutputStream ous = null;
+		try {
+			saved.getParentFile().mkdirs();
+			
+			ins=new FileInputStream(picture);
+			ous=new FileOutputStream(saved);
+			
+			byte[] b=new byte[1024];
+			int len=0;
+			while ((len=ins.read(b))!=-1) {
+				ous.write(b,0,len);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if (ous != null) {
+				ous.close();
+			}
+			if (ins != null) {
+				ins.close();
+			}
+		}
+		//System.out.println("film/"+pictureFileName);
+		film.setImgSrc("film/"+pictureFileName);
+		System.out.println(film);
 		service.addFilm(film);
 		return null;
 	}
