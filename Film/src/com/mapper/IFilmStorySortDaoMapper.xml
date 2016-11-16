@@ -3,15 +3,15 @@
 <mapper namespace="com.dao.IFilmStorySortDao">
 
 	<resultMap type="FilmStorySort" id="filmStorySortMap">
-		<result column="S_ID" property="sId" />
+		<result column="S_ID" property="sid" />
 		<result column="SORTS" property="sorts" />
 	</resultMap>
 
 	<select id="getFilmStorySorts" parameterType="FilmStorySort" resultMap="filmStorySortMap">
 		select * from FilmStorySort
 		<where>
-			<if test="sId!=null and sId!=''">
-				S_ID=#{sId}
+			<if test="sid!=null and sid!=''">
+				S_ID=#{sid}
 			</if>
 			<if test="sorts!=null and sorts!=''">
 				and SORTS=#{sorts}
@@ -27,8 +27,8 @@
 	<delete id="deleteFilmStorySort" parameterType="FilmStorySort">
 		delete from FilmStorySort
 		<where>
-			<if test="sId!=null and sId!=''">
-				S_ID=#{sId}
+			<if test="sid!=null and sid!=''">
+				S_ID=#{sid}
 			</if>
 			<if test="sorts!=null and sorts!=''">
 				and SORTS=#{sorts}
@@ -44,8 +44,8 @@
 			</if>
 		</set>
 		<where>
-			<if test="sId!=null and sId!=''">
-				S_ID=#{sId}
+			<if test="sid!=null and sid!=''">
+				S_ID=#{sid}
 			</if>
 		</where>
 	</update>

@@ -3,7 +3,7 @@
 <mapper namespace="com.dao.IFilmDao">
 
 	<resultMap type="FilmStorySort" id="filmStorySortMap">
-		<result column="S_ID" property="sId" />
+		<result column="S_ID" property="sid" />
 		<result column="SORTS" property="sorts" />
 	</resultMap>
 
@@ -77,8 +77,8 @@
 				and FILM_SCORE=#{filmScore}
 			</if>
 			<if test="filmStorySort!=null">
-				<if test="filmStorySort.sId!=null and filmStorySort.sId!=''">
-					and S_ID=#{filmStorySort.sId}
+				<if test="filmStorySort.sid!=null and filmStorySort.sid!=''">
+					and S_ID=#{filmStorySort.sid}
 				</if>
 				<if test="filmStorySort.sorts!=null and filmStorySort.sorts!=''">
 					and SORTS=#{filmStorySort.sorts}
@@ -132,8 +132,8 @@
 			<if test="filmScore!=null and filmScore!=''">
 				and FILM_SCORE=#{filmScore}
 			</if>
-			<if test="filmStorySort.sId!=null and filmStorySort.sId!=''">
-				and S_ID=#{filmStorySort.sId}
+			<if test="filmStorySort.sid!=null and filmStorySort.sid!=''">
+				and S_ID=#{filmStorySort.sid}
 			</if>
 			<if test="filmStorySort.sorts!=null and filmStorySort.sorts!=''">
 				and SORTS=#{filmStorySort.sorts}
@@ -145,7 +145,7 @@
 		insert into
 		film
 		(FILM_NAME,TOTAL_TIME,S_ID,FILMSORT,RELEASE_TIME,DIRECTOR,SCRIPTWRITER,ACTOR,COUNTRY,FILMCOMPANY,STORY,IMG_SRC,FILM_SCORE)
-		values(#{filmName},#{totalTime},#{filmStorySort.sId},#{filmSort},#{releaseTime},#{director},#{scriptWriter},#{actor},#{country},#{filmCompany},#{story},#{imgSrc},#{filmScore})
+		values(#{filmName},#{totalTime},#{filmStorySort.sid},#{filmSort},#{releaseTime},#{director},#{scriptWriter},#{actor},#{country},#{filmCompany},#{story},#{imgSrc},#{filmScore})
 	</insert>
 
 	<delete id="deleteFilm" parameterType="Film">
@@ -240,13 +240,12 @@
 			<if test="filmScore!=null and filmScore!=''">
 				FILM_SCORE=#{filmScore},
 			</if>
-			<if test="filmStorySort.sId!=null and filmStorySort.sId!=''">
-				S_ID=#{filmStorySort.sId},
+			<if test="filmStorySort!=null">
+				<if test="filmStorySort.sid!=null and filmStorySort.sid!=''">
+					S_ID=#{filmStorySort.sid}
+				</if>
+				
 			</if>
-			<if test="filmStorySort.sorts!=null and filmStorySort.sorts!=''">
-				SORTS=#{filmStorySort.sorts}
-			</if>
-
 		</set>
 		<where>
 			<if test="filmId!=null and filmId!=''">

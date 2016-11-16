@@ -1,6 +1,12 @@
 package com.action;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -23,6 +29,27 @@ public class FilmManagerAction extends ActionSupport{
 	private int page;
 	private int rows;
 	private Film film;
+	private String upload;
+	private String uploadContentType;
+	public String getUpload() {
+		return upload;
+	}
+	public void setUpload(String upload) {
+		this.upload = upload;
+	}
+	public String getUploadContentType() {
+		return uploadContentType;
+	}
+	public void setUploadContentType(String uploadContentType) {
+		this.uploadContentType = uploadContentType;
+	}
+	public String getUploadFileName() {
+		return uploadFileName;
+	}
+	public void setUploadFileName(String uploadFileName) {
+		this.uploadFileName = uploadFileName;
+	}
+	private String uploadFileName;
 	public void setService(IFilmService service) {
 		this.service = service;
 	}
@@ -59,16 +86,36 @@ public class FilmManagerAction extends ActionSupport{
 		PrintWriter writer=ServletActionContext.getResponse().getWriter();
 		map.put("rows", list);
 		map.put("total", lists.size());
-		System.out.println(map);
 		JSONObject object= JSONObject.fromObject(map,config);
 		writer.println(object);
 		writer.flush();
 		return null;
 	}
-	public String updateFilm() {
-		service.updateFilm(film);
-		return null;
+	public String updateFilm() throws IOException {
+		System.out.println(film+":update");
+
+		InputStream is = new FileInputStream(upload);
+		String uploadPath = ServletActionContext.getServletContext()
+				.getRealPath("/img");
+		System.out.println("upload--"+upload);
+		System.out.println("uploadpath--"+uploadPath);
+
 		
+		File toFile = new File(uploadPath, this.getUploadFileName());
+
+		OutputStream os = new FileOutputStream(toFile);
+
+		byte[] buffer =new byte[1024];
+		int length = 0;
+
+		while((length = is.read(buffer))>0){
+			os.write(buffer, 0, length);
+		}
+		os.close();
+		is.close();
+
+		service.updateFilm(film);
+		return null;		
 	}
 	public String deleteFilm(){
 		service.deleteFilm(film);

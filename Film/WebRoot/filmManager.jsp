@@ -147,19 +147,19 @@
 
 			<div>
 				<label for="film_filmId">电影编号:</label> <input
-					class="easyui-validatebox" type="text" name="film_filmId" disabled="disabled"/>
+					class="easyui-validatebox" type="text" name="film.filmId" disabled="disabled"/>
 			</div>
 			<div>
 				<label for="film_filmName">电影名称:</label> <input
-					class="easyui-validatebox" type="text" name="film_filmName" />
+					class="easyui-validatebox" type="text" name="film.filmName" />
 			</div>
 			<div>
 				<label for="film_filmSort">放映类型:</label> <input
-					class="easyui-validatebox" type="text" name="film_filmSort" />
+					class="easyui-validatebox" type="text" name="film.filmSort" />
 			</div>
 			<div>
 				<label for="add_film_filmStorySort_sorts">剧情分类:</label> <input
-					id="add_film_filmStorySort_sorts" class="easyui-combobox"
+					id="add_film_filmStorySort_sorts" class="easyui-combobox" name="film.filmStorySort.sorts"
 					data-options="eidtable:false,
 					        valueField:'sId',  
             				textField:'sorts'
@@ -167,44 +167,45 @@
 			</div>
 			<div>
 				<label for="film_releaseTime">上映时间:</label> <input
-					name="film_releaseTime" type="text" class="easyui-datebox">
+					name="film.releaseTime" type="text" class="easyui-datebox">
 			</div>
 			<div>
 				<label for="film_filmCompany">制片公司:</label> <input
-					class="easyui-validatebox" type="text" name="film_filmCompany" />
+					class="easyui-validatebox" type="text" name="film.filmCompany" />
 			</div>
 			<div>
 				<label for="film_totalTime">时长:</label> <input
-					class="easyui-validatebox" type="text" name="film_totalTime" />
+					class="easyui-validatebox" type="text" name="film.totalTime" />
 			</div>
 
 
 
 			<div>
 				<label for="film_director">导演:</label> <input
-					class="easyui-validatebox" type="text" name="film_director" />
+					class="easyui-validatebox" type="text" name="film.director" />
 			</div>
 			<div>
 				<label for="film_scriptWriter">编剧:</label> <input
-					class="easyui-validatebox" type="text" name="film_scriptWriter" />
+					class="easyui-validatebox" type="text" name="film.scriptWriter" />
 			</div>
 			<div>
 				<label for="film_actor">演员:</label> <input
-					class="easyui-validatebox" type="text" name="film_actor" />
+					class="easyui-validatebox" type="text" name="film.actor" />
 			</div>
 			<div>
 				<label for="film_country">国家:</label> <input
-					class="easyui-validatebox" type="text" name="film_country" />
+					class="easyui-validatebox" type="text" name="film.country" />
 			</div>
 
 			<div>
 				<label for="film_story">剧情:</label> <input
-					class="easyui-validatebox" type="text" name="film_story" />
+					class="easyui-validatebox" type="text" name="film.story" />
 			</div>
 			<div>
 				<label for="add_uploadimg">封面:</label><input class="easyui-filebox" style="width:300px" name="add_uploadimg">
 			</div>
 		</form>
+		
 	</div>
 	<!-- 修改职位的对话框 -->
 	<div id="update_dialog" class="easyui-dialog" title="修改管理"
@@ -214,61 +215,59 @@
 		<form id="update_form" method="post">
 			<div>
 				<label for="film_filmId">电影编号:</label> <input
-					class="easyui-validatebox" type="text" name="film_filmId" disabled="disabled"/>
+					class="easyui-validatebox" type="text" name="film.filmId" disabled="disabled"/>
 			</div>
 			<div>
 				<label for="film_filmName">电影名称:</label> <input
-					class="easyui-validatebox" type="text" name="film_filmName" />
+					class="easyui-validatebox" type="text" name="film.filmName" />
 			</div>
 			<div>
 				<label for="film_filmSort">放映类型:</label> <input
-					class="easyui-validatebox" type="text" name="film_filmSort" />
+					class="easyui-validatebox" type="text" name="film.filmSort" />
 			</div>
 			<div>
 				<label for="update_film_filmStorySort_sorts">剧情分类:</label> <input
-					id="update_film_filmStorySort_sorts" class="easyui-combobox"
-					data-options="eidtable:false,
-					        valueField:'sId',  
-            				textField:'sorts'
+					id="update_film_filmStorySort_sorts" class="easyui-combobox" name="film.filmStorySort.sid"
+					
 		" />
 			</div>
 			<div>
 				<label for="update_datebox">上映时间:</label> <input
-					id="update_datebox" type="text" class="easyui-datebox">
+					id="update_datebox" type="text" class="easyui-datebox" name="film.releaseTime">
 			</div>
 			<div>
 				<label for="film_filmCompany">制片公司:</label> <input
-					class="easyui-validatebox" type="text" name="film_filmCompany" />
+					class="easyui-validatebox" type="text" name="film.filmCompany" />
 			</div>
 			<div>
 				<label for="film_totalTime">时长:</label> <input
-					class="easyui-validatebox" type="text" name="film_totalTime" />
+					class="easyui-validatebox" type="text" name="film.totalTime" />
 			</div>
 			
 			<div>
 				<label for="film_director">导演:</label> <input
-					class="easyui-validatebox" type="text" name="film_director" />
+					class="easyui-validatebox" type="text" name="film.director" />
 			</div>
 			<div>
 				<label for="film_scriptWriter">编剧:</label> <input
-					class="easyui-validatebox" type="text" name="film_scriptWriter" />
+					class="easyui-validatebox" type="text" name="film.scriptWriter" />
 			</div>
 			<div>
 				<label for="film_actor">演员:</label> <input
-					class="easyui-validatebox" type="text" name="film_actor" />
+					class="easyui-validatebox" type="text" name="film.actor" />
 			</div>
 			<div>
 				<label for="film_country">国家:</label> <input
-					class="easyui-validatebox" type="text" name="film_country" />
+					class="easyui-validatebox" type="text" name="film.country" />
 			</div>
 
 			<div>
 				<label for="film_story">剧情:</label> <input
-					class="easyui-validatebox" type="text" name="film_story" />
+					class="easyui-validatebox" type="text" name="film.story" />
 			</div>
 			<div>
 				<label for="film_imgSrc">封面:</label> <input
-					class="easyui-validatebox" type="text" name="film_imgSrc" />
+					class="easyui-validatebox" type="text" name="film.imgSrc" />
 			</div>
 		</form>
 	</div>
@@ -396,7 +395,7 @@
 		}
 		$('#add_buttonData').bind("click", function() {
 			$("#add_dialog").dialog("close");
-			$("#add_form input[name='job.jobId']").prop("disabled", false);
+			$("#add_form input[name='film_filmId']").prop("disabled", false);
 			$.messager.progress();
 			$("#add_form").form("submit", {
 				url : "jobManagerAction!addJob",
@@ -425,7 +424,6 @@
 				formClear();
 				$("#update_dialog").dialog('open');
 				formLoad_update();
-				$("#update_form input[name='job.jobId']").prop("disabled", true);
 				$("#update_dialog").dialog({
 					iconCls : 'icon-save'
 				});
@@ -436,10 +434,10 @@
 		}
 		$('#update_buttonData').bind("click", function() {
 			$("#update_dialog").dialog("close");
-			$("#update_form input[name='job.jobId']").prop("disabled", false);
+			$("#update_form input[name='film.filmId']").prop("disabled", false);
 			$.messager.progress();
 			$("#update_form").form("submit", {
-				url : "jobManagerAction!updateJob",
+				url : "filmManagerAction!updateFilm",
 				onSubmit : function() {
 					var isValid = $(this).form("validate");
 					if (!isValid) {
@@ -456,32 +454,28 @@
 
 	
 		function formLoad_update() {
-			$("#update_form input[name='film_filmId']").val(SelectRow.filmId);
-			$("#update_form input[name='film_filmName']").val(SelectRow.filmName);
-			$("#update_form input[name='film_filmSort']").val(SelectRow.filmSort);		
-			$("#update_film_filmStorySort_sorts").val(SelectRow.filmStorySort.sorts);
+			$("#update_form input[name='film.filmId']").val(SelectRow.filmId);
+			$("#update_form input[name='film.filmName']").val(SelectRow.filmName);
+			$("#update_form input[name='film.filmSort']").val(SelectRow.filmSort);		
 			$("#update_film_filmStorySort_sorts").combobox({
 			
-					        valueField: 'sId',
+					        valueField: 'sid',
 					        textField: 'sorts',
 					        url: 'filmStorySortManagerAction!getAllFilmStorySorts',
 					        onLoadSuccess:function(){
-							$('#update_film_filmStorySort_sorts').combobox('select',SelectRow.filmStorySort.sId);
+							$('#update_film_filmStorySort_sorts').combobox('select',SelectRow.filmStorySort.sid);
 							}	
-			}); 
-				
-			
-			$("#update_datebox").datebox('setValue',SelectRow.releaseTime);
-			
-			$("#update_form input[name='film_filmCompany']").val(SelectRow.filmCompany);
-			$("#update_form input[name='film_totalTime']").val(SelectRow.totalTime);
-			$("#update_form input[name='film_director']").val(SelectRow.director);
-			$("#update_form input[name='film_scriptWriter']").val(SelectRow.scriptWriter);
-			$("#update_form input[name='film_actor']").val(SelectRow.actor);
-			$("#update_form input[name='film_country']").val(SelectRow.country);
-			$("#update_form input[name='film_story']").val(SelectRow.story);
-			$("#update_form input[name='film_imgSrc']").val(SelectRow.imgSrc);
-			$("#update_form input[name='film_filmScore']").val(SelectRow.filmScore);
+			}); 							
+			$("#update_datebox").datebox('setValue',SelectRow.releaseTime);		
+			$("#update_form input[name='film.filmCompany']").val(SelectRow.filmCompany);
+			$("#update_form input[name='film.totalTime']").val(SelectRow.totalTime);
+			$("#update_form input[name='film.director']").val(SelectRow.director);
+			$("#update_form input[name='film.scriptWriter']").val(SelectRow.scriptWriter);
+			$("#update_form input[name='film.actor']").val(SelectRow.actor);
+			$("#update_form input[name='film.country']").val(SelectRow.country);
+			$("#update_form input[name='film.story']").val(SelectRow.story);
+			$("#update_form input[name='film.imgSrc']").val(SelectRow.imgSrc);
+			$("#update_form input[name='film.filmScore']").val(SelectRow.filmScore);
 		}
 		function formClear() {
 			$("#add_form").form("clear");
