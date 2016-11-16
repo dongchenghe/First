@@ -2,7 +2,6 @@ package com.action;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -20,7 +19,8 @@ import com.util.JsonDateValueProcessor;
 
 import net.sf.json.JSONObject;
 import net.sf.json.JsonConfig;
-public class FilmManagerAction extends ActionSupport{
+
+public class FilmManagerAction extends ActionSupport {
 	/**
 	 * 
 	 */
@@ -29,109 +29,129 @@ public class FilmManagerAction extends ActionSupport{
 	private int page;
 	private int rows;
 	private Film film;
-	private String upload;
-	private String uploadContentType;
-	public String getUpload() {
-		return upload;
+	private File picture;
+	private String pictureContentType;
+	private String pictureFileName;
+
+	public File getPicture() {
+		return picture;
 	}
-	public void setUpload(String upload) {
-		this.upload = upload;
+
+	public void setPicture(File picture) {
+		this.picture = picture;
 	}
-	public String getUploadContentType() {
-		return uploadContentType;
+
+	public String getPictureContentType() {
+		return pictureContentType;
 	}
-	public void setUploadContentType(String uploadContentType) {
-		this.uploadContentType = uploadContentType;
+
+	public void setPictureContentType(String pictureContentType) {
+		this.pictureContentType = pictureContentType;
 	}
-	public String getUploadFileName() {
-		return uploadFileName;
+
+	public String getPictureFileName() {
+		return pictureFileName;
 	}
-	public void setUploadFileName(String uploadFileName) {
-		this.uploadFileName = uploadFileName;
+
+	public void setPictureFileName(String pictureFileName) {
+		this.pictureFileName = pictureFileName;
 	}
-	private String uploadFileName;
+
 	public void setService(IFilmService service) {
 		this.service = service;
 	}
+
 	public int getPage() {
 		return page;
 	}
+
 	public void setPage(int page) {
 		this.page = page;
 	}
+
 	public int getRows() {
 		return rows;
 	}
+
 	public void setRows(int rows) {
 		this.rows = rows;
 	}
 
-
-
-	public String getFilms() throws IOException{
-		List<Film> lists=service.getFilms(film);
-		List<Film> list=new ArrayList<Film>();
-		Map<String, Object> map=new HashMap<>();
-		int start=(page-1)*rows;
-		Film film=null;
-		int count=((lists.size()-start)<rows)?(lists.size()-start):rows;
-		JsonConfig config = new JsonConfig();  
-		 config.setIgnoreDefaultExcludes(false);          
-		 config.registerJsonValueProcessor(java.util.Date.class, new JsonDateValueProcessor("yyyy-MM-dd "));         
-		for(int i=0;i<count;i++){
-			film=lists.get(i+start);
+	public String getFilms() throws IOException {
+		List<Film> lists = service.getFilms(film);
+		List<Film> list = new ArrayList<Film>();
+		Map<String, Object> map = new HashMap<>();
+		int start = (page - 1) * rows;
+		Film film = null;
+		int count = ((lists.size() - start) < rows) ? (lists.size() - start) : rows;
+		JsonConfig config = new JsonConfig();
+		config.setIgnoreDefaultExcludes(false);
+		config.registerJsonValueProcessor(java.util.Date.class, new JsonDateValueProcessor("yyyy-MM-dd "));
+		for (int i = 0; i < count; i++) {
+			film = lists.get(i + start);
 			list.add(film);
 		}
 		ServletActionContext.getResponse().setContentType("text/javascript;charset=utf-8");
-		PrintWriter writer=ServletActionContext.getResponse().getWriter();
+		PrintWriter writer = ServletActionContext.getResponse().getWriter();
 		map.put("rows", list);
 		map.put("total", lists.size());
-		JSONObject object= JSONObject.fromObject(map,config);
+		JSONObject object = JSONObject.fromObject(map, config);
 		writer.println(object);
 		writer.flush();
 		return null;
 	}
+
 	public String updateFilm() throws IOException {
-		System.out.println(film+":update");
-
-		InputStream is = new FileInputStream(upload);
-		String uploadPath = ServletActionContext.getServletContext()
-				.getRealPath("/img");
-		System.out.println("upload--"+upload);
-		System.out.println("uploadpath--"+uploadPath);
-
-		
-		File toFile = new File(uploadPath, this.getUploadFileName());
-
-		OutputStream os = new FileOutputStream(toFile);
-
-		byte[] buffer =new byte[1024];
-		int length = 0;
-
-		while((length = is.read(buffer))>0){
-			os.write(buffer, 0, length);
+		System.out.println(film + ":update");
+		File saved = new File(ServletActionContext.getServletContext().getRealPath("images/film"), pictureFileName);
+		InputStream ins = null;
+		OutputStream ous = null;
+		try {
+			saved.getParentFile().mkdirs();
+			
+			ins=new FileInputStream(picture);
+			ous=new FileOutputStream(saved);
+			
+			byte[] b=new byte[1024];
+			int len=0;
+			while ((len=ins.read(b))!=-1) {
+				ous.write(b,0,len);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if (ous != null) {
+				ous.close();
+			}
+			if (ins != null) {
+				ins.close();
+			}
 		}
-		os.close();
-		is.close();
-
+		//System.out.println("film/"+pictureFileName);
+		film.setImgSrc("film/"+pictureFileName);
 		service.updateFilm(film);
-		return null;		
+		return null;
 	}
-	public String deleteFilm(){
+
+	public String deleteFilm() {
 		service.deleteFilm(film);
 		return null;
-		
+
 	}
-	public String addFilm(){
+
+	public String addFilm() {
 		service.addFilm(film);
-		return null;		
+		return null;
 	}
+
 	public IFilmService getService() {
 		return service;
 	}
+
 	public Film getFilm() {
 		return film;
 	}
+
 	public void setFilm(Film film) {
 		this.film = film;
 	}
