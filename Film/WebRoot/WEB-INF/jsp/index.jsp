@@ -222,10 +222,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 										<a href="#">曹利民</a>
 									</p>
 								</div>
-								<p>
-									<a href="#">预告片</a>
-									<i class="icon_ivideo"></i>
-								</p>
+							
 							</li>
 						</ul>
 					</dd>
@@ -251,10 +248,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 										<a href="#">曹利民</a>
 									</p>
 								</div>
-								<p>
-									<a href="#">预告片</a>
-									<i class="icon_ivideo"></i>
-								</p>
+								
 							</li>
 						</ul>
 					</dd>
@@ -280,10 +274,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 										<a href="#">曹利民</a>
 									</p>
 								</div>
-								<p>
-									<a href="#">预告片</a>
-									<i class="icon_ivideo"></i>
-								</p>
+								
 							</li>
 						</ul>
 					</dd>
