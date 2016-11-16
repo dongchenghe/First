@@ -76,11 +76,13 @@
 			<if test="filmScore!=null and filmScore!=''">
 				and FILM_SCORE=#{filmScore}
 			</if>
-			<if test="filmStorySort.sId!=null and filmStorySort.sId!=''">
-				and S_ID=#{filmStorySort.sId}
-			</if>
-			<if test="filmStorySort.sorts!=null and filmStorySort.sorts!=''">
-				and SORTS=#{filmStorySort.sorts}
+			<if test="filmStorySort!=null">
+				<if test="filmStorySort.sId!=null and filmStorySort.sId!=''">
+					and S_ID=#{filmStorySort.sId}
+				</if>
+				<if test="filmStorySort.sorts!=null and filmStorySort.sorts!=''">
+					and SORTS=#{filmStorySort.sorts}
+				</if>
 			</if>
 		</where>
 	</select>

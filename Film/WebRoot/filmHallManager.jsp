@@ -242,10 +242,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					         //默认选中第一个
 							$('#addcinemaName11').combobox('select',datas[0].cinemaId);
 							}						       
-			}); 	
-		
-		
-		
+			}); 		
 	}
 	function confrim(action){
 		if(action=='update'){

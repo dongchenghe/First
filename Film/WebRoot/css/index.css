@@ -488,16 +488,18 @@ a.c_a5:hover {
 }
 .list1 ul li {
 	display: inline-block;
-	margin-left: 50px;
+	margin-left:10px;
+	margin-right:10px;
 	list-style-type: none;
 	margin-top: 20px;
-	width: 30%;
+	width: 28%;
 }
 
 .list1 ul dl {
 	display: inline-block;
-	line-height: 40px;
+/* 	line-height: 100px; */
 	float: right;
+	width: 60%;
 }
 
 .list1 dt {
@@ -553,23 +555,25 @@ a.c_a5:hover {
 
 .list1 .day {
 	display: list-item;
+	width: auto;
 }
-
 .list1 .i_wantmovie {
 	position: relative;
-	padding-left: 117px;
-	min-height: 152px;
 	_height: 152px;
 	color: #323232;
 	font-size: 14px;
 	margin-top: 17px;
+	display: list-item;
+	width: auto;
 }
 .i_swwantlister dl{
 	clear: both;
+	margin: 0,auto;
+	text-align: center;
 }
 .list1 .i_wantmovie img {
 	float: left;
-	margin-left: -100px;
+	/* margin-left: -100px; */
 	border: solid 1px #000000;
 }
 
@@ -587,6 +591,7 @@ a.c_a5:hover {
 	display: inline-block;
 	border-top: dashed 1px red;
 	margin-left: -20px;
+	width: 30%;
 }
 
 .list1 li i.dot {
@@ -596,3 +601,12 @@ a.c_a5:hover {
 	display: block;
 	overflow: hidden;
 }
+.i_swwantlister .ul .li{
+	width:auto;
+}
+.list1 i_swwantlister li{
+	width:auto;
+}
+/* .i_swwantlister{
+	margin: 0,auto;
+} */
