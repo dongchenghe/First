@@ -8,7 +8,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<base href="<%=basePath%>">
+	<base href="<%=basePath%>">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
 	<link href="css/index.css" rel="stylesheet" type="text/css" />
 	<link type="text/css" rel="stylesheet" href="css/luara.left.css" />
@@ -92,107 +93,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<ul>
 				<s:iterator value="#session.listFilm" var="film">
 					<li class="one">
-						<a title="${film.filmName }" href="#" >
+						<a title="${film.filmName }" href="currentSchedule?filmid=${film.filmId}" >
 							<img src="images/${film.imgSrc}" alt="${film.filmName }" style="width: 100px;height: 140px"/>
 						</a>
 						<dl>
-							<dt><a href="#" class="one">${film.filmName }</a></dt>
-							<dd>${film.totalTime}分钟- <a href="#">${film.filmSort}</a></dd>
+							<dt><a href="currentSchedule?filmid=${film.filmId}" class="one">${film.filmName }</a></dt>
+							<dd>${film.totalTime}分钟- ${film.filmSort}</dd>
+							<dd><a href="#">${film.filmStorySort.sorts}</a></dd>
 							<dd>5家影院上映20场</dd>
-							<dd><a href="#" class="ticket">选座购票</a></dd>
+							<dd><a href="currentSchedule?filmid=${film.filmId}" class="ticket">选座购票</a></dd>
 						</dl>
 					</li>
 				</s:iterator>
-				<li class="one">
-					<a title="邻家大贱谍" href="#" >
-						<img src="images/linjiadajiandie.jpg" alt="邻家大贱谍" />
-					</a>
-					<dl>
-						<dt><a href="#" class="one_name">邻家大贱谍</a></dt>
-						<dd>101分钟- <a href="#">动作</a> / <a href="#">喜剧</a></dd>
-						<dd>13家影院上映26场</dd>
-						<dd class="hot">
-							<i class="ico_dot"></i>
-							平凡夫妇的不平凡之路
-						</dd>
-						<dd><a href="#" class="ticket">选座购票</a></dd>
-					</dl>
-				</li>
-				<li class="one">
-					<a title="邻家大贱谍" href="#" >
-						<img src="images/linjiadajiandie.jpg" alt="邻家大贱谍" />
-					</a>
-					<dl>
-						<dt><a href="#" class="one_name">邻家大贱谍</a></dt>
-						<dd>101分钟- <a href="#">动作</a> / <a href="#">喜剧</a></dd>
-						<dd>13家影院上映26场</dd>
-						<dd class="hot">
-							<i class="ico_dot"></i>
-							平凡夫妇的不平凡之路
-						</dd>
-						<dd><a href="#" class="ticket">选座购票</a></dd>
-					</dl>
-				</li>
-				<li class="one">
-					<a title="邻家大贱谍" href="#" >
-						<img src="images/linjiadajiandie.jpg" alt="邻家大贱谍" />
-					</a>
-					<dl>
-						<dt><a href="#" class="one_name">邻家大贱谍</a></dt>
-						<dd>101分钟- <a href="#">动作</a> / <a href="#">喜剧</a></dd>
-						<dd>13家影院上映26场</dd>
-						<dd class="hot">
-							<i class="ico_dot"></i>
-							平凡夫妇的不平凡之路
-						</dd>
-						<dd><a href="#" class="ticket">选座购票</a></dd>
-					</dl>
-				</li>
-				<li class="one">
-					<a title="邻家大贱谍" href="#" >
-						<img src="images/linjiadajiandie.jpg" alt="邻家大贱谍" />
-					</a>
-					<dl>
-						<dt><a href="#" class="one_name">邻家大贱谍</a></dt>
-						<dd>101分钟- <a href="#">动作</a> / <a href="#">喜剧</a></dd>
-						<dd>13家影院上映26场</dd>
-						<dd class="hot">
-							<i class="ico_dot"></i>
-							平凡夫妇的不平凡之路
-						</dd>
-						<dd><a href="#" class="ticket">选座购票</a></dd>
-					</dl>
-				</li>
-				<li class="one">
-					<a title="邻家大贱谍" href="#" >
-						<img src="images/linjiadajiandie.jpg" alt="邻家大贱谍" />
-					</a>
-					<dl>
-						<dt><a href="#" class="one_name">邻家大贱谍</a></dt>
-						<dd>101分钟- <a href="#">动作</a> / <a href="#">喜剧</a></dd>
-						<dd>13家影院上映26场</dd>
-						<dd class="hot">
-							<i class="ico_dot"></i>
-							平凡夫妇的不平凡之路
-						</dd>
-						<dd><a href="#" class="ticket">选座购票</a></dd>
-					</dl>
-				</li>
-				<li class="one">
-					<a title="邻家大贱谍" href="#" >
-						<img src="images/linjiadajiandie.jpg" alt="邻家大贱谍" />
-					</a>
-					<dl>
-						<dt><a href="#" class="one_name">邻家大贱谍</a></dt>
-						<dd>101分钟- <a href="#">动作</a> / <a href="#">喜剧</a></dd>
-						<dd>13家影院上映26场</dd>
-						<dd class="hot">
-							<i class="ico_dot"></i>
-							平凡夫妇的不平凡之路
-						</dd>
-						<dd><a href="#" class="ticket">选座购票</a></dd>
-					</dl>
-				</li>
 			</ul>
 			<img src="images/guanggao.jpg" style="margin-left: 80px;"/>
 			<div class="title">
@@ -274,12 +186,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 										<a href="#">曹利民</a>
 									</p>
 								</div>
-								
 							</li>
 						</ul>
 					</dd>
 				</dl>
-				
 			</div>
 		</div>
 		<!--底部-->

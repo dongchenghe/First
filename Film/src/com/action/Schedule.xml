@@ -5,7 +5,7 @@
 <struts>
 	<package name="Schedule" namespace="/" extends="json-default">
 	<action name="currentSchedule" class="scheduleAction" method="schedule">
-		<result name="schedule" >/index.jsp</result>
+		<result name="success" >/index.jsp</result>
 	</action>
 	</package>
 </struts>

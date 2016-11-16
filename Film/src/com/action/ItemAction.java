@@ -2,6 +2,7 @@ package com.action;
 
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,10 +18,11 @@ public class ItemAction {
 		List<Film>	listFilm=service.getFilmAll();
 		List<Film> listSoon=service.getFilmSoon();
 		List<Cinema> listCinema=service.getCinema();
-		ActionContext.getContext().getSession().put("listFilm", listFilm);
-		ActionContext.getContext().getSession().put("listSoon", listSoon);
-		ActionContext.getContext().getSession().put("listCinema", listCinema);
-		for(Film f:listFilm){
+		Map<String,Object> sesstion = ActionContext.getContext().getSession();
+		sesstion.put("listFilm", listFilm);
+		sesstion.put("listSoon", listSoon);
+		sesstion.put("listCinema", listCinema);
+		for(Film f:listSoon){
 			System.out.println(f);
 		}
 		return "success";
