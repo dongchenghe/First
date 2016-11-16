@@ -23,9 +23,9 @@ public class ScheduleAction {
 
 	public String schedule(){
 		List<Schedule> list=service.getCurrentSchedule(filmid);
-/*		for(Schedule s:list){
+		for(Schedule s:list){
 			System.out.println(s);
-		}*/
+		}
 		ActionContext.getContext().getSession().put("filmSchedule", list);	
 		return "success";
 	}
