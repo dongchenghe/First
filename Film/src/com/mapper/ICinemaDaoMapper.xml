@@ -87,6 +87,8 @@
 			</if>
 		
 	</delete>
-	
+	<select id="getCinemasByFilm" parameterType="String" resultMap="cinemaMap">
+		select * from cinema where cinema_id in(select cinema_id from film_sch_view where film_id=#{filmid})
+	</select>
 	
 </mapper>

@@ -47,8 +47,8 @@
 		<association property="filmHall" javaType="FilmHall" resultMap="filmHallMap"></association>
 	</resultMap>
 	
-	<select id="getCurrentSchedule" parameterType="String" resultMap="scheduleMap">
-		select * from film_sch_view where film_id=#{filmId} and schedule_time-sysdate&lt;0
+	<select id="getCurrentSchedule" parameterType="Map" resultMap="scheduleMap">
+		select * from film_sch_view where film_id=#{filmId} and schedule_time-sysdate&lt;0 and cinema_id=#{cinemaId}
 	</select>
 	
 	

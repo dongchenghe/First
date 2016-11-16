@@ -1,6 +1,8 @@
 package com.service;
 
 import java.util.List;
+import java.util.Map;
+
 import com.bean.FilmHall;
 import com.bean.Schedule;
 import com.dao.IFilmHallDao;
@@ -19,8 +21,8 @@ public class ScheduleService implements IScheduleService {
 	}
 
 	@Override
-	public List<Schedule> getCurrentSchedule(String filmId) {
-		List<Schedule> list=dao.getCurrentSchedule(filmId);
+	public List<Schedule> getCurrentSchedule(Map map) {
+		List<Schedule> list=dao.getCurrentSchedule(map);
 		return list;
 	}
 	

@@ -42,6 +42,13 @@ public class CinemaService implements ICinemaService{
 		this.dao = dao;
 	}
 
+
+	@Override
+	public List<Cinema> getCinemasByFilm(String filmid) {
+		// TODO Auto-generated method stub
+		return dao.getCinemasByFilm(filmid);
+	}
+
 	
 	
 

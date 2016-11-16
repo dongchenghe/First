@@ -45,5 +45,11 @@ public class Cinema implements Serializable{
 	}
 	public Cinema() {
 		super();		
+	}
+	@Override
+	public String toString() {
+		return "Cinema [cinemaId=" + cinemaId + ", cinemaName=" + cinemaName + ", cinemaLocation=" + cinemaLocation
+				+ ", cinemaTel=" + cinemaTel + ", imgSrc=" + imgSrc + "]";
 	}	
+	
 }

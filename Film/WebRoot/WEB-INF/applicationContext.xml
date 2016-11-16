@@ -52,7 +52,7 @@
 	<!--schedule相关  -->
 	 <bean id="scheduleAction" class="com.action.ScheduleAction" scope="prototype">
 		<property name="service" ref="scheduleService"></property>
-		
+		<property name="service1" ref="cinemaService"></property>
 	</bean>
 	<bean id="scheduleService" class="com.service.ScheduleService" >
 		<property name="dao" ref="scheduleDao"></property>

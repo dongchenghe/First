@@ -44,7 +44,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<!--<img src="images/film/qiyiboshi/qiyiboshi1.jpg"/>-->
 					<div class="col-xs-6 col-md-3" style="width: 100%;height: auto;">
 					    <a href="#" class="thumbnail" >
-					      <img src="images/film/qiyiboshi.jpg" style="border-radius:10px;">
+					      <img src="images/{filmSchedule.}" style="border-radius:10px;">
 					    </a>
 					</div>
 					<h5><span>上映：</span>2016年11月11日</h5>
