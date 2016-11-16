@@ -212,7 +212,7 @@
 		style="width:300px;height:200px;"
 		data-options="resizable:true,modal:true,buttons:'#update_button'"
 		iconCls="icon-save">
-		<form id="update_form" method="post">
+		<form id="update_form" method="post" enctype="multipart/form-data">
 			<div>
 				<label for="film_filmId">电影编号:</label> <input
 					class="easyui-validatebox" type="text" name="film.filmId" disabled="disabled"/>
@@ -266,8 +266,7 @@
 					class="easyui-validatebox" type="text" name="film.story" />
 			</div>
 			<div>
-				<label for="film_imgSrc">封面:</label> <input
-					class="easyui-validatebox" type="text" name="film.imgSrc" />
+				<label for="film_imgSrc">封面:</label><input class="easyui-filebox" style="width:300px" name="picture">
 			</div>
 		</form>
 	</div>
@@ -474,7 +473,7 @@
 			$("#update_form input[name='film.actor']").val(SelectRow.actor);
 			$("#update_form input[name='film.country']").val(SelectRow.country);
 			$("#update_form input[name='film.story']").val(SelectRow.story);
-			$("#update_form input[name='film.imgSrc']").val(SelectRow.imgSrc);
+
 			$("#update_form input[name='film.filmScore']").val(SelectRow.filmScore);
 		}
 		function formClear() {

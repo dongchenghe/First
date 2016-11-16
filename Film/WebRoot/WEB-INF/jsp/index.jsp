@@ -108,87 +108,36 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</ul>
 			<img src="images/guanggao.jpg" style="margin-left: 80px;"/>
 			<div class="title">
-				<h2>即将上映 －11月14日~2月11日</h2>
+				<h2>即将上映</h2>
 			</div>
 			<div class="i_swwantlister">
 				<dl class="future">
-					<dd class="a">
+					<s:iterator value="#session.listSoon" var="soonfilm" begin="0" end="2">
+						<dd class="a">
 						<ul>
 							<li class="day">
-								<strong>11月20日</strong>
+								<strong><s:date name="#soonfilm.releaseTime" format="yyyy/MM/dd" /></strong>
 								即将上映
 							</li>
 							<li class="i_wantmovie">
-								<a href="#"><img src="images/hongyanrong.jpg" /></a>
+								<a href="currentSchedule?filmid=${soonfilm.filmId}"><img src="images/${soonfilm.imgSrc}" style="width: 100px;height: 140px" /></a>
 								<div class="desc">
-									<h3>
-										<a href="#">红颜容</a>
-									</h3>
+									<h5>
+										<a href="currentSchedule?filmid=${soonfilm.filmId}">${soonfilm.filmName}</a>
+									</h5>
 									<p>
 										<span>3人想看 - </span>
-										<a href="#">爱情</a> / 
-										<a href="#">剧情</a>
+										<a href="#">${soonfilm.filmStorySort.sorts}</a>
 									</p>
 									<p class="director">
 										<b>导演</b>
-										<a href="#">曹利民</a>
-									</p>
-								</div>
-							
-							</li>
-						</ul>
-					</dd>
-					<dd class="a">
-						<ul>
-							<li class="day">
-								<strong>11月20日</strong>
-								即将上映
-							</li>
-							<li class="i_wantmovie">
-								<a href="#"><img src="images/hongyanrong.jpg" /></a>
-								<div class="desc">
-									<h3>
-										<a href="#">红颜容</a>
-									</h3>
-									<p>
-										<span>3人想看 - </span>
-										<a href="#">爱情</a> / 
-										<a href="#">剧情</a>
-									</p>
-									<p class="director">
-										<b>导演</b>
-										<a href="#">曹利民</a>
-									</p>
-								</div>
-								
-							</li>
-						</ul>
-					</dd>
-					<dd class="a">
-						<ul>
-							<li class="day">
-								<strong>11月20日</strong>
-								即将上映
-							</li>
-							<li class="i_wantmovie">
-								<a href="#"><img src="images/hongyanrong.jpg" /></a>
-								<div class="desc">
-									<h3>
-										<a href="#">红颜容</a>
-									</h3>
-									<p>
-										<span>3人想看 - </span>
-										<a href="#">爱情</a> / 
-										<a href="#">剧情</a>
-									</p>
-									<p class="director">
-										<b>导演</b>
-										<a href="#">曹利民</a>
+										<a href="#">${soonfilm.director}</a>
 									</p>
 								</div>
 							</li>
 						</ul>
 					</dd>
+					</s:iterator>
 				</dl>
 			</div>
 		</div>

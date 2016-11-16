@@ -35,7 +35,7 @@
 			resultMap="filmStorySortMap"></association>
 	</resultMap>
 	<resultMap type="FilmStorySort" id="filmStorySortMap">
-		<result column="S_ID" property="sId" />
+		<result column="S_ID" property="sid" />
 		<result column="SORTS" property="sorts" />
 	</resultMap>
 	<resultMap type="Schedule" id="scheduleMap">
