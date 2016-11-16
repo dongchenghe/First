@@ -8,7 +8,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<base href="<%=basePath%>">
+	<base href="<%=basePath%>">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
 	<link href="css/index.css" rel="stylesheet" type="text/css" />
 	<link type="text/css" rel="stylesheet" href="css/luara.left.css" />
@@ -92,194 +93,52 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<ul>
 				<s:iterator value="#session.listFilm" var="film">
 					<li class="one">
-						<a title="${film.filmName }" href="#" >
+						<a title="${film.filmName }" href="currentSchedule?filmid=${film.filmId}" >
 							<img src="images/${film.imgSrc}" alt="${film.filmName }" style="width: 100px;height: 140px"/>
 						</a>
 						<dl>
-							<dt><a href="#" class="one">${film.filmName }</a></dt>
-							<dd>${film.totalTime}分钟- <a href="#">${film.filmSort}</a></dd>
+							<dt><a href="currentSchedule?filmid=${film.filmId}" class="one">${film.filmName }</a></dt>
+							<dd>${film.totalTime}分钟- ${film.filmSort}</dd>
+							<dd><a href="#">${film.filmStorySort.sorts}</a></dd>
 							<dd>5家影院上映20场</dd>
-							<dd><a href="#" class="ticket">选座购票</a></dd>
+							<dd><a href="currentSchedule?filmid=${film.filmId}" class="ticket">选座购票</a></dd>
 						</dl>
 					</li>
 				</s:iterator>
-				<li class="one">
-					<a title="邻家大贱谍" href="#" >
-						<img src="images/linjiadajiandie.jpg" alt="邻家大贱谍" />
-					</a>
-					<dl>
-						<dt><a href="#" class="one_name">邻家大贱谍</a></dt>
-						<dd>101分钟- <a href="#">动作</a> / <a href="#">喜剧</a></dd>
-						<dd>13家影院上映26场</dd>
-						<dd class="hot">
-							<i class="ico_dot"></i>
-							平凡夫妇的不平凡之路
-						</dd>
-						<dd><a href="#" class="ticket">选座购票</a></dd>
-					</dl>
-				</li>
-				<li class="one">
-					<a title="邻家大贱谍" href="#" >
-						<img src="images/linjiadajiandie.jpg" alt="邻家大贱谍" />
-					</a>
-					<dl>
-						<dt><a href="#" class="one_name">邻家大贱谍</a></dt>
-						<dd>101分钟- <a href="#">动作</a> / <a href="#">喜剧</a></dd>
-						<dd>13家影院上映26场</dd>
-						<dd class="hot">
-							<i class="ico_dot"></i>
-							平凡夫妇的不平凡之路
-						</dd>
-						<dd><a href="#" class="ticket">选座购票</a></dd>
-					</dl>
-				</li>
-				<li class="one">
-					<a title="邻家大贱谍" href="#" >
-						<img src="images/linjiadajiandie.jpg" alt="邻家大贱谍" />
-					</a>
-					<dl>
-						<dt><a href="#" class="one_name">邻家大贱谍</a></dt>
-						<dd>101分钟- <a href="#">动作</a> / <a href="#">喜剧</a></dd>
-						<dd>13家影院上映26场</dd>
-						<dd class="hot">
-							<i class="ico_dot"></i>
-							平凡夫妇的不平凡之路
-						</dd>
-						<dd><a href="#" class="ticket">选座购票</a></dd>
-					</dl>
-				</li>
-				<li class="one">
-					<a title="邻家大贱谍" href="#" >
-						<img src="images/linjiadajiandie.jpg" alt="邻家大贱谍" />
-					</a>
-					<dl>
-						<dt><a href="#" class="one_name">邻家大贱谍</a></dt>
-						<dd>101分钟- <a href="#">动作</a> / <a href="#">喜剧</a></dd>
-						<dd>13家影院上映26场</dd>
-						<dd class="hot">
-							<i class="ico_dot"></i>
-							平凡夫妇的不平凡之路
-						</dd>
-						<dd><a href="#" class="ticket">选座购票</a></dd>
-					</dl>
-				</li>
-				<li class="one">
-					<a title="邻家大贱谍" href="#" >
-						<img src="images/linjiadajiandie.jpg" alt="邻家大贱谍" />
-					</a>
-					<dl>
-						<dt><a href="#" class="one_name">邻家大贱谍</a></dt>
-						<dd>101分钟- <a href="#">动作</a> / <a href="#">喜剧</a></dd>
-						<dd>13家影院上映26场</dd>
-						<dd class="hot">
-							<i class="ico_dot"></i>
-							平凡夫妇的不平凡之路
-						</dd>
-						<dd><a href="#" class="ticket">选座购票</a></dd>
-					</dl>
-				</li>
-				<li class="one">
-					<a title="邻家大贱谍" href="#" >
-						<img src="images/linjiadajiandie.jpg" alt="邻家大贱谍" />
-					</a>
-					<dl>
-						<dt><a href="#" class="one_name">邻家大贱谍</a></dt>
-						<dd>101分钟- <a href="#">动作</a> / <a href="#">喜剧</a></dd>
-						<dd>13家影院上映26场</dd>
-						<dd class="hot">
-							<i class="ico_dot"></i>
-							平凡夫妇的不平凡之路
-						</dd>
-						<dd><a href="#" class="ticket">选座购票</a></dd>
-					</dl>
-				</li>
 			</ul>
 			<img src="images/guanggao.jpg" style="margin-left: 80px;"/>
 			<div class="title">
-				<h2>即将上映 －11月14日~2月11日</h2>
+				<h2>即将上映</h2>
 			</div>
 			<div class="i_swwantlister">
 				<dl class="future">
-					<dd class="a">
+					<s:iterator value="#session.listSoon" var="soonfilm" begin="0" end="2">
+						<dd class="a">
 						<ul>
 							<li class="day">
-								<strong>11月20日</strong>
+								<strong><s:date name="#soonfilm.releaseTime" format="yyyy/MM/dd" /></strong>
 								即将上映
 							</li>
 							<li class="i_wantmovie">
-								<a href="#"><img src="images/hongyanrong.jpg" /></a>
+								<a href="currentSchedule?filmid=${soonfilm.filmId}"><img src="images/${soonfilm.imgSrc}" style="width: 100px;height: 140px" /></a>
 								<div class="desc">
-									<h3>
-										<a href="#">红颜容</a>
-									</h3>
+									<h5>
+										<a href="currentSchedule?filmid=${soonfilm.filmId}">${soonfilm.filmName}</a>
+									</h5>
 									<p>
 										<span>3人想看 - </span>
-										<a href="#">爱情</a> / 
-										<a href="#">剧情</a>
+										<a href="#">${soonfilm.filmStorySort.sorts}</a>
 									</p>
 									<p class="director">
 										<b>导演</b>
-										<a href="#">曹利民</a>
+										<a href="#">${soonfilm.director}</a>
 									</p>
 								</div>
-							
 							</li>
 						</ul>
 					</dd>
-					<dd class="a">
-						<ul>
-							<li class="day">
-								<strong>11月20日</strong>
-								即将上映
-							</li>
-							<li class="i_wantmovie">
-								<a href="#"><img src="images/hongyanrong.jpg" /></a>
-								<div class="desc">
-									<h3>
-										<a href="#">红颜容</a>
-									</h3>
-									<p>
-										<span>3人想看 - </span>
-										<a href="#">爱情</a> / 
-										<a href="#">剧情</a>
-									</p>
-									<p class="director">
-										<b>导演</b>
-										<a href="#">曹利民</a>
-									</p>
-								</div>
-								
-							</li>
-						</ul>
-					</dd>
-					<dd class="a">
-						<ul>
-							<li class="day">
-								<strong>11月20日</strong>
-								即将上映
-							</li>
-							<li class="i_wantmovie">
-								<a href="#"><img src="images/hongyanrong.jpg" /></a>
-								<div class="desc">
-									<h3>
-										<a href="#">红颜容</a>
-									</h3>
-									<p>
-										<span>3人想看 - </span>
-										<a href="#">爱情</a> / 
-										<a href="#">剧情</a>
-									</p>
-									<p class="director">
-										<b>导演</b>
-										<a href="#">曹利民</a>
-									</p>
-								</div>
-								
-							</li>
-						</ul>
-					</dd>
+					</s:iterator>
 				</dl>
-				
 			</div>
 		</div>
 		<!--底部-->

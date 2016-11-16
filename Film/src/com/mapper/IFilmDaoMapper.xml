@@ -254,10 +254,10 @@
 		</where>
 	</update>
 	<select id="getFilmAll" resultMap="filmMap">
-		select * from film where
-		film_id in
-		( select distinct film_id from schedule where
-		(schedule_time-sysdate)&lt;0)
+		select film.* ,filmstorysort.sorts from film ,filmstorysort where
+    	film_id in
+   	 	( select distinct film_id from schedule where
+		(schedule_time-sysdate)&lt;0) and film.s_id=filmstorysort.s_id
 	</select>
 
 	<select id="getFilmSoon" resultMap="filmMap">
