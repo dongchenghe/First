@@ -3,7 +3,7 @@
 
 
 <mapper namespace="com.dao.IScheduleDao">
-	<!-- 不能引用ICinemaDaoMapper的 cinemaMap 要写出来，否则不报错也没结果-->
+	<!-- 不能引用ICinemaDaoMapper的 cinemaMap 要写出来，否则不报错也没结果 -->
 	<resultMap type="Cinema" id="cinemaMap">
 		<result column="CINEMA_ID" property="cinemaId" />
 		<result column="CINEMA_NAME" property="cinemaName" />
@@ -11,11 +11,12 @@
 		<result column="CINEMA_TEL" property="cinemaTel" />
 		<result column="C_IMG" property="imgSrc" />
 	</resultMap>
-	
+
 	<resultMap type="FilmHall" id="filmHallMap">
 		<result column="FILMHALL_ID" property="filmHallId" />
 		<result column="FILMHALL_NAME" property="filmHallName" />
-		<association property="cinema" javaType="Cinema" resultMap="cinemaMap"></association>
+		<association property="cinema" javaType="Cinema"
+			resultMap="cinemaMap"></association>
 	</resultMap>
 	<resultMap type="Film" id="filmMap">
 		<result column="FILM_ID" property="filmId" />
@@ -39,15 +40,33 @@
 		<result column="SORTS" property="sorts" />
 	</resultMap>
 	<resultMap type="Schedule" id="scheduleMap">
-		<result column="SCHEDULE_ID" property="scheduleId"/>
-		<result column="SCHEDULE_TIME" property="scheduleTime"/>
-		<result column="TICKET_PRICE" property="ticketPrice"/>
-		<result column="OVERDUE" property="overDue"/>
+		<result column="SCHEDULE_ID" property="scheduleId" />
+		<result column="SCHEDULE_TIME" property="scheduleTime" />
+		<result column="TICKET_PRICE" property="ticketPrice" />
+		<result column="OVERDUE" property="overDue" />
 		<association property="film" javaType="Film" resultMap="filmMap"></association>
-		<association property="filmHall" javaType="FilmHall" resultMap="filmHallMap"></association>
+		<association property="filmHall" javaType="FilmHall"
+			resultMap="filmHallMap"></association>
 	</resultMap>
-	
+
 	<select id="getCurrentSchedule" parameterType="Map" resultMap="scheduleMap">
-		select * from film_sch_view where film_id=#{filmid} and schedule_time-sysdate&lt;0 and cinema_id=#{cinema_id}
+		select * from film_sch_view where film_id=#{filmid} and
+		schedule_time-sysdate&lt;0 and cinema_id=#{cinema_id}
+	</select>
+	<select id="getSchedules" parameterType="Schedule" resultMap="scheduleMap">
+		select s.*,f.film_name,fl.filmhall_name from schedule s, film f,
+		filmhall fl
+		<where>
+			s.film_id=f.film_id and s.filmhall_id=fl.filmhall_id
+			<if test="filmHall!=null">
+				<if test="filmHall.filmHallId!=null and filmHall.filmHallId!=null">
+					s.FILMHALL_ID=#{filmHall.filmHallId}
+				</if>
+			</if>
+			<if test="film!=null">
+				<if test="film.filmId！=null and film.filmId!=''"></if>
+				s.FILM_ID=#{film.filmId}
+			</if>
+		</where>
 	</select>
 </mapper>
