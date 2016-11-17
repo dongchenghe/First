@@ -139,7 +139,7 @@
 	</div>
 	<!-- 增加职位的对话框 -->
 	<div id="add_dialog" class="easyui-dialog" title="增加电影"
-		style="width:300px;height:400px;"
+		style="width:350px;height:400px;"
 		data-options="resizable:true,modal:true,buttons:'#add_button'"
 		iconCls="icon-add">
 		<form id="add_form" method="post">
@@ -202,7 +202,7 @@
 	</div>
 	<!-- 修改职位的对话框 -->
 	<div id="update_dialog" class="easyui-dialog" title="修改管理"
-		style="width:300px;height:200px;"
+		style="width:350px;height:400px;"
 		data-options="resizable:true,modal:true,buttons:'#update_button'"
 		iconCls="icon-save">
 		<form id="update_form" method="post" enctype="multipart/form-data">
@@ -387,10 +387,10 @@
 		}
 		$('#add_buttonData').bind("click", function() {
 			$("#add_dialog").dialog("close");
-			$("#add_form input[name='film.filmId']").prop("disabled", false);
+			$("#add_form input[name='film.filmId']").prop("disabled", true);
 			$.messager.progress();
 			$("#add_form").form("submit", {
-				url : "customerManagerAction!addFilm",
+				url : "filmManagerAction!addFilm",
 				onSubmit : function() {
 					var isValid = $(this).form("validate");
 					if (!isValid) {
@@ -417,6 +417,7 @@
 				formClear();
 				$("#update_dialog").dialog('open');
 				formLoad_update();
+				$("#update_form input[name='film.filmId']").prop("disabled", true);
 				$("#update_dialog").dialog({
 					iconCls : 'icon-save'
 				});

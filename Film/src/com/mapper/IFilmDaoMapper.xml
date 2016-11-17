@@ -144,10 +144,9 @@
 	<insert id="addFilm" parameterType="Film">
 		insert into
 		film
-		(FILM_NAME,TOTAL_TIME,S_ID,FILMSORT,RELEASE_TIME,DIRECTOR,SCRIPTWRITER,ACTOR,COUNTRY,FILMCOMPANY,STORY,IMG_SRC,FILM_SCORE)
-		values(#{filmName},#{totalTime},#{filmStorySort.sid},#{filmSort},#{releaseTime},#{director},#{scriptWriter},#{actor},#{country},#{filmCompany},#{story},#{imgSrc},#{filmScore})
+		(FILM_NAME,TOTAL_TIME,S_ID,FILMSORT,RELEASE_TIME,DIRECTOR,SCRIPTWRITER,ACTOR,COUNTRY,FILMCOMPANY,STORY,IMG_SRC)
+		values(#{filmName},#{totalTime},#{filmStorySort.sid},#{filmSort},#{releaseTime},#{director},#{scriptWriter},#{actor},#{country},#{filmCompany},#{story},#{imgSrc})
 	</insert>
-
 	<delete id="deleteFilm" parameterType="Film">
 		delete from film
 		<where>
