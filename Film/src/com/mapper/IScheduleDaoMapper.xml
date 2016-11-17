@@ -49,10 +49,6 @@
 			resultMap="filmHallMap"></association>
 	</resultMap>
 
-	<select id="getCurrentSchedule" parameterType="Map" resultMap="scheduleMap">
-		select * from film_sch_view where film_id=#{filmid} and
-		schedule_time-sysdate&lt;0 and cinema_id=#{cinema_id}
-	</select>
 	
 	<select id="getCurrentSchedule" parameterType="Schedule" resultMap="scheduleMap">
 		select * from film_sch_view where 1=1
@@ -70,16 +66,16 @@
 				</if>
 			</if>
 			<if test="scheduleId!=null and scheduleId!=''">
-				SCHEDULE_ID=#{scheduleId}
+				and SCHEDULE_ID=#{scheduleId}
 			</if>
 			<if test="scheduleTime!=null and scheduleTime!=''">
-				and scheduleTime 
+				and scheduleTime between #{scheduleTime} and #{scheduleTime}+1;
 			</if>
 			<if test="ticketPrice!=null and ticketPrice!=''">
-				TICKET_PRICE={ticketPrice}
+				and TICKET_PRICE={ticketPrice}
 			</if>
 			<if test="overDue!=null and overDue!=''">
-				OVERDUE={overDue}
+				and OVERDUE={overDue}
 			</if>
 	</select>
 	<select id="getSchedules" parameterType="Schedule" resultMap="scheduleMap">
@@ -88,26 +84,26 @@
 		<where>
 			s.film_id=f.film_id and s.filmhall_id=fl.filmhall_id
 			<if test="filmHall!=null">
-				<if test="filmHall.filmHallId!=null and filmHall.filmHallId!=''">
-					s.FILMHALL_ID=#{filmHall.filmHallId}
+				<if test="filmHall.filmHallId!=null and filmHall.filmHallId!=''">	
+				and	s.FILMHALL_ID=#{filmHall.filmHallId}
 				</if>
 			</if>
 			<if test="film!=null">
 				<if test="film.filmId!=null and film.filmId!=''">
-					s.FILM_ID=#{film.filmId}
+				and	s.FILM_ID=#{film.filmId}
 				</if>
 			</if>
 			<if test="scheduleId!=null and scheduleId!=''">
-				SCHEDULE_ID=#{scheduleId}
+				and SCHEDULE_ID=#{scheduleId}
 			</if>
 			<if test="scheduleTime!=null and scheduleTime!=''">
-				SCHEDULE_TIME=#{scheduleTime}
+				and SCHEDULE_TIME=#{scheduleTime}
 			</if>
 			<if test="ticketPrice!=null and ticketPrice!=''">
-				TICKET_PRICE={ticketPrice}
+				and TICKET_PRICE={ticketPrice}
 			</if>
 			<if test="overDue!=null and overDue!=''">
-				OVERDUE={overDue}
+				and OVERDUE={overDue}
 			</if>
 		</where>
 	</select>
