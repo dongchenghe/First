@@ -125,7 +125,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				}						
 					$("#querycinemaName").combobox("loadData",blankoption);
 				},
-			
 			});
 		});
 		

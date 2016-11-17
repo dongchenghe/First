@@ -20,33 +20,34 @@
 <script>
 	$(function() {
 		dialogClose();
+
+
 		$.ajax({
 			url : 'filmStorySortManagerAction!getAllFilmStorySorts',
 			type : 'post',
 			success : function(data) {
 				var blankoption = [ {
-					'sorts' : '请选择',
-					'sId' : ''
+					'sorts' : 'all',
+					'sid' : ''
 				} ]; //设置第一个选项为空
 				var o = eval(data); //将json数据类型的字符串解析成对象					
 				for (var i = 0; i < o.length; ++i) {
 					blankoption.push({
-						'sId' : o[i].sId,
-						'sorts' : o[i].sorts
+						'sorts' : o[i].sorts,
+						'sid' : o[i].sid
 					});
 				}
 				$("#film_filmStorySort_sorts").combobox("loadData", blankoption);
-				$("#add_film_filmStorySort_sorts").combobox({
-					valueField : 'sId',
-					textField : 'sorts',
-					url : 'filmStorySortManagerAction!getAllFilmStorySorts',
-					onLoadSuccess : function() {
-						//$('#update_film_filmStorySort_sorts').combobox('select','3');
-						var datas = $("#add_film_filmStorySort_sorts").combobox('getData');
-						$('#add_film_filmStorySort_sorts').combobox('select', o[0].sId);
-					}
-				});
-
+			},
+		});
+		$("#add_film_filmStorySort_sorts").combobox({
+			valueField : 'sid',
+			textField : 'sorts',
+			url : 'filmStorySortManagerAction!getAllFilmStorySorts',
+			onLoadSuccess : function() {
+				//$('#update_film_filmStorySort_sorts').combobox('select','3');
+				var datas = $("#add_film_filmStorySort_sorts").combobox('getData');
+				$('#add_film_filmStorySort_sorts').combobox('setValue', '动作');
 			}
 		});
 	});
@@ -72,7 +73,7 @@
 		<label for="film_filmStorySort_sorts">剧情分类:</label> <input
 			id="film_filmStorySort_sorts" class="easyui-combobox"
 			data-options="eidtable:false,
-					        valueField:'sId',  
+					        valueField:'sid',  
             				textField:'sorts'
 		" />
 	</div>
@@ -84,13 +85,6 @@
 		<label for="film_filmCompany">制片公司:</label> <input
 			class="easyui-validatebox" type="text" id="film_filmCompany" />
 	</div>
-	<div>
-		<label for="film_totalTime">时长:</label> <input
-			class="easyui-validatebox" type="text" id="film_totalTime" />
-	</div>
-
-
-
 	<div>
 		<label for="film_director">导演:</label> <input
 			class="easyui-validatebox" type="text" id="film_director" />
@@ -106,19 +100,6 @@
 	<div>
 		<label for="film_country">国家:</label> <input
 			class="easyui-validatebox" type="text" id="film_country" />
-	</div>
-
-	<div>
-		<label for="film_story">剧情:</label> <input class="easyui-validatebox"
-			type="text" id="film_story" />
-	</div>
-	<div>
-		<label for="film_imgSrc">封面:</label> <input class="easyui-validatebox"
-			type="text" id="film_imgSrc" />
-	</div>
-	<div>
-		<label for="film_filmScore">评分:</label> <input
-			class="easyui-validatebox" type="text" id="film_filmScore" />
 	</div>
 
 	<!-- 显示的表数据 -->
@@ -142,9 +123,11 @@
 		style="width:350px;height:400px;"
 		data-options="resizable:true,modal:true,buttons:'#add_button'"
 		iconCls="icon-add">
-		<form id="add_form" method="post">
-			<div> <label for="film_filmId">电影编号:</label> <input
-					class="easyui-validatebox" type="text" name="film.filmId" disabled="disabled"/>
+		<form id="add_form" method="post" enctype="multipart/form-data">
+			<div>
+				<label for="film_filmId">电影编号:</label> <input
+					class="easyui-validatebox" type="text" name="film.filmId"
+					disabled="disabled" />
 			</div>
 			<div>
 				<label for="film_filmName">电影名称:</label> <input
@@ -156,13 +139,12 @@
 			</div>
 			<div>
 				<label for="add_film_filmStorySort_sorts">剧情分类:</label> <input
-					id="add_film_filmStorySort_sorts" class="easyui-combobox" name="film.filmStorySort.sid"
-					
-		 />
+					id="add_film_filmStorySort_sorts" class="easyui-combobox"
+					name="film.filmStorySort.sid" />
 			</div>
 			<div>
-				<label for="add_datebox">上映时间:</label> <input
-					id="add_datebox" type="text" class="easyui-datebox" name="film.releaseTime">
+				<label for="add_datebox">上映时间:</label> <input id="add_datebox"
+					type="text" class="easyui-datebox" name="film.releaseTime">
 			</div>
 			<div>
 				<label for="film_filmCompany">制片公司:</label> <input
@@ -172,7 +154,7 @@
 				<label for="film_totalTime">时长:</label> <input
 					class="easyui-validatebox" type="text" name="film.totalTime" />
 			</div>
-			
+
 			<div>
 				<label for="film_director">导演:</label> <input
 					class="easyui-validatebox" type="text" name="film.director" />
@@ -195,10 +177,14 @@
 					class="easyui-validatebox" type="text" name="film.story" />
 			</div>
 			<div>
-				<label for="film_imgSrc">封面:</label><input class="easyui-filebox" style="width:300px" name="picture">
+				<input class="easyui-validatebox" type="text" name="film.filmScore"
+					hidden="hidden" value="0.0" />
+			</div>
+			<div>
+				<label for="film_imgSrc">封面:</label><input class="easyui-filebox"
+					style="width:300px" name="picture">
 			</div>
 		</form>
-		
 	</div>
 	<!-- 修改职位的对话框 -->
 	<div id="update_dialog" class="easyui-dialog" title="修改管理"
@@ -208,7 +194,8 @@
 		<form id="update_form" method="post" enctype="multipart/form-data">
 			<div>
 				<label for="film_filmId">电影编号:</label> <input
-					class="easyui-validatebox" type="text" name="film.filmId" disabled="disabled"/>
+					class="easyui-validatebox" type="text" name="film.filmId"
+					disabled="disabled" />
 			</div>
 			<div>
 				<label for="film_filmName">电影名称:</label> <input
@@ -220,13 +207,12 @@
 			</div>
 			<div>
 				<label for="update_film_filmStorySort_sorts">剧情分类:</label> <input
-					id="update_film_filmStorySort_sorts" class="easyui-combobox" name="film.filmStorySort.sid"
-					
-		/>
+					id="update_film_filmStorySort_sorts" class="easyui-combobox"
+					name="film.filmStorySort.sid" />
 			</div>
 			<div>
-				<label for="update_datebox">上映时间:</label> <input
-					id="update_datebox" type="text" class="easyui-datebox" name="film.releaseTime">
+				<label for="update_datebox">上映时间:</label> <input id="update_datebox"
+					type="text" class="easyui-datebox" name="film.releaseTime">
 			</div>
 			<div>
 				<label for="film_filmCompany">制片公司:</label> <input
@@ -236,7 +222,7 @@
 				<label for="film_totalTime">时长:</label> <input
 					class="easyui-validatebox" type="text" name="film.totalTime" />
 			</div>
-			
+
 			<div>
 				<label for="film_director">导演:</label> <input
 					class="easyui-validatebox" type="text" name="film.director" />
@@ -259,7 +245,8 @@
 					class="easyui-validatebox" type="text" name="film.story" />
 			</div>
 			<div>
-				<label for="film_imgSrc">封面:</label><input class="easyui-filebox" style="width:300px" name="picture">
+				<label for="film_imgSrc">封面:</label><input class="easyui-filebox"
+					style="width:300px" name="picture">
 			</div>
 		</form>
 	</div>
@@ -287,6 +274,18 @@
 				pagination : true,
 				onDblClickRow : updateData,
 				url : 'filmManagerAction!getFilms',
+				queryParams : {
+					'film.filmId' : $('#film_filmId').val(),
+					'film.filmName' : $('#film_filmName').val(),
+					'film.filmSort' : $('#film_filmSort').val(),
+					'sid' : $('#film_filmStorySort_sorts').combobox('getValue'),
+					'film.releaseTime' : $('#film_releaseTime').datebox('getValue'),
+					'film.filmCompany' : $('#film_filmCompany').val(),
+					'film.director' : $('#film_director').val(),
+					'film.scriptWriter' : $('#film_scriptWriter').val(),
+					'film.actor' : $('#film_actor').val(),
+					'film.country' : $('#film_country').val(),
+				},
 				columns : [ [ //二维数组，2个中括号
 					{
 						field : 'filmId',
@@ -361,30 +360,7 @@
 		});
 		function cancelData() {
 		}
-		function deleteData() {
-			if (SelectRow) {
 	
-				formLoad_add();
-				$("#add_form input[name='job.jobId']").prop("disabled", false);
-	
-				$.messager.confirm("确认删除", "是否删除", function(r) {
-					if (r) {
-						$("#add_form").form("submit", {
-							url : "jobManagerAction!deleteJob",
-							onSubmit : function() {
-								return true;
-							},
-							success : function() {
-								$.messager.alert("温馨提示", "操作成功!");
-								check();
-							}
-						});
-						$("#dg").datagrid('deleteRow', SelectRow);
-	
-					}
-				});
-			}
-		}
 		$('#add_buttonData').bind("click", function() {
 			$("#add_dialog").dialog("close");
 			$("#add_form input[name='film.filmId']").prop("disabled", true);
@@ -406,6 +382,7 @@
 		});
 		function addData() {
 			formClear();
+			$("#add_form input[name='film.filmScore']").val('0');
 			$("#add_form input[name='film.filmId']").prop("disabled", true);
 			$("#add_dialog").dialog('open');
 			$("#add_dialog").dialog({
@@ -445,7 +422,30 @@
 				},
 			});
 		});
+		function deleteData() {
+			if (SelectRow) {
+				formClear();
+				formLoad_update();
+				$("#update_form input[name='film.filmId']").prop("disabled", false);
+				$.messager.confirm("确认删除", "是否删除", function(r) {
+					if (r) {
+						$("#update_form").form("submit", {
+							url : "filmManagerAction!deleteFilm",
+							onSubmit : function() {
+								return true;
+							},
+							success : function() {
+								formClear();
+								$.messager.alert("温馨提示", "操作成功!");
+								check();
+							}
+						});
+						$("#dg").datagrid('deleteRow', SelectRow);
 	
+					}
+				});
+			}
+		}
 	
 		function formLoad_update() {
 			$("#update_form input[name='film.filmId']").val(SelectRow.filmId);
@@ -459,7 +459,7 @@
 					$('#update_film_filmStorySort_sorts').combobox('select', SelectRow.filmStorySort.sid);
 				}
 			});
-			var mydate=SelectRow.releaseTime;
+			var mydate = SelectRow.releaseTime;
 			$("#update_datebox").datebox('setValue', mydate);
 			$("#update_form input[name='film.filmCompany']").val(SelectRow.filmCompany);
 			$("#update_form input[name='film.totalTime']").val(SelectRow.totalTime);
@@ -467,8 +467,7 @@
 			$("#update_form input[name='film.scriptWriter']").val(SelectRow.scriptWriter);
 			$("#update_form input[name='film.actor']").val(SelectRow.actor);
 			$("#update_form input[name='film.country']").val(SelectRow.country);
-			$("#update_form input[name='film.story']").val(SelectRow.story);
-	
+			$("#update_form input[name='film.story']").val(SelectRow.story);	
 		}
 		function formClear() {
 			$("#add_form").form("clear");
