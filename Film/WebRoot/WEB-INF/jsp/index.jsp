@@ -105,6 +105,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						</dl>
 					</li>
 				</s:iterator>
+				<br><br><br>
+				<a href="#" class="more">
+					<i></i> 更多
+				</a>
 			</ul>
 			<img src="images/guanggao.jpg" style="margin-left: 80px;"/>
 			<div class="title">
@@ -140,7 +144,41 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					</s:iterator>
 				</dl>
 			</div>
-		</div>
+		</div>	
+		<!-- 电影院 -->
+		<div class="movietxt">
+			<div class="title">
+					<h2>影院信息</h2>
+			</div>
+			<hr>
+			<ul>
+				<s:iterator value="#session.listCinema" var="cinema">
+					<li>
+					<a class="picbox" href="#"><img src="images/${cinema.imgSrc}" /></a>
+					<div class="movie_desc">
+						<a href="#" class="htitle">${cinema.cinemaName}</a>
+						<p style="">${cinema.cinemaLocation}</p>
+						<div class="small_picture">
+							<i class="ico_c_f01"></i>
+							<i class="ico_c_f02"></i> 需购买
+							<i class="ico_c_f03"></i> 可停车
+							<i class="ico_c_f04"></i> 可取票
+							<i class="ico_c_f05"></i> wifi
+
+						</div>
+					</div>
+					<div class="ticketselect">
+						<p class="p_ticket">
+							<span>￥</span>
+							<font style="font-size: 24px;">33</font>
+							<span>元起</span>
+						</p>
+						<a class="ticket">选座购票</a>
+					</div>
+				</li>
+				</s:iterator>
+			</ul>
+		</div>	
 		<!--底部-->
 		<div class="footout">
 			<div class="topline"></div>

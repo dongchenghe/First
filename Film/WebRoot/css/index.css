@@ -474,7 +474,7 @@ a.c_a5:hover {
 	width: 80%;
 	margin-left: auto;
 	margin-right: auto;
-	text-align: left;
+	text-align: center;
 }
 .list1 a:hover {
 	color: dodgerblue;
@@ -537,7 +537,7 @@ a.c_a5:hover {
 
  .list1 .title {
 	border-left: 10px solid #ff6d00;
-	margin-left: 80px;
+	margin-left: 30px;
 }
 
 .list1 h2 {
@@ -545,6 +545,7 @@ a.c_a5:hover {
 	font-weight: normal;
 	line-height: 48px;
 	padding: 0 15px;
+	text-align:left;
 }
 
 .list1 .desc {
@@ -591,7 +592,7 @@ a.c_a5:hover {
 	display: inline-block;
 	border-top: dashed 1px red;
 	margin-left: -20px;
-	width: 30%;
+	width: 32%;
 }
 
 .list1 li i.dot {
@@ -607,6 +608,167 @@ a.c_a5:hover {
 .list1 i_swwantlister li{
 	width:auto;
 }
-/* .i_swwantlister{
-	margin: 0,auto;
-} */
+/* 电影院 */
+.movietxt{
+	width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+}
+.movietxt ul {
+	list-style: none;
+	margin-left: 20px;
+}
+
+.movietxt li {
+	margin-bottom: 60px;
+}
+
+.movietxt .picbox {}
+
+.movietxt img {
+	border: 1px solid #a5a5a5;
+	width: 200px;
+	height: 100px;
+	vertical-align: middle;
+}
+
+.movietxt .movieinfobox dt a {
+	color: #333;
+}
+
+.movietxt .movie_desc {
+	vertical-align: middle;
+	display: inline-block;
+}
+
+.ticketselect {
+	display: inline-block;
+	margin-left: 200px;
+}
+
+.movietxt .p_ticket {
+	color: #FF6D00;
+}
+
+.movietxt .ticket {
+	background: #0081bc;
+	width: 94px;
+	height: 25px;
+	display: inline-block;
+	border-radius: 15px;
+	font-size: 14px;
+	line-height: 25px;
+	text-align: center;
+	letter-spacing: 2px;
+	color: #fff;
+	text-decoration: none;
+	position: relative;
+}
+
+.movietxt .htitle {
+	font-size: 26px;
+}
+
+.movietxt a {
+	text-decoration: none;
+	color: #000000;
+}
+
+.movietxt a:hover {
+	color: #669C20;
+}
+
+.movietxt .more {
+	text-align: center;
+	font-size: 22px;
+}
+
+.movietxt i {
+	width: 31px;
+	height: 31px;
+	position: relative;
+	display: inline-block;
+	vertical-align: middle;
+	margin-right: 0px;
+	background: url(images/allicon24.png) no-repeat -267px -336px;
+}
+
+.movietxt .ico_c_f01 {
+	display: inline-block;
+	vertical-align: middle;
+	background: url(images/infrastructure_icon.png) no-repeat;
+	width: 48px;
+	background-position: -50px -72px;
+	border-radius: 3px;
+	height: 24px;
+}
+
+.movietxt .ico_c_f02 {
+	display: inline-block;
+	vertical-align: middle;
+	background: url(images/infrastructure_icon.png) no-repeat;
+	width: 24px;
+	background-position: 0 -97px;
+	border-radius: 3px;
+	height: 24px;
+}
+
+.movietxt .ico_c_f03 {
+	display: inline-block;
+	vertical-align: middle;
+	background: url(images/infrastructure_icon.png) no-repeat;
+	width: 24px;
+	background-position: -60px -97px;
+	border-radius: 3px;
+	height: 24px;
+}
+
+.movietxt .ico_c_f04 {
+	display: inline-block;
+	vertical-align: middle;
+	background: url(images/infrastructure_icon.png) no-repeat;
+	width: 24px;
+	background-position: -30px -97px;
+	border-radius: 3px;
+	height: 24px;
+}
+
+.movietxt .ico_c_f05 {
+	display: inline-block;
+	vertical-align: middle;
+	background: url(images/infrastructure_icon.png) no-repeat;
+	width: 24px;
+	background-position: -121px -97px;
+	border-radius: 3px;
+	height: 24px;
+}
+
+.movietxt .small_picture {
+	font-size: 14px;
+	font-weight: 550;
+}
+.movietxt .title {
+	border-left: 10px solid #ff6d00;
+	margin-left: 30px;
+}
+.movietxt h2 {
+	font-size: 20px;
+	font-weight: normal;
+	line-height: 48px;
+	padding: 0 15px;
+	text-align:left;
+}
+.list1 .more {
+	font-size: 22px;
+	margin-top: 20px;
+}
+.list1 i {
+	width: 31px;
+	height: 31px;
+	position: relative;
+	display: inline-block;
+	vertical-align: middle;
+	margin-right: 0px;
+	background: url(images/allicon24.png) no-repeat -267px -336px;
+}
