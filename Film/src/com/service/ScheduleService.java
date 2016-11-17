@@ -25,6 +25,12 @@ public class ScheduleService implements IScheduleService {
 		List<Schedule> list=dao.getCurrentSchedule(map);
 		return list;
 	}
+
+	@Override
+	public List<Schedule> getSchedules(Schedule schedule) {
+		// TODO Auto-generated method stub
+		return dao.getSchedules(schedule);
+	}
 	
 	
 

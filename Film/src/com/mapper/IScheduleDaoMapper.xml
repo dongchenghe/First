@@ -67,6 +67,18 @@
 				<if test="film.filmId！=null and film.filmId!=''"></if>
 				s.FILM_ID=#{film.filmId}
 			</if>
+			<if test="scheduleId!=null and scheduleId!=''">
+				SCHEDULE_ID=#{scheduleId}
+			</if>
+			<if test="scheduleTime!=null and scheduleTime!=''">
+				SCHEDULE_TIME=#{scheduleTime}
+			</if>
+			<if test="ticketPrice!=null and ticketPrice!=''">
+				TICKET_PRICE={ticketPrice}
+			</if>
+			<if test="overDue!=null and overDue!=''">
+				OVERDUE={overDue}
+			</if>
 		</where>
 	</select>
 </mapper>

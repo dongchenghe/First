@@ -17,7 +17,6 @@ public class ScheduleAction {
 	private IScheduleService service;
 	private String filmid;
 	private ICinemaService service1;
-	
 	public IScheduleService getService() {
 		return service;
 	}
@@ -70,5 +69,8 @@ public class ScheduleAction {
 	public void setService1(ICinemaService service1) {
 		this.service1 = service1;
 	}
+
+
+	
 	
 }
