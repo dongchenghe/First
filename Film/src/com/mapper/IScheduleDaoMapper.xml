@@ -55,18 +55,32 @@
 	</select>
 	
 	<select id="getCurrentSchedule" parameterType="Schedule" resultMap="scheduleMap">
-		select * from film_sch_view where
-		<where>
+		select * from film_sch_view where 1=1
 			<if test="filmHall!=null">
-				<if test="filmHall.filmHallId!=null and filmHall.filmHallId!=null">
-					s.FILMHALL_ID=#{filmHall.filmHallId}
+				<if test="filmHall.filmHallId!=null and filmHall.filmHallId!=''">
+					and FILMHALL_ID=#{filmHall.filmHallId}
+				</if>
+				<if test="filmHall.cinema!=null">
+					and cinema_id = #{filmHall.cinema.cinemaId}
 				</if>
 			</if>
 			<if test="film!=null">
-				<if test="film.filmId！=null and film.filmId!=''"></if>
-				s.FILM_ID=#{film.filmId}
+				<if test="film.filmId!=null and film.filmId!=''">
+					and FILM_ID=#{film.filmId}
+				</if>
 			</if>
-		</where>
+			<if test="scheduleId!=null and scheduleId!=''">
+				SCHEDULE_ID=#{scheduleId}
+			</if>
+			<if test="scheduleTime!=null and scheduleTime!=''">
+				and scheduleTime 
+			</if>
+			<if test="ticketPrice!=null and ticketPrice!=''">
+				TICKET_PRICE={ticketPrice}
+			</if>
+			<if test="overDue!=null and overDue!=''">
+				OVERDUE={overDue}
+			</if>
 	</select>
 	<select id="getSchedules" parameterType="Schedule" resultMap="scheduleMap">
 		select s.*,f.film_name,fl.filmhall_name from schedule s, film f,
@@ -74,13 +88,14 @@
 		<where>
 			s.film_id=f.film_id and s.filmhall_id=fl.filmhall_id
 			<if test="filmHall!=null">
-				<if test="filmHall.filmHallId!=null and filmHall.filmHallId!=null">
+				<if test="filmHall.filmHallId!=null and filmHall.filmHallId!=''">
 					s.FILMHALL_ID=#{filmHall.filmHallId}
 				</if>
 			</if>
 			<if test="film!=null">
-				<if test="film.filmId！=null and film.filmId!=''"></if>
-				s.FILM_ID=#{film.filmId}
+				<if test="film.filmId!=null and film.filmId!=''">
+					s.FILM_ID=#{film.filmId}
+				</if>
 			</if>
 			<if test="scheduleId!=null and scheduleId!=''">
 				SCHEDULE_ID=#{scheduleId}
