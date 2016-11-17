@@ -70,7 +70,7 @@
 				and SCHEDULE_ID=#{scheduleId}
 			</if>
 			<if test="scheduleTime!=null and scheduleTime!=''">
-				and scheduleTime between #{scheduleTime} and #{scheduleTime}+1;
+				and schedule_time between #{scheduleTime} and #{scheduleTime}+1
 			</if>
 			<if test="ticketPrice!=null and ticketPrice!=''">
 				and TICKET_PRICE={ticketPrice}

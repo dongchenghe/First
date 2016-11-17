@@ -23,36 +23,34 @@ public class ScheduleAction {
 	public IScheduleService getService() {
 		return service;
 	}
-
-
 	public void setService(IScheduleService service) {
 		this.service = service;
 	}
-
-
 	public String schedule(){
 		List<Cinema> listCinema=service1.getCinemasByFilm(filmid);
-		List<CurrentCinema> listCurrentCinema=new ArrayList<CurrentCinema>();
+		List<CurrentCinema> listCurrentCinema1=new ArrayList<CurrentCinema>();
+		List<CurrentCinema> listCurrentCinema2=new ArrayList<CurrentCinema>();
+		List<CurrentCinema> listCurrentCinema3=new ArrayList<CurrentCinema>();
 		for(Cinema cinema:listCinema){
-			CurrentCinema cc=new CurrentCinema();
-			cc.setCinema(cinema);
 			Schedule sch = new Schedule();
+			sch.setFilm(new Film());
 			sch.getFilm().setFilmId(filmid);
+			sch.setFilmHall(new FilmHall());
 			sch.getFilmHall().setCinema(cinema);
 			Date date = new Date();
-			//sch.setScheduleTime(date);
-			FilmHall filmhall = new FilmHall();
-			filmhall.getCinema().setCinemaId("");
-			//List<Schedule> list=service.getCurrentSchedule(map);
-			//cc.setSchedule(list);
-			listCurrentCinema.add(cc);
+			sch.setScheduleTime(date);
+			if(service.getCurrentSchedule(sch).size()!=0){
+				CurrentCinema cc=new CurrentCinema();
+				cc.setCinema(cinema);
+				listCurrentCinema1.add(cc);	
+			}
 		}
-		for(CurrentCinema aaa:listCurrentCinema){
+		for(CurrentCinema aaa:listCurrentCinema1){
 			for(Schedule sch:aaa.getSchedule()){
 				System.out.println(sch);
 			}
 		}
-		ActionContext.getContext().getSession().put("filmSchedule", listCurrentCinema);	
+		ActionContext.getContext().getSession().put("filmSchedule", listCurrentCinema1);	
 		return "success";
 	}
 
