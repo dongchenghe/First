@@ -17,7 +17,6 @@ public class ScheduleAction {
 	private IScheduleService service;
 	private String filmid;
 	private ICinemaService service1;
-	
 	public IScheduleService getService() {
 		return service;
 	}
@@ -42,11 +41,11 @@ public class ScheduleAction {
 			cc.setSchedule(list);
 			listCurrentCinema.add(cc);
 		}
-		/*for(CurrentCinema aaa:listCurrentCinema){
+		for(CurrentCinema aaa:listCurrentCinema){
 			for(Schedule sch:aaa.getSchedule()){
 				System.out.println(sch);
 			}
-		}*/
+		}
 		ActionContext.getContext().getSession().put("filmSchedule", listCurrentCinema);	
 		return "success";
 	}
@@ -70,5 +69,8 @@ public class ScheduleAction {
 	public void setService1(ICinemaService service1) {
 		this.service1 = service1;
 	}
+
+
+	
 	
 }
