@@ -8,6 +8,6 @@ import com.bean.Schedule;
 
 
 public interface IScheduleService {
-	List<Schedule> getCurrentSchedule(Map map);
+	List<Schedule> getCurrentSchedule(Schedule sch);
 	List<Schedule> getSchedules(Schedule schedule);
 }

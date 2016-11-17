@@ -7,6 +7,6 @@ import com.bean.Film;
 import com.bean.Schedule;
 
 public interface IScheduleDao {
-	List<Schedule> getCurrentSchedule(Map map);
+	List<Schedule> getCurrentSchedule(Schedule sch);
 	List<Schedule> getSchedules(Schedule schedule);
 }

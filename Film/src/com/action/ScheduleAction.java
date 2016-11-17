@@ -1,6 +1,7 @@
 package com.action;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -8,6 +9,8 @@ import java.util.Map;
 
 import com.bean.Cinema;
 import com.bean.CurrentCinema;
+import com.bean.Film;
+import com.bean.FilmHall;
 import com.bean.Schedule;
 import com.opensymphony.xwork2.ActionContext;
 import com.service.ICinemaService;
@@ -29,16 +32,19 @@ public class ScheduleAction {
 
 	public String schedule(){
 		List<Cinema> listCinema=service1.getCinemasByFilm(filmid);
-		System.out.println(listCinema);
 		List<CurrentCinema> listCurrentCinema=new ArrayList<CurrentCinema>();
 		for(Cinema cinema:listCinema){
 			CurrentCinema cc=new CurrentCinema();
 			cc.setCinema(cinema);
-			Map<String,String> map = new HashMap<String, String>();
-			map.put("cinema_id", cinema.getCinemaId());
-			map.put("filmid", filmid);
-			List<Schedule> list=service.getCurrentSchedule(map);
-			cc.setSchedule(list);
+			Schedule sch = new Schedule();
+			sch.getFilm().setFilmId(filmid);
+			sch.getFilmHall().setCinema(cinema);
+			Date date = new Date();
+			//sch.setScheduleTime(date);
+			FilmHall filmhall = new FilmHall();
+			filmhall.getCinema().setCinemaId("");
+			//List<Schedule> list=service.getCurrentSchedule(map);
+			//cc.setSchedule(list);
 			listCurrentCinema.add(cc);
 		}
 		for(CurrentCinema aaa:listCurrentCinema){
