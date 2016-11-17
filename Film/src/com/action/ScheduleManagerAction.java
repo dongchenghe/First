@@ -8,6 +8,8 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.struts2.ServletActionContext;
+
+import com.bean.Cinema;
 import com.bean.Schedule;
 import com.opensymphony.xwork2.ActionSupport;
 import com.service.IScheduleService;
@@ -55,7 +57,7 @@ public class ScheduleManagerAction extends ActionSupport{
 		int count = ((lists.size() - start) < rows) ? (lists.size() - start) : rows;
 		JsonConfig config = new JsonConfig();
 		config.setIgnoreDefaultExcludes(false);
-		config.registerJsonValueProcessor(java.util.Date.class, new JsonDateValueProcessor("yyyy-MM-dd "));
+		config.registerJsonValueProcessor(java.util.Date.class, new JsonDateValueProcessor("yyyy-MM-dd HH:mm:ss"));
 		for (int i = 0; i < count; i++) {
 			schedule = lists.get(i + start);
 			list.add(schedule);
@@ -68,6 +70,7 @@ public class ScheduleManagerAction extends ActionSupport{
 		JSONObject object = JSONObject.fromObject(map, config);
 		writer.println(object);
 		writer.flush();
+		System.out.println("YES");
 		return null;
 	}
 	public Schedule getSchedule() {
