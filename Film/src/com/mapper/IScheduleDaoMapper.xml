@@ -53,6 +53,21 @@
 		select * from film_sch_view where film_id=#{filmid} and
 		schedule_time-sysdate&lt;0 and cinema_id=#{cinema_id}
 	</select>
+	
+	<select id="getCurrentSchedule" parameterType="Schedule" resultMap="scheduleMap">
+		select * from film_sch_view where
+		<where>
+			<if test="filmHall!=null">
+				<if test="filmHall.filmHallId!=null and filmHall.filmHallId!=null">
+					s.FILMHALL_ID=#{filmHall.filmHallId}
+				</if>
+			</if>
+			<if test="film!=null">
+				<if test="film.filmId！=null and film.filmId!=''"></if>
+				s.FILM_ID=#{film.filmId}
+			</if>
+		</where>
+	</select>
 	<select id="getSchedules" parameterType="Schedule" resultMap="scheduleMap">
 		select s.*,f.film_name,fl.filmhall_name from schedule s, film f,
 		filmhall fl
@@ -66,6 +81,18 @@
 			<if test="film!=null">
 				<if test="film.filmId！=null and film.filmId!=''"></if>
 				s.FILM_ID=#{film.filmId}
+			</if>
+			<if test="scheduleId!=null and scheduleId!=''">
+				SCHEDULE_ID=#{scheduleId}
+			</if>
+			<if test="scheduleTime!=null and scheduleTime!=''">
+				SCHEDULE_TIME=#{scheduleTime}
+			</if>
+			<if test="ticketPrice!=null and ticketPrice!=''">
+				TICKET_PRICE={ticketPrice}
+			</if>
+			<if test="overDue!=null and overDue!=''">
+				OVERDUE={overDue}
 			</if>
 		</where>
 	</select>
