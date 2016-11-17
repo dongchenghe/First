@@ -13,6 +13,7 @@ import java.util.List;
 import java.util.Map;
 import org.apache.struts2.ServletActionContext;
 import com.bean.Film;
+import com.bean.FilmStorySort;
 import com.opensymphony.xwork2.ActionSupport;
 import com.service.IFilmService;
 import com.util.JsonDateValueProcessor;
@@ -32,7 +33,7 @@ public class FilmManagerAction extends ActionSupport {
 	private File picture;
 	private String pictureContentType;
 	private String pictureFileName;
-
+	private String sid;
 	public File getPicture() {
 		return picture;
 	}
@@ -78,6 +79,15 @@ public class FilmManagerAction extends ActionSupport {
 	}
 
 	public String getFilms() throws IOException {
+	System.out.println("OK");
+		if(sid.length()!=0){
+			System.out.println(sid);
+			film.setFilmStorySort(new FilmStorySort());
+			film.getFilmStorySort().setSid(sid);
+		}else {
+			System.out.println("hehe");
+		}
+		System.out.println(film);
 		List<Film> lists = service.getFilms(film);
 		List<Film> list = new ArrayList<Film>();
 		Map<String, Object> map = new HashMap<>();
@@ -127,7 +137,7 @@ public class FilmManagerAction extends ActionSupport {
 						ous.close();
 					} catch (IOException e) {
 						// TODO Auto-generated catch block
-						e.printStackTrace();
+						e.printStackTrace();	
 					}
 				}
 				if (ins != null) {
@@ -146,6 +156,7 @@ public class FilmManagerAction extends ActionSupport {
 	}
 
 	public String deleteFilm() {
+		System.out.println(film);
 		service.deleteFilm(film);
 		return null;
 
@@ -183,6 +194,7 @@ public class FilmManagerAction extends ActionSupport {
 		}
 		System.out.println(film);
 		service.addFilm(film);
+		System.out.println("OK");
 		return null;
 	}
 
@@ -196,5 +208,13 @@ public class FilmManagerAction extends ActionSupport {
 
 	public void setFilm(Film film) {
 		this.film = film;
+	}
+
+	public String getSid() {
+		return sid;
+	}
+
+	public void setSid(String sid) {
+		this.sid = sid;
 	}
 }
