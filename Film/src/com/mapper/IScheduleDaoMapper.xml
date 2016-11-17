@@ -49,6 +49,9 @@
 			resultMap="filmHallMap"></association>
 	</resultMap>
 
+
+
+
 	
 	<select id="getCurrentSchedule" parameterType="Schedule" resultMap="scheduleMap">
 		select * from film_sch_view where 1=1
@@ -83,8 +86,8 @@
 		filmhall fl
 		<where>
 			s.film_id=f.film_id and s.filmhall_id=fl.filmhall_id
-			<if test="filmHall!=null">
-				<if test="filmHall.filmHallId!=null and filmHall.filmHallId!=''">	
+			<if test="filmHall!=null">	
+				<if test="filmHall.filmHallId!=null and filmHall.filmHallId!=''">
 				and	s.FILMHALL_ID=#{filmHall.filmHallId}
 				</if>
 			</if>
