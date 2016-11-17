@@ -10,5 +10,5 @@ public interface ICinemaDao {
 	void updateCinema(Cinema cinema);
 	void deleteCinema(Cinema cinema);
 	void addCinema(Cinema cinema);
-	
+	List<Cinema> getCinemasByFilm(String filmid);
 }

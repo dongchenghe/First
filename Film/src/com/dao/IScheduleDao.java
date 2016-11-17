@@ -1,10 +1,11 @@
 package com.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import com.bean.Film;
 import com.bean.Schedule;
 
 public interface IScheduleDao {
-	List<Schedule> getCurrentSchedule(String filmId);
+	List<Schedule> getCurrentSchedule(Map map);
 }
