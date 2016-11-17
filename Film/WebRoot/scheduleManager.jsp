@@ -23,7 +23,7 @@
 <a onclick="check_schedule()" href="javascript:void(0)"
 class="easyui-linkbutton">查询档期
 </a>
-<table class="easyui-datagrid" id="table_schedele"
+<table class="easyui-datagrid" id="table_schedule"
 		data-options="singleSelect:true,method:'post',pagination:true,resizable:false"
 		toolbar="#toolbar_schedule" style="width:900px;height:350px" title="档期列表">
 </table>
@@ -40,13 +40,19 @@ class="easyui-linkbutton">查询档期
 <script type="text/javascript">
 		var SelectIndex;
 		var SelectRow;
+		$("#table_schedule").datagrid({
+			onSelect : function(index, row) {
+				SelectIndex = index;
+				SelectRow = row;
+			}
+		});
 		function check_schedule() {
 			$("#table_schedule").datagrid({
 				pagination : true,
 				/* onDblClickRow : updateData_schedule, */
 				url : 'scheduleManagerAction!getSchedules',
-				queryParams : {					
-				},
+				/* queryParams : {					
+				}, */
 				columns : [ [ //二维数组，2个中括号
 					{
 						field : 'scheduleId',
@@ -74,7 +80,7 @@ class="easyui-linkbutton">查询档期
 						}
 					}, {
 						field : 'film.filmName',
-						width : 70,
+						width : 140,
 						title : '电影名',
 						formatter : function(value, row, index) {
 							//获取role对象下的role_id
@@ -100,12 +106,7 @@ class="easyui-linkbutton">查询档期
 				] ],
 			});
 		}
-		$("#table_schedule").datagrid({
-			onSelect : function(index, row) {
-				SelectIndex = index;
-				SelectRow = row;
-			}
-		});
+		
 </script>
 </body>
 </html>
