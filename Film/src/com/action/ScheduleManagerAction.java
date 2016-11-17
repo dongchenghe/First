@@ -45,7 +45,9 @@ public class ScheduleManagerAction extends ActionSupport{
 		this.rows = rows;
 	}
 	public String getSchedules() throws IOException {
+		System.out.println("OK");
 		List<Schedule> lists = service.getSchedules(schedule);
+		System.out.println(lists.size());
 		List<Schedule> list = new ArrayList<Schedule>();
 		Map<String, Object> map = new HashMap<>();
 		int start = (page - 1) * rows;
@@ -62,6 +64,7 @@ public class ScheduleManagerAction extends ActionSupport{
 		PrintWriter writer = ServletActionContext.getResponse().getWriter();
 		map.put("rows", list);
 		map.put("total", lists.size());
+		System.out.println(list.size());
 		JSONObject object = JSONObject.fromObject(map, config);
 		writer.println(object);
 		writer.flush();

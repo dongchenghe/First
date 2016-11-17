@@ -7,5 +7,8 @@
 	<action name="currentSchedule" class="scheduleAction" method="schedule">
 		<result name="success" >/index.jsp</result>
 	</action>
+	<action name="scheduleManagerAction" class="scheduleManagerAction">
+	<result type="json"></result>
+	</action>
 	</package>
 </struts>

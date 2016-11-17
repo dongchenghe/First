@@ -54,6 +54,9 @@
 		<property name="service" ref="scheduleService"></property>
 		<property name="service1" ref="cinemaService"></property>
 	</bean>
+	<bean id="scheduleManagerAction" class="com.action.ScheduleManagerAction" scope="prototype">
+		<property name="service" ref="scheduleService"></property>
+	</bean>
 	<bean id="scheduleService" class="com.service.ScheduleService" >
 		<property name="dao" ref="scheduleDao"></property>
 	</bean>
