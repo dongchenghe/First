@@ -50,9 +50,4 @@
 	<select id="getCurrentSchedule" parameterType="Map" resultMap="scheduleMap">
 		select * from film_sch_view where film_id=#{filmid} and schedule_time-sysdate&lt;0 and cinema_id=#{cinema_id}
 	</select>
-	
-	
-	
-	
-	
 </mapper>
