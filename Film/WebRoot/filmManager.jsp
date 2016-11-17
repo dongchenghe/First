@@ -142,7 +142,7 @@
 		style="width:300px;height:400px;"
 		data-options="resizable:true,modal:true,buttons:'#add_button'"
 		iconCls="icon-add">
-		<form id="add_form" method="post"  enctype="multipart/form-data">
+		<form id="add_form" method="post">
 			<div> <label for="film_filmId">电影编号:</label> <input
 					class="easyui-validatebox" type="text" name="film.filmId" disabled="disabled"/>
 			</div>
@@ -158,11 +158,11 @@
 				<label for="add_film_filmStorySort_sorts">剧情分类:</label> <input
 					id="add_film_filmStorySort_sorts" class="easyui-combobox" name="film.filmStorySort.sid"
 					
-		" />
+		 />
 			</div>
 			<div>
-				<label for="update_datebox">上映时间:</label> <input
-					id="update_datebox" type="text" class="easyui-datebox" name="film.releaseTime">
+				<label for="add_datebox">上映时间:</label> <input
+					id="add_datebox" type="text" class="easyui-datebox" name="film.releaseTime">
 			</div>
 			<div>
 				<label for="film_filmCompany">制片公司:</label> <input
@@ -222,7 +222,7 @@
 				<label for="update_film_filmStorySort_sorts">剧情分类:</label> <input
 					id="update_film_filmStorySort_sorts" class="easyui-combobox" name="film.filmStorySort.sid"
 					
-		" />
+		/>
 			</div>
 			<div>
 				<label for="update_datebox">上映时间:</label> <input
@@ -417,7 +417,6 @@
 				formClear();
 				$("#update_dialog").dialog('open');
 				formLoad_update();
-				$("#update_form input[name='film.filmId']").prop("disabled", true);
 				$("#update_dialog").dialog({
 					iconCls : 'icon-save'
 				});
@@ -459,7 +458,8 @@
 					$('#update_film_filmStorySort_sorts').combobox('select', SelectRow.filmStorySort.sid);
 				}
 			});
-			$("#update_datebox").datebox('setValue', SelectRow.releaseTime);
+			var mydate=SelectRow.releaseTime;
+			$("#update_datebox").datebox('setValue', mydate);
 			$("#update_form input[name='film.filmCompany']").val(SelectRow.filmCompany);
 			$("#update_form input[name='film.totalTime']").val(SelectRow.totalTime);
 			$("#update_form input[name='film.director']").val(SelectRow.director);
@@ -468,7 +468,6 @@
 			$("#update_form input[name='film.country']").val(SelectRow.country);
 			$("#update_form input[name='film.story']").val(SelectRow.story);
 	
-			$("#update_form input[name='film.filmScore']").val(SelectRow.filmScore);
 		}
 		function formClear() {
 			$("#add_form").form("clear");

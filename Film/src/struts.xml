@@ -9,6 +9,7 @@
 	<constant name="struts.enable.DynamicMethodInvocation" value="true"></constant>
 	<constant name="struts.objectFactory" value="spring"></constant>
 	<constant name="struts.objectFactory.spring.autoWire.alwaysRespect" value="true" />		
+	 <constant name="struts.multipart.saveDir" value="/repository"/>
 	<include file="com/action/staffLoginAction.xml"></include>
 	<include file="com/action/customerManagerAction.xml"></include>
 	<include file="com/action/jobManagerAction.xml"></include>

@@ -101,33 +101,46 @@ public class FilmManagerAction extends ActionSupport {
 		return null;
 	}
 
-	public String updateFilm() throws IOException {
-		File saved = new File(ServletActionContext.getServletContext().getRealPath("images/film"), pictureFileName);
-		InputStream ins = null;
-		OutputStream ous = null;
-		try {
-			saved.getParentFile().mkdirs();
-			
-			ins=new FileInputStream(picture);
-			ous=new FileOutputStream(saved);
-			
-			byte[] b=new byte[1024];
-			int len=0;
-			while ((len=ins.read(b))!=-1) {
-				ous.write(b,0,len);
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			if (ous != null) {
-				ous.close();
-			}
-			if (ins != null) {
-				ins.close();
+	public String updateFilm() {
+		System.out.println(film);
+		if (picture != null) {
+			File saved = new File(ServletActionContext.getServletContext().getRealPath("images/film"), pictureFileName);
+			InputStream ins = null;
+			OutputStream ous = null;
+			try {
+				saved.getParentFile().mkdirs();
+
+				ins = new FileInputStream(picture);
+				ous = new FileOutputStream(saved);
+
+				byte[] b = new byte[1024];
+				int len = 0;
+				while ((len = ins.read(b)) != -1) {
+					ous.write(b, 0, len);
+				}
+				film.setImgSrc("film/" + pictureFileName);
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				if (ous != null) {
+					try {
+						ous.close();
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}
+				if (ins != null) {
+					try {
+						ins.close();
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}
 			}
 		}
-		//System.out.println("film/"+pictureFileName);
-		film.setImgSrc("film/"+pictureFileName);
+		// System.out.println("film/"+pictureFileName);
 		service.updateFilm(film);
 		return null;
 	}
@@ -144,14 +157,14 @@ public class FilmManagerAction extends ActionSupport {
 		OutputStream ous = null;
 		try {
 			saved.getParentFile().mkdirs();
-			
-			ins=new FileInputStream(picture);
-			ous=new FileOutputStream(saved);
-			
-			byte[] b=new byte[1024];
-			int len=0;
-			while ((len=ins.read(b))!=-1) {
-				ous.write(b,0,len);
+
+			ins = new FileInputStream(picture);
+			ous = new FileOutputStream(saved);
+
+			byte[] b = new byte[1024];
+			int len = 0;
+			while ((len = ins.read(b)) != -1) {
+				ous.write(b, 0, len);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -163,8 +176,8 @@ public class FilmManagerAction extends ActionSupport {
 				ins.close();
 			}
 		}
-		//System.out.println("film/"+pictureFileName);
-		film.setImgSrc("film/"+pictureFileName);
+		// System.out.println("film/"+pictureFileName);
+		film.setImgSrc("film/" + pictureFileName);
 		System.out.println(film);
 		service.addFilm(film);
 		return null;
