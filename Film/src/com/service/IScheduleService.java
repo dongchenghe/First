@@ -9,5 +9,5 @@ import com.bean.Schedule;
 
 public interface IScheduleService {
 	List<Schedule> getCurrentSchedule(Map map);
-	
+	List<Schedule> getSchedules(Schedule schedule);
 }

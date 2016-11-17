@@ -8,4 +8,5 @@ import com.bean.Schedule;
 
 public interface IScheduleDao {
 	List<Schedule> getCurrentSchedule(Map map);
+	List<Schedule> getSchedules(Schedule schedule);
 }
