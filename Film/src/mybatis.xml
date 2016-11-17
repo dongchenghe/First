@@ -17,6 +17,7 @@
 		<typeAlias type="com.bean.Staff" alias="Staff" />
 		<typeAlias type="com.bean.TicketDetail" alias="TicketDetail" />
 		<typeAlias type="com.bean.TicketOrder" alias="TicketOrder" />
+		<typeAlias type="com.bean.CurrentCinema" alias="CurrentCinema" />
 	</typeAliases>
 	<mappers>
 		<mapper resource="com/mapper/ICustomerDaoMapper.xml" />

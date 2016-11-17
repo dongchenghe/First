@@ -50,8 +50,6 @@
 	</resultMap>
 
 
-
-
 	
 	<select id="getCurrentSchedule" parameterType="Schedule" resultMap="scheduleMap">
 		select * from film_sch_view where 1=1
