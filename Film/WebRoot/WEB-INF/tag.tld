@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<taglib xmlns="http://java.sun.com/xml/ns/j2ee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee web-jsptaglibrary_2_0.xsd"
+    version="2.0">
+    
+  <description>JSTL 1.1 core library</description>
+  <display-name>JSTL core</display-name>
+  <tlib-version>1.1</tlib-version>
+  <short-name>tag</short-name>		<!-- 标签的名字 -->
+  <uri>http://12631.com/jsp</uri>	<!-- url -->
+
+  <tag>
+    <description>
+        时间显示
+    </description>
+    <name>time</name>			<!-- 子名字 -->
+    <tag-class>com.util.TimeShowTag</tag-class>
+    <body-content>empty</body-content>
+    <attribute>						<!-- 一个参数 -->
+        <description>
+			显示时间
+        </description>
+        <name>time</name>			<!-- 参数名 -->
+        <required>true</required>	<!-- 是否必须要有这个参数 ture表示必须要有-->
+        <rtexprvalue>true</rtexprvalue><!-- 是否能够使用动态的值 -->
+    </attribute>
+  </tag>
+</taglib>
