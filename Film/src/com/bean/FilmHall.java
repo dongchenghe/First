@@ -4,6 +4,10 @@ import java.io.Serializable;
 
 public class FilmHall implements Serializable{
 
+	@Override
+	public String toString() {
+		return "FilmHall [filmHallId=" + filmHallId + ", filmHallName=" + filmHallName + ", cinema=" + cinema + "]";
+	}
 	/**
 	 * 
 	 */
