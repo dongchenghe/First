@@ -23,7 +23,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
- <div  class="easyui-panel" title="职工信息管理" >
  	<form id="formquery">
 		<a href="javascript:void(0)" iconCls="icon-search"  class="easyui-linkbutton" onclick="queryData()">查询</a>
 	 	<label>职工id：</label>
@@ -31,7 +30,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<label>职工名：</label>
 		<input style="width:70px;" class="easyui-validatebox" id="ename" name="staff.userName"/>
 		<label>职工密码：</label>
-		<input style="width:90px;" class="easyui-passwordbox" id="emppwd"/ name="staff.pwd"> 
+		<input style="width:90px;" class="easyui-validatebox" id="emppwd"/ name="staff.pwd"> 
 		<label>职工电话：</label>
 		<input style="width:80px;" class="easyui-validatebox" id="empphone"/ name="staff.phone">
 		<label>职位名：</label>
@@ -48,7 +47,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		style="width:700px;height:260px"
 		>
 		</table>
-	</div>
+
 	<div id="dlg" class="easyui-dialog"  iconCls="icon-cut" buttons="#updatebuttons" title="用户信息修改">
 		<form id="form1">
 			<table>

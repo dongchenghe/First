@@ -1,25 +1,50 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
-	<%
-String path = request.getContextPath();
-String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+<%
+	String path = request.getContextPath();
+	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
+			+ path + "/";
 %>
 <%@taglib prefix='c' uri='http://java.sun.com/jsp/jstl/core'%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-  <base href="<%=basePath%>"> 
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<script type="text/javascript" src="js/jquery-3.1.0.min.js"></script>
-<title>影城管理系统</title>
-<style type="text/css">
-th{border:#069 1px solid;}
-td{border:#069 1px solid;}
-.Qt1{width:706px;margin:10px auto;text-align:center;border-collapse:collapse;border:green 1px solid;color:#666;}
-.btn1{opacity:0.7; background-color: #FFF; border:#ccc 1px solid;}
+<base href="<%=basePath%>">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<script type="text/javascript" src="js/jquery-3.1.0.min.js"></script>
+	<link rel="stylesheet" href="css/easyui.css">
+	<link rel="stylesheet" href="css/icon.css">
+	<script type="text/javascript" src="js/jquery-2.2.4.min.js"></script>
+	<script type="text/javascript" src="js/jquery.easyui.min.js"></script>
+	<script type="text/javascript" src="js/easyui-lang-zh_CN.js"></script>
+	<title>影城管理系统</title>
+	<style>
+th {
+	border: #069 1px solid;
+}
+
+td {
+	border: #069 1px solid;
+}
+
+.Qt1 {
+	width: 706px;
+	margin: 10px auto;
+	text-align: center;
+	border-collapse: collapse;
+	border: green 1px solid;
+	color: #666;
+}
+
+.btn1 {
+	opacity: 0.7;
+	background-color: #FFF;
+	border: #ccc 1px solid;
+}
+
 body {
 	font-size: 12px;
-	background-image: url(images/Qbphoto1.jpg);
+	background-image: url(images/Qbphoto2.jpg);
 	background-repeat: repeat;
 }
 
@@ -207,118 +232,118 @@ ul {
 	line-height: 30px;
 }
 </style>
-<script type="text/javascript">
-	window.onload = function() {
-		var xmlHttp;
-		function createXMLHttpRequest(){
-			if(window.ActiveXObject){ 
-				xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
-			}else if(window.XMLHttpRequest){
-				xmlHttp= new XMLHttpRequest();
-			}
-		}
-		createXMLHttpRequest();
-		
-		function $(id) {
-			return document.getElementById(id)
-		}
-		var menu = $("topTags").getElementsByTagName("ul")[0];//顶部菜单容器
-		var tags = menu.getElementsByTagName("li");//顶部菜单
-		var ck = $("leftMenu").getElementsByTagName("ul")[0]
-				.getElementsByTagName("li");//左侧菜单
-		var j;
-		//点击左侧菜单增加新标签
-		for (i = 0; i < ck.length; i++) {
-			ck[i].onclick = function() {
-				if(i==1){
-					
+	<script type="text/javascript">
+		window.onload = function() {
+			var xmlHttp;
+			function createXMLHttpRequest() {
+				if (window.ActiveXObject) {
+					xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
+				} else if (window.XMLHttpRequest) {
+					xmlHttp = new XMLHttpRequest();
 				}
-				$("welcome").style.display = "none"//欢迎内容隐藏
-				clearMenu();
-				this.style.background = 'url(images/tabbg02.gif)'
-				//循环取得当前索引
-				for (j = 0; j < 8; j++) {
-					if (this == ck[j]) {
-						if ($("p" + j) == null) {
-							openNew(j, this.innerHTML);//设置标签显示文字
-						}
-						clearStyle();
-						$("p" + j).style.background = 'url(images/tabbg1.gif)';
-						clearContent();
-						$("c" + j).style.display = "block";
+			}
+			createXMLHttpRequest();
+	
+			function $(id) {
+				return document.getElementById(id)
+			}
+			var menu = $("topTags").getElementsByTagName("ul")[0]; //顶部菜单容器
+			var tags = menu.getElementsByTagName("li"); //顶部菜单
+			var ck = $("leftMenu").getElementsByTagName("ul")[0]
+				.getElementsByTagName("li"); //左侧菜单
+			var j;
+			//点击左侧菜单增加新标签
+			for (i = 0; i < ck.length; i++) {
+				ck[i].onclick = function() {
+					if (i == 1) {
+	
 					}
+					$("welcome").style.display = "none" //欢迎内容隐藏
+					clearMenu();
+					this.style.background = 'url(images/tabbg02.gif)'
+					//循环取得当前索引
+					for (j = 0; j < 8; j++) {
+						if (this == ck[j]) {
+							if ($("p" + j) == null) {
+								openNew(j, this.innerHTML); //设置标签显示文字
+							}
+							clearStyle();
+							$("p" + j).style.background = 'url(images/tabbg1.gif)';
+							clearContent();
+							$("c" + j).style.display = "block";
+						}
+					}
+					return false;
 				}
-				return false;
 			}
-		}
-		//增加或删除标签
-		function openNew(id, name) {
-			var tagMenu = document.createElement("li");
-			tagMenu.id = "p" + id;
-			tagMenu.innerHTML = name
+			//增加或删除标签
+			function openNew(id, name) {
+				var tagMenu = document.createElement("li");
+				tagMenu.id = "p" + id;
+				tagMenu.innerHTML = name
 					+ "&nbsp;&nbsp;"
 					+ "<img src='images/off.gif' style='vertical-align:middle'/>";
-			//标签点击事件
-			tagMenu.onclick = function(evt) {
-				xmlHttp.open("get","/Cute_Mouse/Refresh",true);
-				xmlHttp.setRequestHeader("Content-Type",
-								"application/x-www-form-urlencoded");
-				xmlHttp.send();
-				clearMenu();
-				ck[id].style.background = 'url(images/tabbg02.gif)'
-				clearStyle();
-				tagMenu.style.background = 'url(images/tabbg1.gif)';
-				clearContent();
-				$("c" + id).style.display = "block";
-			}
-			//标签内关闭图片点击事件
-			tagMenu.getElementsByTagName("img")[0].onclick = function(evt) {
-				evt = (evt) ? evt : ((window.event) ? window.event : null);
-				if (evt.stopPropagation) {
-					evt.stopPropagation()
-				} //取消opera和Safari冒泡行为;
-				this.parentNode.parentNode.removeChild(tagMenu);//删除当前标签
-				var color = tagMenu.style.backgroundColor;
-				//设置如果关闭一个标签时，让最后一个标签得到焦点
-				if (color == "#ffff00" || color == "yellow") {//区别浏览器对颜色解释
-					if (tags.length - 1 >= 0) {
-						clearStyle();
-						tags[tags.length - 1].style.background = 'url(images/tabbg1.gif)';
-						clearContent();
-						var cc = tags[tags.length - 1].id.split("p");
-						$("c" + cc[1]).style.display = "block";
-						clearMenu();
-						ck[cc[1]].style.background = 'url(images/tabbg1.gif)';
-					} else {
-						clearContent();
-						clearMenu();
-						$("welcome").style.display = "block"
+				//标签点击事件
+				tagMenu.onclick = function(evt) {
+					xmlHttp.open("get", "/Cute_Mouse/Refresh", true);
+					xmlHttp.setRequestHeader("Content-Type",
+						"application/x-www-form-urlencoded");
+					xmlHttp.send();
+					clearMenu();
+					ck[id].style.background = 'url(images/tabbg02.gif)'
+					clearStyle();
+					tagMenu.style.background = 'url(images/tabbg1.gif)';
+					clearContent();
+					$("c" + id).style.display = "block";
+				}
+				//标签内关闭图片点击事件
+				tagMenu.getElementsByTagName("img")[0].onclick = function(evt) {
+					evt = (evt) ? evt : ((window.event) ? window.event : null);
+					if (evt.stopPropagation) {
+						evt.stopPropagation()
+					} //取消opera和Safari冒泡行为;
+					this.parentNode.parentNode.removeChild(tagMenu); //删除当前标签
+					var color = tagMenu.style.backgroundColor;
+					//设置如果关闭一个标签时，让最后一个标签得到焦点
+					if (color == "#ffff00" || color == "yellow") { //区别浏览器对颜色解释
+						if (tags.length - 1 >= 0) {
+							clearStyle();
+							tags[tags.length - 1].style.background = 'url(images/tabbg1.gif)';
+							clearContent();
+							var cc = tags[tags.length - 1].id.split("p");
+							$("c" + cc[1]).style.display = "block";
+							clearMenu();
+							ck[cc[1]].style.background = 'url(images/tabbg1.gif)';
+						} else {
+							clearContent();
+							clearMenu();
+							$("welcome").style.display = "block"
+						}
 					}
 				}
+				menu.appendChild(tagMenu);
 			}
-			menu.appendChild(tagMenu);
-		}
-		
-		//清除菜单样式
-		function clearMenu() {
-			for (i = 0; i < ck.length; i++) {
-				ck[i].style.background = 'url(images/tabbg01.gif)';
+	
+			//清除菜单样式
+			function clearMenu() {
+				for (i = 0; i < ck.length; i++) {
+					ck[i].style.background = 'url(images/tabbg01.gif)';
+				}
+			}
+			//清除标签样式
+			function clearStyle() {
+				for (i = 0; i < tags.length; i++) {
+					menu.getElementsByTagName("li")[i].style.background = 'url(images/tabbg2.gif)';
+				}
+			}
+			//清除内容
+			function clearContent() {
+				for (i = 0; i < 7; i++) {
+					$("c" + i).style.display = "none";
+				}
 			}
 		}
-		//清除标签样式
-		function clearStyle() {
-			for (i = 0; i < tags.length; i++) {
-				menu.getElementsByTagName("li")[i].style.background = 'url(images/tabbg2.gif)';
-			}
-		}
-		//清除内容
-		function clearContent() {
-			for (i = 0; i < 7; i++) {
-				$("c" + i).style.display = "none";
-			}
-		}
-	}
-</script>
+	</script>
 </head>
 <body>
 	<div id="top">
@@ -332,13 +357,13 @@ ul {
 	<div id="main">
 		<div id="leftMenu">
 			<ul>
-				<li>待发货订单</li>
-				<li>已发货订单</li>
-				<li>商品管理</li>
-				<li>用户管理</li>
-				<li>订单管理</li>
-				<li>修改密码</li>
-				<li>提取现金</li>
+				<li>客户管理</li>
+				<li>员工管理</li>
+				<li>影院管理</li>
+				<li>影厅管理</li>
+				<li>电影管理</li>
+				<li>工作管理</li>
+				<li>档期管理</li>
 			</ul>
 		</div>
 		<div class="jg"></div>
@@ -347,85 +372,36 @@ ul {
 				<div align="center">
 					<p>&nbsp;</p>
 					<p>
-						<strong>萌鼠钱生活馆欢迎你！</strong>
+						<strong>时光影城网欢迎你！</strong>
 					</p>
 					<p>&nbsp;</p>
 				</div>
 			</div>
 			<!-- 订单管理界面 -->
 			<div id="c0" class="content">
-				<table class='Qt1'>
-					<tr>
-						<th>订单ID</th>
-						<th>用户ID</th>
-						<th>送货地址</th>
-						<th>下单时间</th>
-						<th>发货状态</th>
-						<th>客户留言</th>
-						<th>操作</th>
-					</tr>
-					<c:forEach items="${list}" var="item" varStatus="s">
-						<tr>
-							<td>${item.id}</td>
-							<td  style="color:#F60;">${item.userid}</td>
-							<td>${item.addr}</td>
-							<td  style="color:#F60;">${item.odate}</td>
-							<td  style="color:#F60;">${item.state}</td>
-							<td>${item.message}</td>
-							<td><input type="button" value="发货" name="${item.id}" class="btn1"/></td>
-						</tr>
-					</c:forEach>
-				</table>
+				<iframe src="customerManager.jsp" width="1200px" height="800px"></iframe>
 			</div>
-			<script>
-			var xmlHttp;
-			function createXMLHttpRequest(){
-				if(window.ActiveXObject){ 
-					xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
-				}else if(window.XMLHttpRequest){
-					xmlHttp= new XMLHttpRequest();
-				}
-			}
-			createXMLHttpRequest();
-			$("input[type='button']").click(function(){
-				alert("发货成功！");
-				var father = $(this).parent().parent();
-				father.remove();
-				var orderid=$(this).prop("name");
-				xmlHttp.open("get","/Cute_Mouse/DeliverGoodsAjax.do?orderid="+orderid,true);
-				xmlHttp.setRequestHeader("Content-Type",
-								"application/x-www-form-urlencoded");
-				xmlHttp.send();
-			});
-			</script>
 			<div id="c1" class="content">
-				<table class='Qt1'>
-					<tr>
-						<th>订单ID</th>
-						<th>用户ID</th>
-						<th>送货地址</th>
-						<th>下单时间</th>
-						<th>发货状态</th>
-						<th>客户留言</th>
-					</tr>
-					<c:forEach items="${list1}" var="item" varStatus="s">
-						<tr>
-							<td >${item.id}</td>
-							<td style="color:#F60;">${item.userid}</td>
-							<td>${item.addr}</td>
-							<td style="color:#F60;">${item.odate}</td>
-							<td>${item.state}</td>
-							<td style="color:#F60;">${item.message}</td>
-						</tr>
-					</c:forEach>
-				</table></div>
-			<div id="c2" class="content">日志管理</div>
-			<div id="c3" class="content">留言管理</div>
-			<div id="c4" class="content">风格管理</div>
-			<div id="c5" class="content">系统管理</div>
-			<div id="c6" class="content">帮助信息</div>
+				<iframe src="staffManager.jsp" width="1200px" height="800px"></iframe>
+			</div>
+			<div id="c2" class="content">
+				<iframe src="cinemaManager.jsp" width="1200px" height="800px"></iframe>
+
+			</div>
+			<div id="c3" class="content">
+				<iframe src="filmHallManager.jsp" width="1200px" height="800px"></iframe>
+			</div>
+			<div id="c4" class="content">
+				<iframe src="filmManager.jsp" width="1200px" height="800px"></iframe>
+			</div>
+			<div id="c5" class="content">
+				<iframe src="jobManager.jsp" width="1200px" height="800px"></iframe>
+			</div>
+			<div id="c6" class="content">
+				<iframe src="scheduleManager.jsp" width="1200px" height="800px"></iframe>
+			</div>
 		</div>
 	</div>
-	<div id="footer">Cute_Life可爱生活，幸福人生</div>
+	<div id="footer">时光网影城管理系统</div>
 </body>
 </html>

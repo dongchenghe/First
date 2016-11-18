@@ -73,7 +73,7 @@
 		<label for="film_filmStorySort_sorts">剧情分类:</label> <input
 			id="film_filmStorySort_sorts" class="easyui-combobox"
 			data-options="eidtable:false,
-					        valueField:'sid',  
+					        valueField:'sid', 
             				textField:'sorts'
 		" />
 	</div>
