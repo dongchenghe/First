@@ -58,6 +58,8 @@
 <body>
 	<a onclick="check_schedule()" href="javascript:void(0)"
 		class="easyui-linkbutton">查询档期 </a>
+		
+	
 	<table class="easyui-datagrid" id="table_schedule"
 		data-options="singleSelect:true,method:'post',pagination:true,resizable:false"
 		toolbar="#toolbar_schedule" style="width:900px;height:350px"
@@ -193,10 +195,9 @@
 					class="easyui-combobox" type="text"
 					name="schedule.filmHall.cinema.cinemaId" id="filmHall_cinemaName"
 					data-options="    
-        valueField: 'cinemaId',    
-        textField: 'cinemaName',    
-        url: 'cinemaAction!getCinemasForCombobox'  
-       " />
+				        valueField: 'cinemaId',    
+				        textField: 'cinemaName',    
+				        url: 'cinemaAction!getCinemasForCombobox'   " />
 			</div>
 			<div>
 				<label for="schedule.filmHall.filmHallId">影院名:</label> <input
@@ -337,10 +338,10 @@
 	
 			$("#schedule_overDue").combobox('setValue', SelectRow.overDue);
 	
-			$("#film_filmName").combobox('setValue', SelectRow.film.filmId);
+			//$("#film_filmName").combobox('setValue', SelectRow.film.filmId);
 			$("#film_filmName ").combobox('select', SelectRow.film.filmId);
 	
-			$("#filmHall_cinemaName").combobox('setValue', SelectRow.filmHall.cinema.cinemaId);
+			//$("#filmHall_cinemaName").combobox('setValue', SelectRow.filmHall.cinema.cinemaId);
 			$("#filmHall_cinemaName ").combobox('select', SelectRow.filmHall.cinema.cinemaId);
 			$("#filmHall_Name").combobox({
 				valueField : 'filmHallId',
@@ -350,8 +351,8 @@
 					"filmHall.cinema.cinemaName" : SelectRow.filmHall.cinema.cinemaName,
 				},
 			});
-			$("#filmHall_Name").combobox('setValue', SelectRow.filmHall.filmHallName);	
-			$("#filmHall_Name ").combobox('select', SelectRow.filmHall.filmHallName);
+			//$("#filmHall_Name").combobox('setValue', SelectRow.filmHall.filmHallId);	
+			$("#filmHall_Name ").combobox('select', SelectRow.filmHall.filmHallId);
 		}
 		function dialogClose() {
 				$("#schedule_update_dialog").dialog('close');

@@ -1,15 +1,11 @@
 package com.service;
-
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
-import java.util.Map;
-
 import com.bean.Cinema;
 import com.bean.Film;
 import com.bean.FilmHall;
 import com.bean.Schedule;
-import com.dao.IFilmHallDao;
 import com.dao.IScheduleDao;
 
 
@@ -67,10 +63,6 @@ public class ScheduleService implements IScheduleService {
 
 	@Override
 	public void updateSchedule(Schedule schedule) {
-		dao.updateSchedule(schedule);	
-		
+		dao.updateSchedule(schedule);		
 	}
-	
-	
-
 }

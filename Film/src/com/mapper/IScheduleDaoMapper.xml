@@ -50,48 +50,49 @@
 	</resultMap>
 
 
-	
-	<select id="getCurrentSchedule" parameterType="Schedule" resultMap="scheduleMap">
+
+	<select id="getCurrentSchedule" parameterType="Schedule"
+		resultMap="scheduleMap">
 		select * from film_sch_view where 1=1
-			<if test="filmHall!=null">
-				<if test="filmHall.filmHallId!=null and filmHall.filmHallId!=''">
-					and FILMHALL_ID=#{filmHall.filmHallId}
-				</if>
-				<if test="filmHall.cinema!=null">
-					and cinema_id = #{filmHall.cinema.cinemaId}
-				</if>
+		<if test="filmHall!=null">
+			<if test="filmHall.filmHallId!=null and filmHall.filmHallId!=''">
+				and FILMHALL_ID=#{filmHall.filmHallId}
 			</if>
-			<if test="film!=null">
-				<if test="film.filmId!=null and film.filmId!=''">
-					and FILM_ID=#{film.filmId}
-				</if>
+			<if test="filmHall.cinema!=null">
+				and cinema_id = #{filmHall.cinema.cinemaId}
 			</if>
-			<if test="scheduleId!=null and scheduleId!=''">
-				and SCHEDULE_ID=#{scheduleId}
+		</if>
+		<if test="film!=null">
+			<if test="film.filmId!=null and film.filmId!=''">
+				and FILM_ID=#{film.filmId}
 			</if>
-			<if test="scheduleTime!=null and scheduleTime!=''">
-				and schedule_time between #{scheduleTime} and #{scheduleTime}+1
-			</if>
-			<if test="ticketPrice!=null and ticketPrice!=''">
-				and TICKET_PRICE=#{ticketPrice}
-			</if>
-			<if test="overDue!=null and overDue!=''">
-				and OVERDUE=#{overDue}
-			</if>
+		</if>
+		<if test="scheduleId!=null and scheduleId!=''">
+			and SCHEDULE_ID=#{scheduleId}
+		</if>
+		<if test="scheduleTime!=null and scheduleTime!=''">
+			and schedule_time between #{scheduleTime} and #{scheduleTime}+1
+		</if>
+		<if test="ticketPrice!=null and ticketPrice!=''">
+			and TICKET_PRICE=#{ticketPrice}
+		</if>
+		<if test="overDue!=null and overDue!=''">
+			and OVERDUE=#{overDue}
+		</if>
 	</select>
 	<select id="getSchedules" parameterType="Schedule" resultMap="scheduleMap">
 		select s.*,f.film_name,fl.filmhall_name ,c.* from schedule s, film f,
 		filmhall fl ,cinema c
 		<where>
 			s.film_id=f.film_id and s.filmhall_id=fl.filmhall_id
-			<if test="filmHall!=null">	
+			<if test="filmHall!=null">
 				<if test="filmHall.filmHallId!=null and filmHall.filmHallId!=''">
-				and	s.FILMHALL_ID=#{filmHall.filmHallId}
+					and s.FILMHALL_ID=#{filmHall.filmHallId}
 				</if>
 			</if>
 			<if test="film!=null">
 				<if test="film.filmId!=null and film.filmId!=''">
-				and	s.FILM_ID=#{film.filmId}
+					and s.FILM_ID=#{film.filmId}
 				</if>
 			</if>
 			<if test="scheduleId!=null and scheduleId!=''">
@@ -106,23 +107,23 @@
 			<if test="overDue!=null and overDue!=''">
 				and OVERDUE=#{overDue}
 			</if>
-			
+
 		</where>
 	</select>
 	<update id="updateSchedule" parameterType="Schedule">
-	update schedule 
-	<set>
-		<if test="filmHall!=null">	
+		update schedule
+		<set>
+			<if test="filmHall!=null">
 				<if test="filmHall.filmHallId!=null and filmHall.filmHallId!=''">
-				FILMHALL_ID=#{filmHall.filmHallId},
+					FILMHALL_ID=#{filmHall.filmHallId},
 				</if>
 			</if>
 			<if test="film!=null">
 				<if test="film.filmId!=null and film.filmId!=''">
-				FILM_ID=#{film.filmId},
+					FILM_ID=#{film.filmId},
 				</if>
 			</if>
-			
+
 			<if test="scheduleTime!=null and scheduleTime!=''">
 				SCHEDULE_TIME=#{scheduleTime},
 			</if>
@@ -132,11 +133,11 @@
 			<if test="overDue!=null and overDue!=''">
 				OVERDUE=#{overDue}
 			</if>
-	</set>
-	<where>
-	<if test="scheduleId!=null and scheduleId!=''">
+		</set>
+		<where>
+			<if test="scheduleId!=null and scheduleId!=''">
 				SCHEDULE_ID=#{scheduleId}
 			</if>
-	</where>
+		</where>
 	</update>
 </mapper>
