@@ -53,6 +53,7 @@
 	 <bean id="scheduleAction" class="com.action.ScheduleAction" scope="prototype">
 		<property name="service" ref="scheduleService"></property>
 		<property name="service1" ref="cinemaService"></property>
+		<property name="service2" ref="filmService"></property>
 	</bean>
 	<bean id="scheduleManagerAction" class="com.action.ScheduleManagerAction" scope="prototype">
 		<property name="service" ref="scheduleService"></property>

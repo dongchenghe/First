@@ -17,12 +17,14 @@ import com.bean.FilmHall;
 import com.bean.Schedule;
 import com.opensymphony.xwork2.ActionContext;
 import com.service.ICinemaService;
+import com.service.IFilmService;
 import com.service.IScheduleService;
 
 public class ScheduleAction {
 	private IScheduleService service;
 	private String filmid;
 	private ICinemaService service1;
+	private IFilmService service2;
 	public IScheduleService getService() {
 		return service;
 	}
@@ -30,7 +32,11 @@ public class ScheduleAction {
 		this.service = service;
 	}
 	public String schedule(){
+		Map<String, Object> session= ActionContext.getContext().getSession(); 
 		List<Cinema> listCinema=service1.getCinemasByFilm(filmid);
+		Film f = new Film();
+		f.setFilmId(filmid);
+		Film film = service2.getFilm(f);
 		List<CurrentCinema> listCurrentCinema1=new ArrayList<CurrentCinema>();
 		List<CurrentCinema> listCurrentCinema2=new ArrayList<CurrentCinema>();
 		List<CurrentCinema> listCurrentCinema3=new ArrayList<CurrentCinema>();
@@ -57,9 +63,10 @@ public class ScheduleAction {
 				listCurrentCinema3.add(cur);
 			}
 		}
-		ActionContext.getContext().getSession().put("filmSchedule1", listCurrentCinema1);
-		ActionContext.getContext().getSession().put("filmSchedule2", listCurrentCinema2);
-		ActionContext.getContext().getSession().put("filmSchedule3", listCurrentCinema3);
+		session.put("filmshow", film);
+		session.put("filmSchedule1", listCurrentCinema1);
+		session.put("filmSchedule2", listCurrentCinema2);
+		session.put("filmSchedule3", listCurrentCinema3);
 		return "success";
 	}
 
@@ -94,7 +101,10 @@ public class ScheduleAction {
 		c.set(Calendar.DATE,nowday+1);
 		System.out.println(sim.format(c.getTime()));
 	}
-
-	
-	
+	public IFilmService getService2() {
+		return service2;
+	}
+	public void setService2(IFilmService service2) {
+		this.service2 = service2;
+	}
 }

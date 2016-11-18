@@ -93,15 +93,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<ul>
 				<s:iterator value="#session.listFilm" var="film">
 					<li class="one">
-						<a title="${film.filmName }" href="currentSchedule?filmid=${film.filmId}" >
+						<a title="${film.filmName }" href="filmshow?filmid=${film.filmId}" >
 							<img src="images/${film.imgSrc}" alt="${film.filmName }" style="width: 100px;height: 140px"/>
 						</a>
 						<dl>
-							<dt><a href="currentSchedule?filmid=${film.filmId}" class="one">${film.filmName }</a></dt>
+							<dt><a href="filmshow?filmid=${film.filmId}" class="one">${film.filmName }</a></dt>
 							<dd>${film.totalTime}分钟- ${film.filmSort}</dd>
 							<dd><a href="#">${film.filmStorySort.sorts}</a></dd>
 							<dd>5家影院上映20场</dd>
-							<dd><a href="currentSchedule?filmid=${film.filmId}" class="ticket">选座购票</a></dd>
+							<dd><a href="filmshow?filmid=${film.filmId}" class="ticket">选座购票</a></dd>
 						</dl>
 					</li>
 				</s:iterator>
@@ -124,10 +124,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								即将上映
 							</li>
 							<li class="i_wantmovie">
-								<a href="currentSchedule?filmid=${soonfilm.filmId}"><img src="images/${soonfilm.imgSrc}" style="width: 100px;height: 140px" /></a>
+								<a href="filmshow?filmid=${soonfilm.filmId}"><img src="images/${soonfilm.imgSrc}" style="width: 100px;height: 140px" /></a>
 								<div class="desc">
 									<h5>
-										<a href="currentSchedule?filmid=${soonfilm.filmId}">${soonfilm.filmName}</a>
+										<a href="filmshow?filmid=${soonfilm.filmId}">${soonfilm.filmName}</a>
 									</h5>
 									<p>
 										<span>3人想看 - </span>

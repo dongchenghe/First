@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="/struts-tags" prefix="s"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -41,19 +42,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<div class="center">
 			<div class="center-left">
 				<div class="center-left-top">
-					<!--<img src="images/film/qiyiboshi/qiyiboshi1.jpg"/>-->
 					<div class="col-xs-6 col-md-3" style="width: 100%;height: auto;">
 					    <a href="#" class="thumbnail" >
-					      <img src="images/film/qiyiboshi.jpg" style="border-radius:10px;">
+					      <img src="images/${filmshow.imgSrc}" style="border-radius:10px;">
 					    </a>
 					</div>
-					<h5><span>上映：</span>2016年11月11日</h5>
-					<h5><span>类型：</span>动画 /动作 /冒险 /奇幻</h5>
-					<h5><span>时长：</span>120分钟</h5>
-					<h5><span>导演：</span>斯科特·史蒂夫·迪特寇 ,乔·斯派茨</h5>
-					<h5><span>发行公司：</span>华特·迪士尼电影工作室 </h5>
+					<h5><span>上映：</span><s:date name="#session.filmshow.releaseTime" format="yyyy-MM-dd"/>   </h5>
+					<h5><span>类型：</span>${filmshow.filmStorySort.sorts}</h5>
+					<h5><span>时长：</span>${filmshow.totalTime}分钟</h5>
+					<h5><span>主演：</span>${filmshow.actor}</h5>
+					<h5><span>导演：</span>${filmshow.director}</h5>
+					<h5><span>编剧：</span>${filmshow.scriptWriter}</h5>
+					<h5><span>发行公司：</span>${filmshow.filmCompany}</h5>
 					<p><span>剧情：</span>
-						“奇异博士”斯特兰奇是漫威第三阶段的重要角色，曾经是一位外科医生的他在车祸之后失去了赖以为生的本领，为了治疗双手，斯特兰奇踏上前往异国他乡的旅程，旅途中的奇遇让他成为了拥有超凡魔力的至尊法师，并运用自己的本领对抗黑暗力..
+						${filmshow.story}
 					</p>
 					<br />
 				</div>
@@ -78,9 +80,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				</div>
 			</div>
 			<div class="center-right">
-				<h1 style="font-weight: bold;">航海王之黄金城</h1>
+				<h1 style="font-weight: bold;">${filmshow.filmName}</h1>
 				<ul style="margin-top: 20px;width: 100%;" class="nav nav-tabs" role="tablist" id="ul">
-				  <li role="presentation" id="li1" class="active"><a href="javascript:fun1(1)">今天&emsp;11月13&emsp;</a></li>
+				  <li role="presentation" id="li1" class="active"><a href="javascript:fun1(1)">今天&emsp;<s:date name="now" format="MM-dd" />&emsp;</a></li>
 				  <li role="presentation"  id="li2"><a href="javascript:fun1(2)"> 明天&emsp;11月14日&emsp;</a></li>
 				  <li role="presentation"  id="li3"><a href="javascript:fun1(3)"> 后天&emsp;11月15日&emsp;</a></li>
 				</ul>

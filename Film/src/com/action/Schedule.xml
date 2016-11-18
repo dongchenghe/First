@@ -4,9 +4,6 @@
 	"http://struts.apache.org/dtds/struts-2.3.dtd">
 <struts>
 	<package name="Schedule" namespace="/" extends="json-default">
-	<action name="currentSchedule" class="scheduleAction" method="schedule">
-		<result name="success" >/index.jsp</result>
-	</action>
 	<action name="scheduleManagerAction" class="scheduleManagerAction">
 	<result type="json"></result>
 	</action>

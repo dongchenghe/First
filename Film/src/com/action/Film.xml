@@ -4,5 +4,8 @@
 	"http://struts.apache.org/dtds/struts-2.3.dtd">
 <struts>
 	<package name="Film" namespace="/" extends="json-default">
+		<action name="filmshow" class="scheduleAction" method="schedule">
+			<result>WEB-INF/jsp/film/film.jsp</result>
+		</action>
 	</package>
 </struts>
