@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="/struts-tags" prefix="s"%>
+<%@ taglib uri="http://12631.com/jsp" prefix="w" %>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -82,84 +83,36 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<div class="center-right">
 				<h1 style="font-weight: bold;">${filmshow.filmName}</h1>
 				<ul style="margin-top: 20px;width: 100%;" class="nav nav-tabs" role="tablist" id="ul">
-				  <li role="presentation" id="li1" class="active"><a href="javascript:fun1(1)">今天&emsp;<s:date name="now" format="MM-dd" />&emsp;</a></li>
-				  <li role="presentation"  id="li2"><a href="javascript:fun1(2)"> 明天&emsp;11月14日&emsp;</a></li>
-				  <li role="presentation"  id="li3"><a href="javascript:fun1(3)"> 后天&emsp;11月15日&emsp;</a></li>
+				  <li role="presentation" id="li1" class="active"><a href="javascript:fun1(1)">今天&emsp;<w:time time="day1"/>&emsp;</a></li>
+				  <li role="presentation"  id="li2"><a href="javascript:fun1(2)"> 明天&emsp;<w:time time="day2"/>&emsp;</a></li>
+				  <li role="presentation"  id="li3"><a href="javascript:fun1(3)"> 后天&emsp;<w:time time="day3"/>&emsp;</a></li>
 				</ul>
 				<br>
 				<div class="day">
-					<div class="cinema">
-						<a href="#"><h2>橙天嘉禾影城景德镇金鼎店1</h2></a>
-						<h5>景德镇市珠山区广场南路金鼎百货购物中心四楼</h5>
-						<h3>&emsp;影讯</h3>
-						<ul class="clearfix1">
-							<li class="curr">
-								<a data-selector="buy" href="#">
-									<div class="timebox fl">
-										<p class="only">11:00<span class="nextday"></span></p>
-									</div>
-									<div id="price_1553855127" class="pricebox fl" newprice="25" oldprice="60">
-										<p class="fprice">¥25</p>
-									</div>
-									<div style="background: orangered; display: none;width: 30%;position: static;height: 70px;float: left;">
-										<p class="fprice">购买</p>
-									</div>
-								</a>
-							</li>
-							<li class="curr">
-								<a data-selector="buy" href="#">
-									<div class="timebox fl">
-										<p class="only">11:00<span class="nextday"></span></p>
-									</div>
-									<div id="price_1553855127" class="pricebox fl" newprice="25" oldprice="60">
-										<p class="fprice">¥25</p>
-									</div>
-									<div style="background: orangered; display: none;width: 30%;position: static;height: 70px;float: left;">
-										<p class="fprice">购买</p>
-									</div>
-								</a>
-							</li>
-							<li class="curr">
-								<a data-selector="buy" href="#">
-									<div class="timebox fl">
-										<p class="only">11:00<span class="nextday"></span></p>
-									</div>
-									<div id="price_1553855127" class="pricebox fl" newprice="25" oldprice="60">
-										<p class="fprice">¥25</p>
-									</div>
-									<div style="background: orangered; display: none;width: 30%;position: static;height: 70px;float: left;">
-										<p class="fprice">购买</p>
-									</div>
-								</a>
-							</li>
-							<li class="curr">
-								<a data-selector="buy" href="#">
-									<div class="timebox fl">
-										<p class="only">11:00<span class="nextday"></span></p>
-									</div>
-									<div id="price_1553855127" class="pricebox fl" newprice="25" oldprice="60">
-										<p class="fprice">¥25</p>
-									</div>
-									<div style="background: orangered; display: none;width: 30%;position: static;height: 70px;float: left;">
-										<p class="fprice">购买</p>
-									</div>
-								</a>
-							</li>
-							<li class="curr">
-								<a data-selector="buy" href="#">
-									<div class="timebox fl">
-										<p class="only">11:00<span class="nextday"></span></p>
-									</div>
-									<div id="price_1553855127" class="pricebox fl" newprice="25" oldprice="60">
-										<p class="fprice">¥25</p>
-									</div>
-									<div style="background: orangered; display: none;width: 30%;position: static;height: 70px;float: left;">
-										<p class="fprice">购买</p>
-									</div>
-								</a>
-							</li>
-						</ul>
-					</div>
+					<s:iterator value="#session.filmSchedule1" var="cinemesud">
+						<div class="cinema">
+							<a href="#"><h2>${cinemesud.cinema.cinemaName}</h2></a>
+							<h5>${cinemesud.cinema.cinemaLocation}</h5>
+							<h3>&emsp;影讯</h3>
+							<ul class="clearfix1">
+								<s:iterator value="#cinemesud.schedule" var="sch">
+									<li class="curr">
+										<a data-selector="buy" href="#">
+											<div class="timebox fl">
+												<p class="only"><s:date name="#sch.scheduleTime" format="HH:mm"/><span class="nextday"></span></p>
+											</div>
+											<div id="price_1553855127" class="pricebox fl" newprice="25" oldprice="60">
+												<p class="fprice">${sch.ticketPrice}</p>
+											</div>
+											<div style="background: orangered; display: none;width: 30%;position: static;height: 70px;float: left;">
+												<p class="fprice">购买</p>
+											</div>
+										</a>
+									</li>
+								</s:iterator>
+							</ul>
+						</div>
+					</s:iterator>
 				</div>
 				<!--一天-->
 				<div class="day" style="display: none;">

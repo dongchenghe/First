@@ -92,7 +92,6 @@ public class ScheduleAction {
 	public static void main(String[] args) {
 		Calendar c = Calendar.getInstance();
 		SimpleDateFormat sim = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-		//c.set(c.YEAR, c.m, c.DATE);
 		c.set(Calendar.HOUR, 0);
 		c.set(Calendar.MINUTE, 0);
 		c.set(Calendar.SECOND, 0);
