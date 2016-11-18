@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
@@ -336,10 +337,10 @@
 	
 			$("#schedule_overDue").combobox('setValue', SelectRow.overDue);
 	
-			//$("#film_filmName").combobox('setValue', SelectRow.film.filmId);
+			$("#film_filmName").combobox('setValue', SelectRow.film.filmId);
 			$("#film_filmName ").combobox('select', SelectRow.film.filmId);
 	
-			//$("#filmHall_cinemaName").combobox('setValue', SelectRow.filmHall.cinema.cinemaId);
+			$("#filmHall_cinemaName").combobox('setValue', SelectRow.filmHall.cinema.cinemaId);
 			$("#filmHall_cinemaName ").combobox('select', SelectRow.filmHall.cinema.cinemaId);
 			$("#filmHall_Name").combobox({
 				valueField : 'filmHallId',
@@ -349,8 +350,8 @@
 					"filmHall.cinema.cinemaName" : SelectRow.filmHall.cinema.cinemaName,
 				},
 			});
-			//$("#filmHall_Name").combobox('setValue', SelectRow.filmHall.filmHallId);	
-			$("#filmHall_Name ").combobox('select', SelectRow.filmHall.filmHallId);
+			$("#filmHall_Name").combobox('setValue', SelectRow.filmHall.filmHallName);	
+			$("#filmHall_Name ").combobox('select', SelectRow.filmHall.filmHallName);
 		}
 		function dialogClose() {
 				$("#schedule_update_dialog").dialog('close');

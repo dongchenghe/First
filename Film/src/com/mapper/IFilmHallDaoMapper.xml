@@ -29,11 +29,12 @@
 
 			<if test="cinema.cinemaId!=null and cinema.cinemaId!=''">
 				and cinema.cinema_id=#{cinema.cinemaId}
-			</if>			
+			</if>	
+			<if test="cinema.cinemaName!=null and cinema.cinemaName!=''">
+				and cinema.cinema_name=#{cinema.cinemaName}
+			</if>		
 	</select>
-
 	
-
 	<insert id="addFilmHall" parameterType="Cinema">
 		insert into
 		FilmHall

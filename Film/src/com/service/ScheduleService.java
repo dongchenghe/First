@@ -64,6 +64,12 @@ public class ScheduleService implements IScheduleService {
 		}
 		return slist1;
 	}
+
+	@Override
+	public void updateSchedule(Schedule schedule) {
+		dao.updateSchedule(schedule);	
+		
+	}
 	
 	
 
