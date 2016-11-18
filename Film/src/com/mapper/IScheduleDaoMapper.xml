@@ -84,7 +84,7 @@
 		select s.*,f.film_name,fl.filmhall_name ,c.* from schedule s, film f,
 		filmhall fl ,cinema c
 		<where>
-			s.film_id=f.film_id and s.filmhall_id=fl.filmhall_id
+			s.film_id=f.film_id and s.filmhall_id=fl.filmhall_id and fl.cinema_id=c.cinema_id
 			<if test="filmHall!=null">
 				<if test="filmHall.filmHallId!=null and filmHall.filmHallId!=''">
 					and s.FILMHALL_ID=#{filmHall.filmHallId}
@@ -118,6 +118,7 @@
 					FILMHALL_ID=#{filmHall.filmHallId},
 				</if>
 			</if>
+			
 			<if test="film!=null">
 				<if test="film.filmId!=null and film.filmId!=''">
 					FILM_ID=#{film.filmId},
