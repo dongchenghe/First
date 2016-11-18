@@ -40,8 +40,8 @@ public class ScheduleService implements IScheduleService {
 		sch.setFilmHall(new FilmHall());
 		sch.getFilmHall().setCinema(cinema);
 		Calendar c = Calendar.getInstance();
-		c.set(Calendar.HOUR, 0);
-		c.set(Calendar.MINUTE, 0);
+		c.set(Calendar.HOUR_OF_DAY, 0);
+		c.set(Calendar.MINUTE, 10);
 		c.set(Calendar.SECOND, 0);
 		int nowday = c.get(Calendar.DAY_OF_MONTH);
 		if(day.equals("day1")){
