@@ -351,7 +351,7 @@
 					"filmHall.cinema.cinemaName" : SelectRow.filmHall.cinema.cinemaName,
 				},
 			});
-			//$("#filmHall_Name").combobox('setValue', SelectRow.filmHall.filmHallId);	
+			$("#filmHall_Name").combobox('setValue', SelectRow.filmHall.filmHallId);	
 			$("#filmHall_Name ").combobox('select', SelectRow.filmHall.filmHallId);
 		}
 		function dialogClose() {
