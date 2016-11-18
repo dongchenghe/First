@@ -485,6 +485,7 @@ a.c_a5:hover {
 }
 .list1 ul{
 	margin: 20px;
+	text-align: left;
 }
 .list1 ul li {
 	display: inline-block;
@@ -492,7 +493,7 @@ a.c_a5:hover {
 	margin-right:10px;
 	list-style-type: none;
 	margin-top: 20px;
-	width: 28%;
+	width: 31%;
 }
 
 .list1 ul dl {
@@ -762,6 +763,7 @@ a.c_a5:hover {
 .list1 .more {
 	font-size: 22px;
 	margin-top: 20px;
+	margin-left: 45%;
 }
 .list1 i {
 	width: 31px;
