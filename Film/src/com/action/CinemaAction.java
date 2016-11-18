@@ -10,8 +10,6 @@ import java.util.Map;
 import org.apache.struts2.ServletActionContext;
 
 import com.bean.Cinema;
-import com.bean.Job;
-import com.bean.Staff;
 import com.service.ICinemaService;
 
 import net.sf.json.JSONArray;
@@ -56,6 +54,20 @@ public class CinemaAction {
 		
 		return null;
 	};
+	public String getCinemasForCombobox() throws IOException {
+		System.out.println("OK1");
+		List<Cinema> cinemas=service.getCinemas(null);
+		System.out.println("YES1");
+		System.out.println(cinemas.size());
+		ServletActionContext.getResponse().setContentType("text/javascript;charset=utf-8");
+		PrintWriter out =ServletActionContext.getResponse().getWriter();
+		JSONArray jsonArray=JSONArray.fromObject(cinemas);
+		out.println(jsonArray);
+		System.out.println(jsonArray);
+		out.flush();
+		out.close();
+		return null;		
+	}
 	
 	/**
 	 * 删除影城信息

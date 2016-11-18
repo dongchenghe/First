@@ -57,7 +57,17 @@ public class FilmHallAction {
 		
 		return null;
 	};
-	
+	public String getFilmHallsByCombobox() throws IOException {
+		ServletActionContext.getResponse().setContentType("text/javascript;charset=utf-8");
+		System.out.println(filmHall.getCinema().getCinemaName());
+		List<FilmHall> filmHalls=service.getFilmHalls(filmHall);
+		PrintWriter out =ServletActionContext.getResponse().getWriter();
+		JSONArray jsonArray=JSONArray.fromObject(filmHalls);
+		out.println(jsonArray);
+		out.flush();
+		out.close();
+		return null;	
+	}
 	/**
 	 * 删除影厅信息
 	 * @return null

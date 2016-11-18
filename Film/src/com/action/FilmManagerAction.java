@@ -18,6 +18,7 @@ import com.opensymphony.xwork2.ActionSupport;
 import com.service.IFilmService;
 import com.util.JsonDateValueProcessor;
 
+import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 import net.sf.json.JsonConfig;
 
@@ -79,8 +80,8 @@ public class FilmManagerAction extends ActionSupport {
 	}
 
 	public String getFilms() throws IOException {
-	System.out.println("OK");
-		if(sid.length()!=0){
+		if(sid!=null&&sid.length()!=0){
+			System.out.println("YY");
 			System.out.println(sid);
 			film.setFilmStorySort(new FilmStorySort());
 			film.getFilmStorySort().setSid(sid);
@@ -110,7 +111,17 @@ public class FilmManagerAction extends ActionSupport {
 		writer.flush();
 		return null;
 	}
-
+	public String getcombobox() throws IOException{
+		ServletActionContext.getResponse().setContentType("text/javascript;charset=utf-8");
+		PrintWriter writer = ServletActionContext.getResponse().getWriter();
+	
+		List<Film> lists = service.getFilms(null);
+		System.out.println(lists.size());
+		JSONArray jsonArray=JSONArray.fromObject(lists);
+		writer.print(jsonArray);
+		System.out.println(jsonArray);
+		return null;		
+	}
 	public String updateFilm() {
 		System.out.println(film);
 		if (picture != null) {

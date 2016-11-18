@@ -9,4 +9,5 @@ import com.bean.Schedule;
 public interface IScheduleDao {
 	List<Schedule> getCurrentSchedule(Schedule sch);
 	List<Schedule> getSchedules(Schedule schedule);
+	void updateSchedule(Schedule schedule);
 }
