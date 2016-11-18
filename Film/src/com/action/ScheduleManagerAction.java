@@ -68,6 +68,7 @@ public class ScheduleManagerAction extends ActionSupport{
 		return null;
 	}
 	public String updateSchedule(){
+		System.out.println(schedule);
 		service.updateSchedule(schedule);
 		return null;	
 	}
