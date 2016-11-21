@@ -23,7 +23,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
- <div  class="easyui-panel" title="影厅信息管理" >
  	<form id="formquery">
 		<a href="javascript:void(0)" iconCls="icon-search"  class="easyui-linkbutton" onclick="queryData()">查询</a>
 	 	<label>影厅id：</label>
@@ -44,7 +43,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		style="width:700px;height:260px"
 		>
 		</table>
-	</div>
+
 	<div id="dlg" class="easyui-dialog"  iconCls="icon-cut" buttons="#updatebuttons" title="影厅信息修改">
 		<form id="form1">
 			<table>
@@ -125,7 +124,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				}						
 					$("#querycinemaName").combobox("loadData",blankoption);
 				},
-			
 			});
 		});
 		
@@ -242,10 +240,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					         //默认选中第一个
 							$('#addcinemaName11').combobox('select',datas[0].cinemaId);
 							}						       
-			}); 	
-		
-		
-		
+			}); 		
 	}
 	function confrim(action){
 		if(action=='update'){

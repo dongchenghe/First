@@ -24,7 +24,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
- <div  class="easyui-panel" title="影城信息管理" >
  	<form id="formquery">
 		<a href="javascript:void(0)" iconCls="icon-search"  class="easyui-linkbutton" onclick="queryData()">查询</a>
 	 	<label>影城id：</label>
@@ -42,7 +41,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		style="width:700px;height:260px"
 		>
 		</table>
-	</div>
+	
 	<div id="dlg" class="easyui-dialog"  iconCls="icon-cut" buttons="#updatebuttons" title="影城信息修改">
 		<form id="form1">
 			<table>
