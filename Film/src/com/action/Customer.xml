@@ -4,6 +4,9 @@
 	"http://struts.apache.org/dtds/struts-2.3.dtd">
 <struts>
 	<package name="Customer" namespace="/" extends="json-default">
+	<global-results>
+	<result name="ReLogin"></result>
+	</global-results>
 		<action name="to*" class="customerAction">
 			<result name="success" type="dispatcher">WEB-INF/jsp/customer/{1}.jsp</result>
 		</action>
@@ -19,6 +22,7 @@
 				<param name="root">tip</param>
 			</result>
 		</action>
+		
 		<action name="register" class="customerAction" method="register">
 			<result name="success" type="redirectAction">index</result>
 			<result name="error" type="dispatcher">WEB-INF/jsp/customer/register.jsp</result>

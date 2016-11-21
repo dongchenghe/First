@@ -4,6 +4,9 @@
     "http://struts.apache.org/dtds/struts-2.3.dtd">
 <struts>
 	<package name="jobManager" namespace="/" extends="json-default">
+	<global-results>
+		<result name="ReLogin">/WEB-INF/jsp/manager/managerLogin.jsp</result>
+	</global-results>
 		<action name="jobManagerAction" class="jobManagerAction">
 			<result type="json"></result>
 		</action>

@@ -17,7 +17,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script type="text/javascript">
 
 	function testManager() {
-	alert( $("#loginForm").serialize());
 		$.ajax({
 		type : "post",
 		url : "jsonkpi/staffLoginAction!login",

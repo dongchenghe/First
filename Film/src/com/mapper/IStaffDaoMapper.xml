@@ -37,12 +37,15 @@
 			<if test="phone!=null and phone!=''">
 				and PHONE=#{phone}
 			</if>
-			<if test="job.jobId!=null and job.jobId!=''">
+			<if test="job!=null">
+				<if test="job.jobId!=null and job.jobId!=''">
 					and STAFF.JOB_ID=#{job.jobId}
 				</if>
 				<if test="job.jobName!=null and job.jobName!=''">
 						and JOB.JOB_NAME=#{job.jobName}
 				</if>
+			</if>
+			
 			
 			
 			
@@ -66,11 +69,13 @@
 			<if test="phone!=null and phone!=''">
 				and PHONE=#{phone}
 			</if>
-			<if test="job.jobId!=null and job.jobId!=''">
-				and JOB_ID=#{job.jobId}
-			</if>
-			<if test="job.jobName!=null and job.jobName!=''">
-				and JOB_NAME=#{job.jobName}
+			<if test="job!=null">
+				<if test="job.jobId!=null and job.jobId!=''">
+					and JOB_ID=#{job.jobId}
+				</if>
+				<if test="job.jobName!=null and job.jobName!=''">
+					and JOB_NAME=#{job.jobName}
+				</if>
 			</if>
 		</where>
 	</select>

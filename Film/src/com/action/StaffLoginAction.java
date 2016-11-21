@@ -46,8 +46,12 @@ public class StaffLoginAction extends ActionSupport{
 			writer.flush();
 			writer.close();	
 			return ERROR;	
-		}		
+		}	
+	
 		ServletActionContext.getRequest().getSession().setAttribute("staff", staff_1);
+		System.out.println(ServletActionContext.getRequest().getSession().getId());
+		System.out.println(ServletActionContext.getRequest().getSession().getAttribute("staff"));
+		System.out.println("OK");
 		return LOGIN;
 	}
 	public Staff getStaff() {

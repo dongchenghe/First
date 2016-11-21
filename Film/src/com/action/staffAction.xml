@@ -4,6 +4,9 @@
     "http://struts.apache.org/dtds/struts-2.3.dtd">
 <struts>
 	<package name="staff" namespace="/" extends="json-default">
+	<global-results>
+		<result name="ReLogin">/WEB-INF/jsp/manager/managerLogin.jsp</result>
+	</global-results>
 		<action name="staffAction" class="staffAction">
 <!-- 		easyui ajax  return null -->
 			<result  type="json"/>
@@ -19,6 +22,15 @@
 		<action name="index" class="index" method="skip">
  			<result name="success">/WEB-INF/jsp/manager/scheduleManager.jsp</result>
 <!-- 			<result name="success">/WEB-INF/jsp/manager/uploadimg.jsp</result> -->
+		</action>
+		<action name="pageAction" class="pageAction" >
+			<result name="cinema">/WEB-INF/jsp/manager/cinemaManager.jsp</result>
+			<result name="filmHall">/WEB-INF/jsp/manager/filmHallManager.jsp</result>
+			<result name="film">/WEB-INF/jsp/manager/filmManager.jsp</result>
+			<result name="schedule">/WEB-INF/jsp/manager/scheduleManager.jsp</result>
+			<result name="customer">/WEB-INF/jsp/manager/cinemaManager.jsp</result>
+			<result name="staff">/WEB-INF/jsp/manager/customerManager.jsp</result>
+			<result name="job">/WEB-INF/jsp/manager/jobManager.jsp</result>
 		</action>
 	</package>
 	

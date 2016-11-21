@@ -14,6 +14,7 @@ public class Cinema implements Serializable{
 	private String imgSrc;
 
 	public String getCinemaId() {
+		
 		return cinemaId;
 	}
 	public void setCinemaId(String cinemaId) {

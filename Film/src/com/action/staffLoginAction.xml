@@ -7,7 +7,7 @@
 		<action name="staffLoginAction" class="staffLoginAction">
 			<result >/WEB-INF/jsp/manager/managerLogin.jsp</result>
 			<result name="error" type="json"></result>
-			<result name="login">/WEB-INF/jsp/manager/index.jsp</result>
+			<result name="login">/WEB-INF/jsp/manager/manager.jsp</result>
 		</action>
 	</package>
 </struts>

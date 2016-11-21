@@ -10,6 +10,8 @@
         http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
         http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
 	<aop:aspectj-autoproxy proxy-target-class="true" />
+	<!-- Page子页面相关 -->
+	<bean class="com.action.PageAction" scope="prototype" id="pageAction"></bean>
 	<!-- Customer前端相关 -->
 	<bean class="com.action.CustomerAction" id="customerAction" scope="prototype">
 		<property name="service" ref="customerService"></property>
@@ -148,5 +150,11 @@
 		<property name="initialSize" value="3"></property>
 		<property name="maxActive" value="5"></property>
 	</bean>
-
+	<!-- 切面权限验证 -->
+	<bean class="com.aop.PermissionValidation" id="permissionValidation"></bean>
+	<aop:config>
+	<aop:aspect ref="permissionValidation">
+		<aop:around method="aroundAction" pointcut="execution(* com.action..*.*(..)) and !execution(* com.action.StaffLoginAction.*(..)) "/>
+	</aop:aspect>
+	</aop:config>
 </beans>
