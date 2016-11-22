@@ -154,7 +154,7 @@
 	<bean class="com.aop.PermissionValidation" id="permissionValidation"></bean>
 	<aop:config>
 	<aop:aspect ref="permissionValidation">
-		<aop:around method="aroundAction" pointcut="execution(* com.action..*.*(..)) and !execution(* com.action.StaffLoginAction.*(..)) "/>
+		<aop:around method="aroundAction" pointcut="execution(* com.action.*Manager*.*(..)) "/>
 	</aop:aspect>
 	</aop:config>
 </beans>

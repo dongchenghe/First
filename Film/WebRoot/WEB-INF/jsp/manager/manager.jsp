@@ -43,7 +43,7 @@
 		<span>个人后台管理系统</span>
 		<div class="nav-topright">
 			<p>上次登陆时间：2015-04-15 22:33:50 登陆IP：192.168.1.1</p>
-			<span>您好：${staff.job.jobName},${staff.userName}</span><%=basePath%><%=path%><span>注销</span>
+			<span>您好：${staff.userName}</span><span><a href="staffLoginAction">注销</a></span>
 		</div>
 	</div>
 	<div class="nav-down">
